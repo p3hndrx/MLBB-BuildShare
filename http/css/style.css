@@ -87,7 +87,14 @@ display: flex;
     background-color: #F0DB4F;
     float:left;
     margin:10px;
-
+    opacity:.8;
+}
+.active {
+    border: solid 3px red;
+}
+.hover {
+    border: solid 1px black;
+    opacity:1.0;
 }
 
 .hide {
