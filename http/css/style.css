@@ -214,6 +214,9 @@ div[id^='item-tabs'] li a {
 #feedback {
   font-size: 1.4em;
 }
+#feedback2 {
+  font-size: 1.4em;
+}
 
 
 div[id^='item-selectable'] .ui-selecting {
