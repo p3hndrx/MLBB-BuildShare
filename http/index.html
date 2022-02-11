@@ -15,9 +15,9 @@
   </head>
 
   <body>
-
+    <h1>MLBB-BuildShare</h1>
     <div class="container">
-      <h1>MLBB-BuildShare</h1>
+
       <div id="hero-container">
         <div id="hero-menu">
           <ul>
@@ -36,26 +36,26 @@
               </ul>
               <div id="hero-tab-0">
                 <div class="hero-tab" id="hero-selectable">
-                  <div class="hero">hero1</div>
-                  <div class="hero">hero2</div>
-                  <div class="hero">hero3</div>
-                  <div class="hero">hero4</div>
-                  <div class="hero">hero5</div>
-                  <div class="hero">hero6</div>
+                  <div class="hero"id="hero1">hero1</div>
+                  <div class="hero"id="hero2">hero2</div>
+                  <div class="hero"id="hero3">hero3</div>
+                  <div class="hero"id="hero4">hero4</div>
+                  <div class="hero"id="hero5">hero5</div>
+                  <div class="hero"id="hero6">hero6</div>
                 </div>
               </div>
               <div id="hero-tab-1">
                 <div class="hero-tab" id="hero-selectable">
-                  <div class="hero">hero1</div>
-                  <div class="hero">hero3</div>
-                  <div class="hero">hero7</div>
+                  <div class="hero" id="hero1">hero1</div>
+                  <div class="hero" id="hero3">hero3</div>
+                  <div class="hero" id="hero7">hero7</div>
                 </div>
               </div>
               <div id="hero-tab-2">
                 <div class="hero-tab" id="hero-selectable">
-                  <div class="hero">hero8</div>
-                  <div class="hero">hero9</div>
-                  <div class="hero">hero10</div>
+                  <div class="hero" id="hero8">hero8</div>
+                  <div class="hero" id="hero10">hero10</div>
+                  <div class="hero" id="hero11">hero11</div>
                 </div>
               </div>
               <div id="hero-tab-3"></div>
@@ -70,9 +70,17 @@
         <div class="hero-portrait">
           Hero Portrait
         </div>
+        <div class="hero-info">
+          <p id="feedback">
+            <span>Selected Hero Info:</span>
+            <span id="hero-result">none</span>
+          </p>
+        </div>
       </div>
       <div style="clear: both;"></div>
-      <div id="tabs">
+
+      <div id="build-container">
+        <div id="tabs">
         <ul>
           <li><a href="#tabs-1">All</a></li>
           <li><a href="#tabs-2">Cat1</a></li>
@@ -110,13 +118,15 @@
         <div id="tabs-5"></div>
         <div id="tabs-6"></div>
         <div id="tabs-7"></div>
-
-      </div>
-
-      <p id="feedback">
-        <span>Item:</span> <span id="select-result">none</span>
-      </p>
-      <div class="drop-targets">
+        </div>
+        <div class="item-info">
+          <p id="feedback">
+            <span>Item:</span>
+            <span id="select-result">none</span>
+          </p>
+        </div>
+        <div style="clear: both;"></div>
+        <div class="drop-targets">
 
         <div class="build-container" id=sortable>
           <div class="box"> Slot1</div>
@@ -132,6 +142,7 @@
           <div class="box">Opt1</div>
           <div class="box">Opt2</div>
         </div>
+      </div>
       </div>
     </div>
 
