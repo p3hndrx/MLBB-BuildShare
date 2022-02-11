@@ -9,7 +9,6 @@ body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 16px;
   background-color: #fff;
-  overflow: hidden;
 }
 
 h1 {
@@ -81,13 +80,14 @@ h1 {
   float: left;
   margin: 10px;
   opacity: .8;
+  overflow: hidden;
 }
 
 #heroes {
   background-color: #eee;
 }
 
-#hero-tabs ul {
+div[id^='hero-tabs'] ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -95,32 +95,32 @@ h1 {
   background-color: #333333;
 }
 
-#hero-tabs li {
+div[id^='hero-tabs'] li {
   margin: 0 3px 3px 3px;
   padding: 0.4em;
   padding-left: 1.5em;
   float: left;
 }
 
-#hero-tabs li a {
+div[id^='hero-tabs'] li a {
   display: block;
   color: white;
   text-align: center;
   text-decoration: none;
 }
 
-#hero-selectable .ui-selecting {
+div[id^='hero-selectable'] .ui-selecting {
   background: #CAFE40;
   opacity: 1.0;
 }
 
-#hero-selectable .ui-selected {
+div[id^='hero-selectable'] .ui-selected {
   background: #98F314;
   border: solid 3px red;
   opacity: 1.0;
 }
 
-#hero-selectable div {
+div[id^='hero-selectable'] div {
   margin: 3px;
   padding: 0.4em;
   font-size: 1.4em;
@@ -168,7 +168,7 @@ h1 {
   float: left;
 }
 
-#tabs {
+#item-tabs {
   display: flex;
   flex-direction: column;
   width: 75%;
@@ -176,10 +176,10 @@ h1 {
 
 .menu {
   width: 100%;
-  display: flex;
+  #display: flex;
 }
 
-#tabs ul {
+div[id^='item-tabs'] ul {
   list-style-type: none;
   margin: 0;
   padding: 0;
@@ -187,14 +187,14 @@ h1 {
   background-color: #333333;
 }
 
-#tabs li {
+div[id^='item-tabs'] li {
   margin: 0 3px 3px 3px;
   padding: 0.4em;
   padding-left: 1.5em;
   float: left;
 }
 
-#tabs li a {
+div[id^='item-tabs'] li a {
   display: block;
   color: white;
   text-align: center;
@@ -208,32 +208,33 @@ h1 {
   float: left;
   margin: 10px;
   opacity: .8;
+  overflow: hidden;
 }
 
 #feedback {
   font-size: 1.4em;
 }
 
-#selectable .ui-selecting {
+
+div[id^='item-selectable'] .ui-selecting {
   background: #FECA40;
   opacity: 1.0;
 }
 
-#selectable .ui-selected {
+div[id^='item-selectable'] .ui-selected {
   background: #F39814;
   color: white;
   border: solid 3px red;
   opacity: 1.0;
 }
 
-#selectable {
+div[id^='item-selectable']  {
   list-style-type: none;
   margin: 0;
   padding: 0;
-  width: 60%;
 }
 
-#selectable div {
+div[id^='item-selectable']  div {
   margin: 3px;
   padding: 0.4em;
   font-size: 1.4em;
