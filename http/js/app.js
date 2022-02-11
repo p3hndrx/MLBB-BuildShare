@@ -83,11 +83,11 @@ $(function() {
   });
 });
 
-/* SORTABLE BUILD ITEM */
+/* SORTABLE BUILD ITEM
 $(function() {
   $("#sortable").sortable();
   $("#sortable").disableSelection();
-});
+}); */
 
 
 
