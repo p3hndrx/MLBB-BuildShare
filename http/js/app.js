@@ -69,6 +69,8 @@ $(function() {
 $(function() {
   $("#item-tabs").tabs();
 });
+
+/* LOADABLE ITEM */
 $(function() {
 
 var selected_items = [];
@@ -144,6 +146,9 @@ const ItemLoader = {
   }
 
 };
+
+/* SELECTABLE ITEM */
+
 $(".item-tab").selectable({
     stop: function() {
 
@@ -152,7 +157,7 @@ $(".item-tab").selectable({
       $(".ui-selected", this).each(function() {
 
         var index = $("#selectable div").index(this);
-        selected_items = [];
+        selected_items = []
         selected_items.push(this.id);
         result.append(this.id);
       });
@@ -173,10 +178,7 @@ for(let i=0;i<=5;i++){
 }
 
 });
-/* SELECTABLE ITEM */
-$(function() {
 
-});
 
 /* SORTABLE BUILD ITEM  */
 $(function() {
