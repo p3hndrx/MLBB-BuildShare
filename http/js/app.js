@@ -91,12 +91,10 @@ const ItemLoader = {
   },
   clearSlot:function(id){
      console.log("Clear Slot"+id);
-     item_slot[id] = [];
-
      this.def_slot = document.getElementById("item-slot-"+id);
      this.def_slot.innerHTML = '';
-     console.log(this.def_slot.parentNode.children[id]);
-
+     item_slot[id].push();
+     console.log(item_slot[id]);
 
   },
   clickHandler:function(e){
@@ -105,30 +103,22 @@ const ItemLoader = {
        var id = e.currentTarget.id.substr(-1);
        var main_slot = document.getElementById("item-slot-"+id);
        main_slot.innerHTML = "";
-       var slot_div = document.createElement('div');
-       var slot_close = document.createElement('a');
-       slot_close.setAttribute('href', 'javascript:;');
-       slot_close.addEventListener("click", ItemLoader.clearSlot(id));
-       slot_close.style.fontSize = '20px';
-       var closeNode = document.createTextNode('X');
-       slot_close.appendChild(closeNode);
-       //item_slot[id].splice(0, item_slot[id].length);
-      // item_slot[id].push(selected_items);
-       //var out = '<div>';
-       //out += '<a href="javascript:void(0);" style="font-size:10px;" onclick="this.clearSlot('+id+');">X</a>';
-        //console.log(selected_items.length);
-       slot_div.appendChild(slot_close);
+
        for(let x=0;x<=item_slot[id].length-1;x++){
-          var small_node = document.createElement('small');
-          small_node.style.fontSize = '20px';
-          var txNode = document.createTextNode(item_slot[id][x]);
-          small_node.appendChild(txNode);
-          slot_div.appendChild(document.createElement('br'));
-          slot_div.appendChild(small_node);
-         //out += "<small style='font-size:10px;'>"+selected_items[x]+"</small> <br/>";
+          item_slot[id]=[]
        }
        for(let x=0;x<=selected_items.length-1;x++){
-          item_slot[id].push(selected_items[x]);
+
+           var slot_div = document.createElement('div');
+            slot_div.classList.add('box_select');
+
+           var slot_close = document.createElement('a');
+            slot_close.setAttribute('href', 'javascript:;');
+            slot_close.addEventListener("click", ItemLoader.clearSlot(id));
+            slot_close.style.fontSize = '20px';
+           var closeNode = document.createTextNode('X');
+            slot_close.appendChild(closeNode)
+            slot_div.appendChild(slot_close);
 
           var small_node = document.createElement('small');
           small_node.style.fontSize = '20px';
@@ -136,16 +126,78 @@ const ItemLoader = {
           small_node.appendChild(txNode);
           slot_div.appendChild(document.createElement('br'));
           slot_div.appendChild(small_node);
-         //out += "<small style='font-size:10px;'>"+selected_items[x]+"</small> <br/>";
+
+         main_slot.appendChild(slot_div);
+         item_slot[id].push(selected_items[x]);
+         selected_items = [];
        }
-       //out += "</div>"
-       main_slot.appendChild(slot_div);
-       selected_items = [];
-       console.log(item_slot[id].length);
-      //$(".item-tab").selectable( "refresh" );
+
+       console.log(item_slot);
   }
 
 };
+
+/* OPTIONAL ITEM */
+var opt_slot = {
+    0: [],
+    1: []
+  };
+  const OptionLoader = {
+    opt_loaded_items: [],
+    def_slot: null,
+    load: function(i) {
+
+      eval("opt_slot_data" + i + "= opt_loaded_items");
+      //alert()
+    },
+    clearSlot: function(id) {
+      console.log("Clear Slot" + id);
+      this.def_slot = document.getElementById("opt-slot-" + id);
+      this.def_slot.innerHTML = '';
+      opt_slot[id].push();
+      console.log("Item in ClearSlot:" + opt_slot[id]);
+
+    },
+    clickHandler: function(e) {
+      console.log("Option Handler");
+      e.preventDefault();
+      var id = e.currentTarget.id.substr(-1);
+      var main_slot = document.getElementById("opt-slot-" + id);
+      main_slot.innerHTML = "";
+
+      for (let x = 0; x <= opt_slot[id].length - 1; x++) {
+        opt_slot[id] = []
+      }
+      for (let x = 0; x <= selected_items.length - 1; x++) {
+
+        var slot_div = document.createElement('div');
+        slot_div.classList.add('box_select');
+
+        var slot_close = document.createElement('a');
+        slot_close.setAttribute('href', 'javascript:;');
+        slot_close.addEventListener("click", OptionLoader.clearSlot(id));
+        slot_close.style.fontSize = '20px';
+        var closeNode = document.createTextNode('X');
+        slot_close.appendChild(closeNode)
+        slot_div.appendChild(slot_close);
+
+        var small_node = document.createElement('small');
+        small_node.style.fontSize = '20px';
+        var txNode = document.createTextNode(selected_items[x]);
+        small_node.appendChild(txNode);
+        slot_div.appendChild(document.createElement('br'));
+        slot_div.appendChild(small_node);
+
+        main_slot.appendChild(slot_div);
+        opt_slot[id].push(selected_items[x]);
+        selected_items = [];
+      }
+
+      console.log(opt_slot);
+    }
+
+  };
+
 
 /* SELECTABLE ITEM */
 
@@ -165,19 +217,33 @@ $(".item-tab").selectable({
     },
     autoRefresh:true
 });
+
+// DEFINE ITEMLOADER SLOTS
 for(let i=0;i<=5;i++){
    var streval = "var slot_data_"+i+" = [];";
    eval(streval);
    $("#item-slot-"+i).click(function(e){             //  alert();
             e.preventDefault();
             ItemLoader.clickHandler(e)
-
    });
-   //$("#item-slot-"+i).click( function(i){ ItemLoader.clickHandler(i); });
+ }
 
+// DEFINE OPT SLOTS
+for(let i=0;i<=2;i++){
+   var streval = "var opt_slot_data_"+i+" = [];";
+   eval(streval);
+   $("#opt-slot-"+i).click(function(e){             //  alert();
+            e.preventDefault();
+            OptionLoader.clickHandler(e)
+   });
 }
 
+
 });
+
+
+
+
 
 
 /* SORTABLE BUILD ITEM  */
