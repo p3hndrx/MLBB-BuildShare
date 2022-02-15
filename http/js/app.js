@@ -1,4 +1,5 @@
 var hero_choice = 0;
+var heroData;
 var build = 0;
 var full_build = 0;
 var selected_items = [];
@@ -30,9 +31,11 @@ $(document).ready(function() {
   //BUilD HERO BUTTONS
   $.getJSON('../db/herodb.json', function(h) {
     $.each(h.data, function(i, x) {
-      $("#hero-selectable").append("<div class=\"hero\" id=\"" + x.id + "\">" + x.hero_name + "</div>");
+      //$("#hero-selectable").append("<div class=\"hero\" id=\"" + x.id + "\">" + x.hero_name + "</div>");
+      $("#hero-selectable").append("<div class=\"hero\" id=\"" + x.id + "\" style=\"background-image: url(./img/heroes/"+x.hero_icon+")\"><span class=\"herotip\">"+x.hero_name+"</span></div>");
       role = x.class.toLowerCase()
-      $("#hero-selectable-" + role).append("<div class=\"hero\" id=\"" + x.id + "\">" + x.hero_name + "</div>");
+      //$("#hero-selectable-" + role).append("<div class=\"hero\" id=\"" + x.id + "\">" + x.hero_name + "</div>");
+      $("#hero-selectable-" + role).append("<div class=\"hero\" id=\"" + x.id + "\" style=\"background-image: url(./img/heroes/"+x.hero_icon+")\"><span class=\"herotip\">"+x.hero_name+"</span></div>");
     });
   });
 
@@ -69,6 +72,29 @@ $(function() {
   $("#hero-tabs").tabs();
 });
 
+/* SEARCH JSON */
+function getHeroData(code) {
+  $.getJSON('../db/herodb.json', function(h) {
+    $.each(h.data, function(i, x) {
+    if(x.id == code)
+      {
+         /*console.log(x.hero_icon);
+         console.log(x.hero_name);
+         console.log(x.class);*/
+         icon = "url(./img/heroes/"+x.hero_icon+");"
+         heroData = [x.hero_icon, x.hero_name, x.class];
+         heropic = document.getElementById("hero-portrait");
+         $(heropic).attr("style","background-image:"+ icon);
+
+         herolabel = document.getElementById("hero-result");
+         herolabel.append(x.hero_name)
+
+    }
+    });
+  });
+}
+
+
 /* SELECTABLE HEROES */
 $(function() {
   $(".hero-tab").selectable({
@@ -76,7 +102,8 @@ $(function() {
       var result = $("#hero-result").empty();
       $(".ui-selected", this).each(function() {
         var index = $(".hero-tab div").index(this);
-        result.append(this.id);
+        getHeroData(this.id);
+        //result.append(this.id);
         hero_choice = this.id;
         global(hero_choice, item_slot, opt_slot);
       });
