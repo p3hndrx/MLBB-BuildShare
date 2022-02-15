@@ -11,14 +11,25 @@
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script src="js/app.js"></script>
 
+
   </head>
 
   <body>
     <div id="test"></div>
     <h1>MLBB-BuildShare</h1>
     <div class="container">
-
       <div id="hero-container">
+
+        <div id="hero-portrait" class="hero-portrait">
+          Hero Portrait +
+          <div class="hero-info">
+            <p id="feedback">
+              <span>Selected Hero Info:</span>
+              <span id="hero-result">none</span>
+            </p>
+          </div>
+        </div>
+
         <div id="hero-menu">
           <ul>
             <li><a href="#heroes">Select Hero</a></li>
@@ -35,44 +46,44 @@
           </div>
         </div>
         <div style="clear: both;"></div>
-        <div class="hero-portrait">
-          Hero Portrait +
-          <div class="hero-info">
-          <p id="feedback">
-            <span>Selected Hero Info:</span>
-            <span id="hero-result">none</span>
-          </p>
-          </div>
-        </div>
+
 
       </div>
 
-<div class="drop-targets">
+      <div class="drop-targets">
 
-          <div class="build-container" id=sortable>
+        <div class="build-container" id=sortable>
+          Main Build:
+          <div class="main-slots">
             <div id="item-slot-0" class="box"></div>
             <div id="item-slot-1" class="box"></div>
             <div id="item-slot-2" class="box"></div>
             <div id="item-slot-3" class="box"></div>
             <div id="item-slot-4" class="box"></div>
             <div id="item-slot-5" class="box"></div>
-
-
           </div>
           <div class="spacer"></div>
-          Optional Slots:
-          <div class="optional-slots">
-            <div id="opt-slot-0" class="box"></div>
-            <div id="opt-slot-1" class="box"></div>
-          </div>
         </div>
-<div style="clear: both;"></div>
-      <div id="build-container">
+        <div class="build-container">
+        Optional Slots:
+        <div class="optional-slots">
+            <div id="opt-slot-0" class="box-opt"></div>
+            <div id="opt-slot-1" class="box-opt"></div>
+            <div class="spacer"></div>
+        </div>
+        Your Build:
+        <div id="build-feedback"></div>
+      </div>
+      <!--close drop-targets-->
+      <div style="clear: both;"></div>
+      <div id="item-container">
         <div id="item-tabs">
           <ul id="cat-tabs-list">
             <li><a href="#tabs-1">All</a></li>
           </ul>
-          <div id="tabs-0"><div class="item-tab"></div></div>
+          <div id="tabs-0">
+            <div class="item-tab"></div>
+          </div>
           <div id="tabs-1">
             <div class="item-tab" id="item-selectable"></div>
           </div>
@@ -87,7 +98,7 @@
         <div style="clear: both;"></div>
 
       </div>
-    </div>
+    </div> <!-- close container-->
 
 
 

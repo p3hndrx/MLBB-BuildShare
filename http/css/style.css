@@ -8,11 +8,11 @@
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 16px;
-  background-color: #fff;
+  background-color: #0f2b55;
+  color:#fff;
 }
 
 h1 {
-  color: #323330;
   padding: 10px
 }
 
@@ -22,9 +22,11 @@ h1 {
   flex-direction: column;
   #justify-content: center;
   #align-items: center;
-  margin: 20px;
+  #margin: 20px;
   text-align: center;
-
+  min-width: 500px;
+  max-width: 1024px;
+  margin: auto;
 }
 
 .spacer {
@@ -43,12 +45,15 @@ h1 {
   #align-items: center;
   justify-content: center;
   flex-wrap: wrap;
+  background-color:#27426a;
+  border-radius: 30px;
 }
 
 #hero-menu {
   display: flex;
   flex-direction: column;
-  width: 75%;
+  width: 60%;
+  margin: 0 0 10px 50px;
 }
 
 #hero-menu ul {
@@ -56,7 +61,8 @@ h1 {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #555555;
+  background: linear-gradient(90deg,#1e406b,#346094 50%,#1e4474);
+  color:#b2bdcc;
 }
 
 #hero-menu li {
@@ -68,15 +74,20 @@ h1 {
 
 #hero-menu li a {
   display: block;
-  color: white;
+  color: #b2bdcc;
   text-align: center;
   text-decoration: none;
+}
+#hero-menu li a:hover {
+  color: #FFF;
 }
 
 .hero {
   height: 75px;
   width: 75px;
+  border-radius: 75px;
   background-color: #DBF04F;
+  color:#000;
   float: left;
   margin: 10px;
   opacity: .8;
@@ -84,7 +95,7 @@ h1 {
 }
 
 #heroes {
-  background-color: #eee;
+  background-color: #27426a;
 }
 
 div[id^='hero-tabs'] ul {
@@ -92,7 +103,7 @@ div[id^='hero-tabs'] ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333333;
+  background-color: #27426a;
 }
 
 div[id^='hero-tabs'] li {
@@ -129,6 +140,7 @@ div[id^='hero-selectable'] div {
 .hero-portrait {
   height: 250px;
   width: 250px;
+  border-radius: 250px;
   border: solid 3px #ccc;
   margin: 10px;
 
@@ -146,19 +158,23 @@ div[id^='hero-selectable'] div {
 }
 
 /* SKILL ITEM SELECTOR STYLES */
-#build-container {
+#item-container {
   display: flex;
   flex-direction: row;
   #align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
+  #flex-wrap: wrap;
+  background-color: #27426a;
+  border-radius: 30px;
+
 }
 
 .item-info {
   height: 250px;
   width: 250px;
+  min-width: 150px;
   border: solid 3px #ccc;
-  margin: 10px;
+  margin: 15px;
 
   /* align items in the box */
   display: flex;
@@ -171,7 +187,9 @@ div[id^='hero-selectable'] div {
 #item-tabs {
   display: flex;
   flex-direction: column;
-  width: 75%;
+  width: 100%;
+  min-width: 350px;
+
 }
 
 .menu {
@@ -184,7 +202,8 @@ div[id^='item-tabs'] ul {
   margin: 0;
   padding: 0;
   overflow: hidden;
-  background-color: #333333;
+  background: linear-gradient(90deg,#1e406b,#346094 50%,#1e4474);
+  color: #b2bdcc;
 }
 
 div[id^='item-tabs'] li {
@@ -196,15 +215,20 @@ div[id^='item-tabs'] li {
 
 div[id^='item-tabs'] li a {
   display: block;
-  color: white;
+  color: #b2bdcc;
   text-align: center;
   text-decoration: none;
+}
+div[id^='item-tabs'] li a:hover {
+  color: white;
 }
 
 .item {
   height: 75px;
   width: 75px;
+  border-radius: 75px;
   background-color: #F0DB4F;
+  color:#000;
   float: left;
   margin: 10px;
   opacity: .8;
@@ -214,6 +238,7 @@ div[id^='item-tabs'] li a {
 #feedback {
   font-size: 1.4em;
 }
+
 #feedback2 {
   font-size: 1.4em;
 }
@@ -231,13 +256,13 @@ div[id^='item-selectable'] .ui-selected {
   opacity: 1.0;
 }
 
-div[id^='item-selectable']  {
+div[id^='item-selectable'] {
   list-style-type: none;
   margin: 0;
   padding: 0;
 }
 
-div[id^='item-selectable']  div {
+div[id^='item-selectable'] div {
   margin: 3px;
   padding: 0.4em;
   font-size: 1.4em;
@@ -259,8 +284,17 @@ div[id^='item-selectable']  div {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin: 20px;
-  width: 100%
+  width: 100%;
+  background: linear-gradient(90deg,#1e406b,#346094 50%,#1e4474);
+  border-radius:30px;
+  margin: 10px 0 10px 0;
+  padding: 10px 0 10px 0;
+}
+
+.main-slots{
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 .optional-slots {
@@ -270,7 +304,14 @@ div[id^='item-selectable']  div {
   margin: 20px;
 }
 
+#build-feedback {
+margin: 0 0 20 0;
+}
+
+/* BOXES */
+
 .box {
+  border-radius: 150px;
   height: 150px;
   width: 150px;
   border: solid 3px #ccc;
@@ -283,14 +324,20 @@ div[id^='item-selectable']  div {
   justify-content: center;
   float: left;
   background-image: url("https://icons.iconarchive.com/icons/graphicloads/100-flat-2/256/add-icon.png");
-  background-position: center; /* Center the image */
-  background-repeat: no-repeat; /* Do not repeat the image */
-  background-size: cover; /* Resize the background image to cover the entire container */
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: cover;
+  /* Resize the background image to cover the entire container */
 }
+
 .box_select {
-  background-color:#fff;
-  width:100%;
-  height:100%;
+  background-color: #fff;
+  color:#000;
+  width: 100%;
+  height: 100%;
+  border-radius:100%;
 }
 
 .box:hover {
@@ -299,16 +346,52 @@ div[id^='item-selectable']  div {
   border: solid 3px #000;
 }
 
-#sortable {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
+.box-opt {
+  height: 80px;
+  width: 80px;
+  border-radius: 80px;
+  border: solid 3px #ccc;
+  margin: 10px;
+
+  /* align items in the box */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  float: left;
+  background-image: url("https://icons.iconarchive.com/icons/graphicloads/100-flat-2/256/add-icon.png");
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: cover;
+  /* Resize the background image to cover the entire container */
 }
 
-#sortable div {
-  #margin: 3px 3px 3px 0;
-  #padding: 1px;
-  float: left;
-  font-size: 4em;
-  text-align: center;
+.box-opt_select {
+  background-color: #fff;
+  width: 100%;
+  height: 100%;
+}
+
+.box-opt:hover {
+  border: solid 3px #000;
+}
+
+
+/*MOBILE FRIENDLIER*/
+@media all and (max-width: 750px) {
+
+  #hero-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin:10px;
+  }
+
+  #item-tabs {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
 }
