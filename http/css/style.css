@@ -90,23 +90,23 @@ h1 {
   color:#000;
   float: left;
   margin: 10px;
-  opacity: .8;
+  opacity: .9;
   overflow: hidden;
   background-size: contain;
 }
 
 .herotip {
-  font-size:12px;
+  font-size:10px;
   visibility: hidden;
-  width: 120px;
+  width: 90px;
   background-color: black;
   color: #fff;
   text-align: center;
   border-radius: 6px;
-  padding: 5px 0;
-  /* Position the tooltip */
-  #position: absolute;
+  #padding: 5px 0;
+  position: absolute;
   z-index: 99999;
+  margin:60 -45;
 }
 
 .hero:hover .herotip {
@@ -147,6 +147,7 @@ div[id^='hero-selectable'] .ui-selecting {
 div[id^='hero-selectable'] .ui-selected {
   #background: #98F314;
   border: solid 3px red;
+  box-shadow:0 0 5px #D000FE;
   opacity: 1.0;
 }
 
@@ -154,6 +155,7 @@ div[id^='hero-selectable'] div {
   margin: 3px;
   padding: 0.4em;
   font-size: 1.4em;
+  opacity: .9;
 }
 
 .hero-portrait {
@@ -253,12 +255,32 @@ div[id^='item-tabs'] li a:hover {
   color:#000;
   float: left;
   margin: 10px;
-  opacity: .8;
+  opacity: .9;
   overflow: hidden;
+  background-size: contain;
+}
+
+.itemtip {
+  font-size:8px;
+  visibility: hidden;
+  width: 90px;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  /* Position the tooltip */
+  position: absolute;
+  z-index: 99999;
+  margin: 50 -45;
+}
+
+.item:hover .itemtip {
+  visibility: visible;
 }
 
 #feedback {
-  font-size: 1em;
+    font-size: 1em;
     background-color: 000;
     border-radius: 10px;
     padding: 10 20 10 20;
@@ -271,14 +293,15 @@ div[id^='item-tabs'] li a:hover {
 
 
 div[id^='item-selectable'] .ui-selecting {
-  background: #FECA40;
+  #background: #FECA40;
   opacity: 1.0;
 }
 
 div[id^='item-selectable'] .ui-selected {
-  background: #F39814;
+  #background: #F39814;
   color: white;
   border: solid 3px red;
+  box-shadow:0 0 5px #D000FE;
   opacity: 1.0;
 }
 
@@ -286,6 +309,7 @@ div[id^='item-selectable'] {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  opacity: .9;
 }
 
 div[id^='item-selectable'] div {
@@ -324,14 +348,52 @@ div[id^='item-selectable'] div {
 }
 
 .optional-slots {
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
   margin: 20px;
+  float:left;
+  width:45%
+}
+
+.build-feedback {
+margin: 0 0 20 0;
+width:45%;
+float:left;
 }
 
 #build-feedback {
-margin: 0 0 20 0;
+padding:10px;
+text-align:left;
+}
+
+.buildtext {
+  resize: none;
+  font-size:1.4em;
+  font-weight:bold;
+  color:#0e004d;
+  width:400px;
+  height:75px;
+  background: rgb(159,209,183);
+  background: linear-gradient(90deg, rgba(159,209,183,1) 0%, rgba(215,215,215,1) 46%, rgba(0,212,255,1) 100%);
+}
+
+.sharebox {
+text-align:center;
+}
+
+.sharebutt {
+  background-color: #70ffc1;
+  border: 3px solid white;
+  border-radius:30px;
+  color: black;
+  padding: 15px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 20px;
+}
+.sharebutt:hover {
+ border: 3px solid black;
 }
 
 /* BOXES */
@@ -341,9 +403,7 @@ margin: 0 0 20 0;
   height: 150px;
   width: 150px;
   border: solid 3px #ccc;
-  margin: 10px;
-
-  /* align items in the box */
+  margin: 7px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -351,24 +411,22 @@ margin: 0 0 20 0;
   float: left;
   background-image: url("https://icons.iconarchive.com/icons/graphicloads/100-flat-2/256/add-icon.png");
   background-position: center;
-  /* Center the image */
   background-repeat: no-repeat;
-  /* Do not repeat the image */
   background-size: cover;
-  /* Resize the background image to cover the entire container */
 }
 
 .box_select {
-  background-color: #fff;
+  #background-color: #fff;
   color:#000;
   width: 100%;
   height: 100%;
   border-radius:100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 
 .box:hover {
-  height: 150px;
-  width: 150px;
   border: solid 3px #000;
 }
 
@@ -404,6 +462,45 @@ margin: 0 0 20 0;
   border: solid 3px #000;
 }
 
+.closebutt {
+  height:20%;
+  width: 20%;
+  background-image: url(https://icons.iconarchive.com/icons/hopstarter/sleek-xp-basic/256/Close-icon.png);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position:relative;
+  opacity:.5;
+}
+.closebutt:hover {
+  opacity:1;
+}
+
+.slottip {
+    font-size: .8em;
+    width: 150;
+    background-color: #000;
+    visibility: hidden;
+    color: #FFF;
+    border-radius: 10px;
+    padding: 7;
+    position: absolute;
+    margin: 130 -75 0;
+}
+
+.box_select:hover .slottip {
+  visibility: visible;
+}
+
+.footer {
+   #position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   color: white;
+   text-align: center;
+   font-size:.5em;
+}
 
 /*MOBILE FRIENDLIER*/
 @media all and (max-width: 750px) {
@@ -414,10 +511,20 @@ margin: 0 0 20 0;
     width: 100%;
     margin:10px;
   }
-
   #item-tabs {
     display: flex;
     flex-direction: column;
     width: 100%;
   }
+
 }
+@media all and (max-width: 815px) {
+  #feedback {
+    font-size: 1em;
+    background-color: 000;
+    border-radius: 10px;
+    padding: 10 20 10 20;
+    margin-top: 235px;
+}
+}
+

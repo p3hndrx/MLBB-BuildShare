@@ -52,9 +52,12 @@ $(document).ready(function() {
   //BUilD ITEM BUTTONS
   $.getJSON('../db/itemdb.json', function(e) {
     $.each(e.data, function(i, x) {
-      $("#item-selectable").append("<div class=\"item\" id=\"" + x.id + "\">" + x.item_name + "</div>");
+      //$("#item-selectable").append("<div class=\"item\" id=\"" + x.id + "\">" + x.item_name + "</div>");
+      $("#item-selectable").append("<div class=\"item\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/"+x.icon+")\"><span class=\"itemtip\">"+x.item_name+"</span></div>");
+
       equip = x.item_category.toLowerCase()
-      $("#item-selectable-" + equip).append("<div class=\"item\" id=\"" + x.id + "\">" + x.item_name + "</div>");
+      //$("#item-selectable-" + equip).append("<div class=\"item\" id=\"" + x.id + "\">" + x.item_name + "</div>");
+      $("#item-selectable-" + equip).append("<div class=\"item\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/"+x.icon+")\"><span class=\"itemtip\">"+x.item_name+"</span></div>");
     });
   });
 });
@@ -73,6 +76,8 @@ $(function() {
 });
 
 /* SEARCH JSON */
+
+/*GET HERO*/
 function getHeroData(code) {
   $.getJSON('../db/herodb.json', function(h) {
     $.each(h.data, function(i, x) {
@@ -89,6 +94,24 @@ function getHeroData(code) {
          herolabel = document.getElementById("hero-result");
          herolabel.append(x.hero_name)
 
+    }
+    });
+  });
+}
+/*GET HERO*/
+function getItemData(code) {
+  $.getJSON('../db/itemdb.json', function(h) {
+    $.each(h.data, function(i, x) {
+    if(x.id == code)
+      {
+         /*console.log(x.id);
+         console.log(x.icon);
+         console.log(x.item_name);
+         console.log(x.item_category);*/
+         icon = "url(./img/items/"+x.icon+");"
+         selected_items = [x.id, x.icon, x.item_name, x.item_category];
+         console.log("Selected Items:" + selected_items);
+         return selected_items;
     }
     });
   });
@@ -110,8 +133,6 @@ $(function() {
     }
   });
 });
-
-/*HERO PORTRAIT*/
 
 
 /* TABBED ITEM */
@@ -142,18 +163,28 @@ function global(hero_choice, item, optional) {
 
   if (hero_choice == 0 || buildstring.includes("[]") == true) {
     //buildbox.innerHTML = full_build + "<br>" + full_build_enc
-    buildbox.innerHTML = "<br>Please complete the build."
+    buildbox.innerHTML = "This build requires more info..."
+    document.getElementById("build-copy").innerHTML='';
     if (hero_choice == 0) {
-      buildbox.innerHTML += "<br>Please select a hero."
+      buildbox.innerHTML += "<li>Please select a hero."
     }
     if (buildstring.includes("[]") == true) {
-      buildbox.innerHTML += "<br>Please slot more items."
+      buildbox.innerHTML += "<li>Please slot more items."
     }
   } else {
-    buildbox.innerHTML = "<form><input type='text' id='build-code' value='" + full_build_enc + "'\></form>"
-    buildbox.innerHTML += "<br>You can use this code with the Discord Bot!"
-  }
+    buildbox.innerHTML = "<form><textarea rows='4' cols='50' id='build-code' class='buildtext' onclick='copytoclip();'>" + full_build_enc + "</textarea>"
+    buildbox.innerHTML += "<br>You can use this code with the Discord Bot! <br><div class='sharebox'><a href='' class='sharebutt'>Share Build</a></div>"
 
+  }
+};
+
+/*COPY TO CLIPBOARD*/
+function copytoclip() {
+  var copyText = document.getElementById("build-code");
+  copyText.select();
+  copyText.setSelectionRange(0, 99999); /* For mobile devices */
+  navigator.clipboard.writeText(copyText.value);
+  document.getElementById("build-copy").innerHTML = "<br>Copied to Clipboard.";
 }
 
 /* LOADABLE ITEMS */
@@ -192,22 +223,29 @@ $(function() {
       for (let x = 0; x <= selected_items.length - 1; x++) {
 
         var slot_div = document.createElement('div');
-        slot_div.classList.add('box_select');
-
+          slot_div.classList.add('box_select');
+          icon = "url(./img/items/"+selected_items[1]+");"
+          $(slot_div).attr("style","background-image:"+ icon);
+          $(slot_div).attr("style","background-image:"+ icon);
+        var slot_tip = document.createElement('span');
+          $(slot_tip).attr("class","slottip");
+          slot_tip.innerHTML=selected_items[2];
+          slot_div.appendChild(slot_tip);
         var slot_close = document.createElement('a');
-        slot_close.setAttribute('href', 'javascript:;');
-        slot_close.addEventListener("click", ItemLoader.clearSlot(id));
-        slot_close.style.fontSize = '20px';
-        var closeNode = document.createTextNode('X');
+          slot_close.setAttribute('href', 'javascript:;');
+          slot_close.addEventListener("click", ItemLoader.clearSlot(id));
+          slot_close.style.fontSize = '20px';
+        var closeNode = document.createElement('div');
+          closeNode.setAttribute('class', 'closebutt');
         slot_close.appendChild(closeNode)
         slot_div.appendChild(slot_close);
 
         var small_node = document.createElement('small');
         small_node.style.fontSize = '20px';
-        var txNode = document.createTextNode(selected_items[x]);
-        small_node.appendChild(txNode);
-        slot_div.appendChild(document.createElement('br'));
-        slot_div.appendChild(small_node);
+        //var txNode = document.createTextNode(selected_items[x]);
+        //small_node.appendChild(txNode);
+        //slot_div.appendChild(document.createElement('br'));
+        //slot_div.appendChild(small_node);
 
         main_slot.appendChild(slot_div);
         item_slot[id].push(selected_items[x]);
@@ -287,8 +325,9 @@ $(function() {
       //alert();
       $(".ui-selected", this).each(function() {
         var index = $("#selectable div").index(this);
-        selected_items = []
-        selected_items.push(this.id);
+        //selected_items = []
+        //selected_items.push(this.id);
+        getItemData(this.id);
         result.append(this.id);
       });
     },
