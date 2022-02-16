@@ -517,6 +517,20 @@ text-align:center;
     width: 100%;
   }
 
+  .optional-slots {
+  align-items: center;
+  margin: 20px;
+  float:left;
+  width:100%
+}
+
+.build-feedback {
+margin: 0 0 20 0;
+width:100%;
+float:left;
+}
+
+
 }
 @media all and (max-width: 815px) {
   #feedback {
