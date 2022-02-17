@@ -193,20 +193,6 @@ div[id^='hero-selectable'] div {
 
 }
 
-.item-info {
-  height: 250px;
-  width: 250px;
-  min-width: 150px;
-  border: solid 3px #ccc;
-  margin: 15px;
-
-  /* align items in the box */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  float: left;
-}
 
 #item-tabs {
   display: flex;
@@ -287,7 +273,7 @@ div[id^='item-tabs'] li a:hover {
     margin-top: 275px;
 }
 
-#feedback2 {
+.feedback2 {
   font-size: 1.4em;
 }
 
@@ -355,14 +341,16 @@ div[id^='item-selectable'] div {
 }
 
 .build-feedback {
-margin: 0 0 20 0;
-width:45%;
-float:left;
+margin: 0 0 0 0;
+width:100%;
+#float:left;
 }
 
 #build-feedback {
 padding:10px;
 text-align:left;
+width: 50%;
+ margin: 0 auto;
 }
 
 .buildtext {
@@ -487,10 +475,77 @@ text-align:center;
     position: absolute;
     margin: 130 -75 0;
 }
-
 .box_select:hover .slottip {
   visibility: visible;
 }
+
+.optslottip {
+    font-size: .8em;
+    width: 80;
+    background-color: #000;
+    visibility: hidden;
+    color: #FFF;
+    border-radius: 10px;
+    padding: 7;
+    position: absolute;
+    margin: 75 -40 0;
+}
+
+.box_select:hover .optslottip {
+  visibility: visible;
+} /*END BOXES*/
+
+/*ITEM INFO BOX*/
+.item-info {
+  height: 100%;
+  min-width: 250px;
+  width: 250px;
+  border: solid 3px #ccc;
+  margin: 15px;
+  padding:10px;
+  /* align items in the box */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  float: left;
+}
+
+.itemicon {
+width:100px;
+height:100px;
+background-size: contain;
+background-repeat:no-repeat;
+margin:10px;
+}
+
+#itemattribs {
+    /*width: 100%;
+    padding: 20px;
+    height: 100%;*/
+}
+.statlabel {
+    margin: 0;
+}
+.statvalue {
+    color: #F0DB4F;
+    font-weight:bold;
+    padding: 10;
+    margin: 0;
+    min-width:150px;
+}
+
+.attribs {
+color:#b2bdcc;
+font-weight:normal;
+}
+
+.attribs-skills {
+color:#b2bdcc;
+font-weight:normal;
+width:100%;
+}
+
+/*END ITEM INFO*/
 
 .footer {
    #position: fixed;
@@ -525,7 +580,7 @@ text-align:center;
 }
 
 .build-feedback {
-margin: 0 0 20 0;
+margin: 0 0 0 0;
 width:100%;
 float:left;
 }

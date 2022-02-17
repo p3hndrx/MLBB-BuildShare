@@ -250,10 +250,11 @@
                ],
                "active":[
                   {
-                     "active_name":"null",
-                     "description":"null",
+                     "active_name":"kick",
+                     "description":"ass",
                      "modifiers":[
-
+                        {
+                        "movement_speed":"25%"}
                      ]
                   }
                ],

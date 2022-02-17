@@ -60,16 +60,15 @@
             <div id="item-slot-4" class="box"></div>
             <div id="item-slot-5" class="box"></div>
           </div>
-          <div class="spacer"></div>
-        </div>
-        <div class="build-container">
-
-        <div class="optional-slots">
+           <div class="optional-slots">
           Optional Slots:<br>
             <div id="opt-slot-0" class="box-opt"></div>
             <div id="opt-slot-1" class="box-opt"></div>
             <div class="spacer"></div>
         </div>
+          <div class="spacer"></div>
+        </div>
+        <div class="build-container">
 
         <div class="build-feedback">
           About Your Build:
@@ -94,10 +93,25 @@
         </div>
 
         <div class="item-info">
-          <p id="feedback2">
-            <span>Item:</span>
-            <span id="select-result">none</span>
-          </p>
+
+            <div id="select-result">No Item Selected</div>
+            <div id="itemicon"></div>
+            <table id="itemattribs">
+              <tr>
+                 <td class="statlabel">Category:</td>
+                 <td class="statvalue" id="category"></td>
+              </tr>
+              <tr>
+                 <td class="statlabel">Cost:</td>
+                 <td class="statvalue" id="cost"></td>
+              </tr>
+               <tr>
+                 <td class="statlabel">Summary:</td>
+                 <td class="statvalue" id="summary"></td>
+              </tr>
+               <tr><td colspan=2 class="statlabel">Attributes:</td></tr>
+              <tr><td colspan=2 class="statvalue" id="attributes"></td></tr>
+            </table>
         </div>
         <div style="clear: both;"></div>
 

@@ -3,6 +3,7 @@ var heroData;
 var build = 0;
 var full_build = 0;
 var selected_items = [];
+var item_data = [];
 var item_slot = {
   0: [],
   1: [],
@@ -111,6 +112,173 @@ function getItemData(code) {
          icon = "url(./img/items/"+x.icon+");"
          selected_items = [x.id, x.icon, x.item_name, x.item_category];
          console.log("Selected Items:" + selected_items);
+
+         var itemoverview = document.getElementById("select-result")
+           itemoverview.innerHTML = x.item_name;
+           itemoverview.classList.add('feedback2');
+         var itemicon = document.getElementById("itemicon")
+          itemicon.classList.add('itemicon');
+          $(itemicon).attr("style","background-image:"+ icon);
+
+         document.getElementById("category").innerHTML = x.item_category;
+
+         $.each(x.data, function(i, y) {
+
+                /*console.log(y.cost);
+                console.log(y.summary);*/
+                document.getElementById("cost").innerHTML = y.cost;
+                document.getElementById("summary").innerHTML = y.summary;
+
+                /*console.log(y.modifiers);
+                console.log(y.active);
+                console.log(y.passive);
+                console.log(y.unique_passive);*/
+
+                var attribox = document.getElementById("attributes");
+                attribox.innerHTML = '';
+                modifiers = y.modifiers[0];
+                  var modbox = document.createElement('div');
+
+                    for (var key in modifiers) {
+                        value = modifiers[key];
+                        key = key.replace(/_/g, ' ');
+                        var label = modbox.appendChild(document.createElement('span'));
+                        label.classList.add('attribs');
+                        label.innerHTML = key + ": ";
+                        modbox.append(label);
+                        modbox.append(value);
+                        modbox.appendChild(document.createElement('br'));
+                    };
+
+                  /*START ACTIVE*/
+                  active = y.active[0];
+                    var activebox = document.createElement('div');
+                    for (var key in active) {
+                        value = active[key];
+                        if (value !== "null" && key!=="modifiers") {
+                            if (key=="active_name")
+                            {
+                            activebox.appendChild(document.createElement('br'));
+                            activebox.append(value);
+                            activebox.append(": ");
+                            } else{
+                            key = key.replace(/_/g, ' ');
+                            var desc = activebox.appendChild(document.createElement('span'));
+                            desc.classList.add('attribs');
+                            desc.innerHTML = value;
+                            activebox.appendChild(document.createElement('br'));
+                            }
+
+                        } else {
+                            if (key=="modifiers") {
+                                modifiers = active[key];
+                                for (var key in modifiers) {
+                                    at = modifiers[key];
+                                    for (var key in at) {
+                                        value = at[key];
+                                        key = key.replace(/_/g, ' ');
+                                        var label = activebox.appendChild(document.createElement('span'));
+                                        label.classList.add('attribs');
+                                        label.innerHTML = "<br>"+key + ": ";
+                                        activebox.append(label);
+                                        activebox.append(value);
+                                        activebox.appendChild(document.createElement('br'));
+                                    }
+
+                                };
+                            }
+                        }
+                    }/*END ACTIVE */
+
+                  /*START PASSIVE*/
+                  passive = y.passive[0];
+                    var passivebox = document.createElement('div');
+                    for (var key in passive) {
+                        value = passive[key];
+                        if (value !== "null" && key!=="modifiers") {
+                            if (key=="passive_name")
+                            {
+                            passivebox.appendChild(document.createElement('br'));
+                            passivebox.append(value);
+                            passivebox.append(": ");
+                            } else{
+                            key = key.replace(/_/g, ' ');
+                            var desc = passivebox.appendChild(document.createElement('span'));
+                            desc.classList.add('attribs');
+                            desc.innerHTML = value;
+                            passivebox.appendChild(document.createElement('br'));
+                            }
+
+                        } else {
+                            if (key=="modifiers") {
+                                modifiers = passive[key];
+                                for (var key in modifiers) {
+                                    at = modifiers[key];
+                                    for (var key in at) {
+                                        value = at[key];
+                                        key = key.replace(/_/g, ' ');
+                                        var label = passivebox.appendChild(document.createElement('span'));
+                                        label.classList.add('attribs');
+                                        label.innerHTML = "<br>"+key + ": ";
+                                        passivebox.append(label);
+                                        passivebox.append(value);
+                                        passivebox.appendChild(document.createElement('br'));
+                                    }
+
+                                };
+                            }
+                        }
+                    }/*END PASSIVE */
+
+                 /*START UNIQUE-PASSIVE*/
+                  upassive = y.unique_passive[0];
+                    var upassivebox = document.createElement('div');
+                    for (var key in upassive) {
+                        value = upassive[key];
+                        if (value !== "null" && key!=="modifiers") {
+                            if (key=="unique_passive_name")
+                            {
+                            upassivebox.appendChild(document.createElement('br'));
+                            upassivebox.append(value);
+                            upassivebox.append(": ");
+                            } else{
+                            key = key.replace(/_/g, ' ');
+                            var desc = upassivebox.appendChild(document.createElement('span'));
+                            desc.classList.add('attribs');
+                            desc.innerHTML = value;
+                            upassivebox.appendChild(document.createElement('br'));
+                            }
+
+                        } else {
+                            if (key=="modifiers") {
+                                modifiers = upassive[key];
+                                for (var key in modifiers) {
+                                    at = modifiers[key];
+                                    for (var key in at) {
+                                        value = at[key];
+                                        key = key.replace(/_/g, ' ');
+                                        var label = upassivebox.appendChild(document.createElement('span'));
+                                        label.classList.add('attribs');
+                                        label.innerHTML = "<br>"+key + ": ";
+                                        upassivebox.append(label);
+                                        upassivebox.append(value);
+                                        upassivebox.appendChild(document.createElement('br'));
+                                    }
+
+                                };
+                            }
+                        }
+                    }/*END UNIQUE-PASSIVE */
+
+                attribox.append(modbox);
+                attribox.append(activebox);
+                attribox.append(passivebox);
+                attribox.append(upassivebox);
+                });
+
+
+
+
          return selected_items;
     }
     });
@@ -289,22 +457,29 @@ $(function() {
       for (let x = 0; x <= selected_items.length - 1; x++) {
 
         var slot_div = document.createElement('div');
-        slot_div.classList.add('box_select');
-
+          slot_div.classList.add('box_select');
+          icon = "url(./img/items/"+selected_items[1]+");"
+          $(slot_div).attr("style","background-image:"+ icon);
+          $(slot_div).attr("style","background-image:"+ icon);
+        var slot_tip = document.createElement('span');
+          $(slot_tip).attr("class","optslottip");
+          slot_tip.innerHTML=selected_items[2];
+          slot_div.appendChild(slot_tip);
         var slot_close = document.createElement('a');
-        slot_close.setAttribute('href', 'javascript:;');
-        slot_close.addEventListener("click", OptionLoader.clearSlot(id));
-        slot_close.style.fontSize = '20px';
-        var closeNode = document.createTextNode('X');
+          slot_close.setAttribute('href', 'javascript:;');
+          slot_close.addEventListener("click", OptionLoader.clearSlot(id));
+          slot_close.style.fontSize = '20px';
+        var closeNode = document.createElement('div');
+          closeNode.setAttribute('class', 'closebutt');
         slot_close.appendChild(closeNode)
         slot_div.appendChild(slot_close);
 
         var small_node = document.createElement('small');
         small_node.style.fontSize = '20px';
-        var txNode = document.createTextNode(selected_items[x]);
-        small_node.appendChild(txNode);
-        slot_div.appendChild(document.createElement('br'));
-        slot_div.appendChild(small_node);
+        //var txNode = document.createTextNode(selected_items[x]);
+        //small_node.appendChild(txNode);
+        //slot_div.appendChild(document.createElement('br'));
+        //slot_div.appendChild(small_node);
 
         main_slot.appendChild(slot_div);
         opt_slot[id].push(selected_items[x]);
@@ -328,7 +503,7 @@ $(function() {
         //selected_items = []
         //selected_items.push(this.id);
         getItemData(this.id);
-        result.append(this.id);
+        //result.append(this.id);
       });
     },
     autoRefresh: true
