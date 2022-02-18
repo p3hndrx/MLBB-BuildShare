@@ -2,6 +2,7 @@ var hero_choice = 0;
 var heroData;
 var build = 0;
 var full_build = 0;
+var full_build_enc = 0;
 var selected_items = [];
 var item_data = [];
 var item_slot = {
@@ -90,10 +91,14 @@ function getHeroData(code) {
         heroData = [x.hero_icon, x.hero_name, x.class];
         heropic = document.getElementById("hero-portrait");
         $(heropic).attr("style", "background-image:" + icon);
-
         herolabel = document.getElementById("hero-result");
-        herolabel.append(x.hero_name)
+        herolabel.append(x.hero_name);
 
+        /*BUILD EXPORTABLE*/
+        expport = document.getElementById("exp-port");
+        $(expport).attr("style", "background-image:" + icon);
+        expherolabel = document.getElementById("exp-hero-name");
+        expherolabel.append(x.hero_name);
       }
     });
   });
@@ -384,6 +389,12 @@ $(function() {
         var index = $(".hero-tab div").index(this);
         getHeroData(this.id);
         //result.append(this.id);
+        $(function() {
+          $("#hero-menu").tabs({
+            collapsible: true,
+            active: false
+          });
+        });
         hero_choice = this.id;
         global(hero_choice, item_slot, opt_slot);
       });
@@ -430,7 +441,7 @@ function global(hero_choice, item, optional) {
     }
   } else {
     buildbox.innerHTML = "<form><textarea rows='4' cols='50' id='build-code' class='buildtext' onclick='copytoclip();'>" + full_build_enc + "</textarea>"
-    buildbox.innerHTML += "<br>You can use this code with the Discord Bot! <br><div class='sharebox'><a href='javascript:render();' class='sharebutt'>Share Build</a></div>"
+    buildbox.innerHTML += "<br>You can use this code with the Discord Bot! <br>OR...<div class='sharebox'><a href='javascript:render();' class='sharebutt'>Download</a></div>"
 
   }
 };
@@ -446,9 +457,14 @@ function copytoclip() {
 
 /*HTML2 CANVAS */
 function render() {
-    html2canvas(document.querySelector(".container")).then(canvas => {
-    document.body.appendChild(canvas)
-});
+  html2canvas(document.querySelector("#export"),{
+    onclone: function (clonedDoc) {
+        clonedDoc.getElementById('export').style.display = 'block';
+        }
+    }).then(canvas => {
+    //document.body.appendChild(canvas)
+    saveAs(canvas.toDataURL(), full_build_enc+'.png');
+  });
 }
 
 /* LOADABLE ITEMS */
@@ -481,15 +497,18 @@ $(function() {
       var main_slot = document.getElementById("item-slot-" + id);
       main_slot.innerHTML = "";
 
+      var exp_slot = document.getElementById("exp-item-slot-" + id);
+      exp_slot.innerHTML = "";
+
       for (let x = 0; x <= item_slot[id].length - 1; x++) {
         item_slot[id] = []
       }
       for (let x = 0; x <= selected_items.length - 1; x++) {
 
+        //SLOT NORMAL SLOTS
         var slot_div = document.createElement('div');
         slot_div.classList.add('box_select');
         icon = "url(./img/items/" + selected_items[1] + ");"
-        $(slot_div).attr("style", "background-image:" + icon);
         $(slot_div).attr("style", "background-image:" + icon);
         var slot_tip = document.createElement('span');
         $(slot_tip).attr("class", "slottip");
@@ -510,6 +529,17 @@ $(function() {
         //small_node.appendChild(txNode);
         //slot_div.appendChild(document.createElement('br'));
         //slot_div.appendChild(small_node);
+
+        /* FORMAT EXPORT */
+        var exp_slot_div = document.createElement('div');
+        exp_slot_div.classList.add('exp_box_select');
+        $(exp_slot_div).attr("style", "background-image:" + icon);
+        var exp_slot_tip = document.createElement('span');
+        $(exp_slot_tip).attr("class", "exp_slottip");
+        exp_slot_tip.innerHTML = selected_items[2];
+        exp_slot_div.appendChild(exp_slot_tip);
+        exp_slot.appendChild(exp_slot_div);
+        /* END FORMAT EXPORT */
 
         main_slot.appendChild(slot_div);
         item_slot[id].push(selected_items[x]);
@@ -547,6 +577,9 @@ $(function() {
       var main_slot = document.getElementById("opt-slot-" + id);
       main_slot.innerHTML = "";
 
+      var exp_slot = document.getElementById("exp-opt-slot-" + id);
+      exp_slot.innerHTML = "";
+
       for (let x = 0; x <= opt_slot[id].length - 1; x++) {
         opt_slot[id] = []
       }
@@ -576,6 +609,18 @@ $(function() {
         //small_node.appendChild(txNode);
         //slot_div.appendChild(document.createElement('br'));
         //slot_div.appendChild(small_node);
+
+        /* FORMAT EXPORT */
+        var exp_slot_div = document.createElement('div');
+        exp_slot_div.classList.add('exp_box_select');
+        $(exp_slot_div).attr("style", "background-image:" + icon);
+        var exp_slot_tip = document.createElement('span');
+        $(exp_slot_tip).attr("class", "exp_optslottip");
+        exp_slot_tip.innerHTML = selected_items[2];
+
+        exp_slot.appendChild(exp_slot_div);
+        exp_slot.appendChild(exp_slot_tip);
+        /* END FORMAT EXPORT */
 
         main_slot.appendChild(slot_div);
         opt_slot[id].push(selected_items[x]);
@@ -627,6 +672,32 @@ $(function() {
   }
 
 }); //END LOADABLE
+
+/*SAVE AS*/
+function saveAs(uri, filename) {
+
+    var link = document.createElement('a');
+
+    if (typeof link.download === 'string') {
+
+        link.href = uri;
+        link.download = filename;
+
+        //Firefox requires the link to be in the body
+        document.body.appendChild(link);
+
+        //simulate click
+        link.click();
+
+        //remove the link when done
+        document.body.removeChild(link);
+
+    } else {
+
+        window.open(uri);
+
+    }
+}
 
 
 /* SORTABLE BUILD ITEM  */
