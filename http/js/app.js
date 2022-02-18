@@ -408,6 +408,11 @@ $(function() {
   $("#item-tabs").tabs();
 });
 
+/* TABBED BUILDER */
+$( function() {
+    $( "#dropslots" ).tabs();
+  } );
+
 /* GLOBAL MANIPS */
 function global(hero_choice, item, optional) {
   buildstring = JSON.stringify(item);
@@ -432,7 +437,7 @@ function global(hero_choice, item, optional) {
   if (hero_choice == 0 || buildstring.includes("[]") == true) {
     //buildbox.innerHTML = full_build + "<br>" + full_build_enc
     buildbox.innerHTML = "This build requires more info..."
-    document.getElementById("build-copy").innerHTML = '';
+    //document.getElementById("build-copy").innerHTML = '';
     if (hero_choice == 0) {
       buildbox.innerHTML += "<li>Please select a hero."
     }
@@ -440,6 +445,7 @@ function global(hero_choice, item, optional) {
       buildbox.innerHTML += "<li>Please slot more items."
     }
   } else {
+    $("#dropslots").tabs("option", "active", 1);
     buildbox.innerHTML = "<form><textarea rows='4' cols='50' id='build-code' class='buildtext' onclick='copytoclip();'>" + full_build_enc + "</textarea>"
     buildbox.innerHTML += "<br>You can use this code with the Discord Bot! <br>OR...<div class='sharebox'><a href='javascript:render();' class='sharebutt'>Download</a></div>"
 

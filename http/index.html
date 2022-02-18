@@ -51,7 +51,7 @@
 
       <div class="drop-targets">
 
-        <div class="build-container" id=sortable>
+        <div class="build-container" id="slots">
           Main Build:
           <div class="main-slots">
             <div id="item-slot-0" class="box"></div>
@@ -69,14 +69,23 @@
           </div>
           <div class="spacer"></div>
         </div>
-        <div class="build-container">
 
-          <div class="build-feedback">
-            About Your Build:
-            <div id="build-feedback"></div>
-            <div id="build-copy"></div>
+        <div id="dropslots"  class="build-container" >
+        <ul>
+        <li><a href="#item-container">Item Selector</a></li>
+        <li><a href="#export-menu">Export Your Build</a></li>
+        </ul>
+
+        <div id="export-menu">
+          About Your Build:
+          <div id="build-feedback">
+            <div class="build-feedback">
+
+              <div id="build-feedback"></div>
+            </div>
+            <div style="clear: both;"></div>
           </div>
-          <div style="clear: both;"></div>
+          <div id="build-copy"></div>
         </div>
         <!--close drop-targets-->
         <div style="clear: both;"></div>
@@ -121,7 +130,8 @@
           <div style="clear: both;"></div>
 
         </div>
-      </div> <!-- close container-->
+        </div>
+      </div> <!-- close drop-targets-->
 
 
       <div class="footer">
@@ -150,7 +160,7 @@
         </div>
 
       </div>
-
+    </div> <!-- close container -->
   </body>
 
 </html>
