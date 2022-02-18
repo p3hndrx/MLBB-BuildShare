@@ -638,6 +638,12 @@ div[id^='item-selectable'] div {
   float: left;
 }
 
+#exp-hero-name {font-size: 1em;
+    background-color: 000;
+    border-radius: 10px;
+    padding: 5 10 5 20;}
+
+
 #exp-port {
   height: 150px;
   border: solid 3px white;
