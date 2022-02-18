@@ -33,10 +33,10 @@ $(document).ready(function() {
   $.getJSON('../db/herodb.json', function(h) {
     $.each(h.data, function(i, x) {
       //$("#hero-selectable").append("<div class=\"hero\" id=\"" + x.id + "\">" + x.hero_name + "</div>");
-      $("#hero-selectable").append("<div class=\"hero\" id=\"" + x.id + "\" style=\"background-image: url(./img/heroes/"+x.hero_icon+")\"><span class=\"herotip\">"+x.hero_name+"</span></div>");
+      $("#hero-selectable").append("<div class=\"hero\" id=\"" + x.id + "\" style=\"background-image: url(./img/heroes/" + x.hero_icon + ")\"><span class=\"herotip\">" + x.hero_name + "</span></div>");
       role = x.class.toLowerCase()
       //$("#hero-selectable-" + role).append("<div class=\"hero\" id=\"" + x.id + "\">" + x.hero_name + "</div>");
-      $("#hero-selectable-" + role).append("<div class=\"hero\" id=\"" + x.id + "\" style=\"background-image: url(./img/heroes/"+x.hero_icon+")\"><span class=\"herotip\">"+x.hero_name+"</span></div>");
+      $("#hero-selectable-" + role).append("<div class=\"hero\" id=\"" + x.id + "\" style=\"background-image: url(./img/heroes/" + x.hero_icon + ")\"><span class=\"herotip\">" + x.hero_name + "</span></div>");
     });
   });
 
@@ -54,11 +54,11 @@ $(document).ready(function() {
   $.getJSON('../db/itemdb.json', function(e) {
     $.each(e.data, function(i, x) {
       //$("#item-selectable").append("<div class=\"item\" id=\"" + x.id + "\">" + x.item_name + "</div>");
-      $("#item-selectable").append("<div class=\"item\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/"+x.icon+")\"><span class=\"itemtip\">"+x.item_name+"</span></div>");
+      $("#item-selectable").append("<div class=\"item\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/" + x.icon + ")\"><span class=\"itemtip\">" + x.item_name + "</span></div>");
 
       equip = x.item_category.toLowerCase()
       //$("#item-selectable-" + equip).append("<div class=\"item\" id=\"" + x.id + "\">" + x.item_name + "</div>");
-      $("#item-selectable-" + equip).append("<div class=\"item\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/"+x.icon+")\"><span class=\"itemtip\">"+x.item_name+"</span></div>");
+      $("#item-selectable-" + equip).append("<div class=\"item\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/" + x.icon + ")\"><span class=\"itemtip\">" + x.item_name + "</span></div>");
     });
   });
 });
@@ -82,205 +82,294 @@ $(function() {
 function getHeroData(code) {
   $.getJSON('../db/herodb.json', function(h) {
     $.each(h.data, function(i, x) {
-    if(x.id == code)
-      {
-         /*console.log(x.hero_icon);
-         console.log(x.hero_name);
-         console.log(x.class);*/
-         icon = "url(./img/heroes/"+x.hero_icon+");"
-         heroData = [x.hero_icon, x.hero_name, x.class];
-         heropic = document.getElementById("hero-portrait");
-         $(heropic).attr("style","background-image:"+ icon);
+      if (x.id == code) {
+        /*console.log(x.hero_icon);
+        console.log(x.hero_name);
+        console.log(x.class);*/
+        icon = "url(./img/heroes/" + x.hero_icon + ");"
+        heroData = [x.hero_icon, x.hero_name, x.class];
+        heropic = document.getElementById("hero-portrait");
+        $(heropic).attr("style", "background-image:" + icon);
 
-         herolabel = document.getElementById("hero-result");
-         herolabel.append(x.hero_name)
+        herolabel = document.getElementById("hero-result");
+        herolabel.append(x.hero_name)
 
-    }
+      }
     });
   });
 }
-/*GET HERO*/
+/*GET ITEM*/
 function getItemData(code) {
   $.getJSON('../db/itemdb.json', function(h) {
     $.each(h.data, function(i, x) {
-    if(x.id == code)
-      {
-         /*console.log(x.id);
-         console.log(x.icon);
-         console.log(x.item_name);
-         console.log(x.item_category);*/
-         icon = "url(./img/items/"+x.icon+");"
-         selected_items = [x.id, x.icon, x.item_name, x.item_category];
-         console.log("Selected Items:" + selected_items);
+      if (x.id == code) {
+        /*console.log(x.id);
+        console.log(x.icon);
+        console.log(x.item_name);
+        console.log(x.item_category);*/
+        icon = "url(./img/items/" + x.icon + ");"
+        selected_items = [x.id, x.icon, x.item_name, x.item_category];
+        /*console.log("Selected Items:" + selected_items);*/
 
-         var itemoverview = document.getElementById("select-result")
-           itemoverview.innerHTML = x.item_name;
-           itemoverview.classList.add('feedback2');
-         var itemicon = document.getElementById("itemicon")
-          itemicon.classList.add('itemicon');
-          $(itemicon).attr("style","background-image:"+ icon);
+        var itemoverview = document.getElementById("select-result")
+        itemoverview.innerHTML = x.item_name;
+        itemoverview.classList.add('feedback2');
+        var itemicon = document.getElementById("itemicon")
+        itemicon.classList.add('itemicon');
+        $(itemicon).attr("style", "background-image:" + icon);
 
-         document.getElementById("category").innerHTML = x.item_category;
+        document.getElementById("category").innerHTML = x.item_category;
 
-         $.each(x.data, function(i, y) {
+        $.each(x.data, function(i, y) {
 
-                /*console.log(y.cost);
-                console.log(y.summary);*/
-                document.getElementById("cost").innerHTML = y.cost;
-                document.getElementById("summary").innerHTML = y.summary;
+          /*console.log(y.cost);
+          console.log(y.summary);*/
+          document.getElementById("cost").innerHTML = y.cost;
+          document.getElementById("summary").innerHTML = y.summary;
 
-                /*console.log(y.modifiers);
-                console.log(y.active);
-                console.log(y.passive);
-                console.log(y.unique_passive);*/
+          /*console.log(y.modifiers);
+          console.log(y.active);
+          console.log(y.passive);
+          console.log(y.unique_passive);*/
 
-                var attribox = document.getElementById("attributes");
-                attribox.innerHTML = '';
-                modifiers = y.modifiers[0];
-                  var modbox = document.createElement('div');
+          var attribox = document.getElementById("attributes");
+          attribox.innerHTML = '';
+          modifiers = y.modifiers[0];
+          var modbox = document.createElement('div');
 
-                    for (var key in modifiers) {
-                        value = modifiers[key];
-                        key = key.replace(/_/g, ' ');
-                        var label = modbox.appendChild(document.createElement('span'));
-                        label.classList.add('attribs');
-                        label.innerHTML = key + ": ";
-                        modbox.append(label);
-                        modbox.append(value);
-                        modbox.appendChild(document.createElement('br'));
-                    };
+          for (var key in modifiers) {
+            value = modifiers[key];
+            key = key.replace(/_/g, ' ');
+            var label = modbox.appendChild(document.createElement('span'));
+            label.classList.add('attribs');
+            label.innerHTML = key + ": ";
+            modbox.append(label);
+            modbox.append(value);
+            modbox.appendChild(document.createElement('br'));
+          };
 
-                  /*START ACTIVE*/
-                  active = y.active[0];
-                    var activebox = document.createElement('div');
-                    for (var key in active) {
-                        value = active[key];
-                        if (value !== "null" && key!=="modifiers") {
-                            if (key=="active_name")
-                            {
-                            activebox.appendChild(document.createElement('br'));
-                            activebox.append(value);
-                            activebox.append(": ");
-                            } else{
-                            key = key.replace(/_/g, ' ');
-                            var desc = activebox.appendChild(document.createElement('span'));
-                            desc.classList.add('attribs');
-                            desc.innerHTML = value;
-                            activebox.appendChild(document.createElement('br'));
-                            }
+          /*START ACTIVE*/
+          active = y.active[0];
+          activeexist = 0;
 
-                        } else {
-                            if (key=="modifiers") {
-                                modifiers = active[key];
-                                for (var key in modifiers) {
-                                    at = modifiers[key];
-                                    for (var key in at) {
-                                        value = at[key];
-                                        key = key.replace(/_/g, ' ');
-                                        var label = activebox.appendChild(document.createElement('span'));
-                                        label.classList.add('attribs');
-                                        label.innerHTML = "<br>"+key + ": ";
-                                        activebox.append(label);
-                                        activebox.append(value);
-                                        activebox.appendChild(document.createElement('br'));
-                                    }
+          var activebox = document.createElement('div');
+          for (var key in active) {
+            value = active[key];
+            if (value !== "null" && key !== "modifiers") {
+              activeexist = 1;
+            } else {
+              if (key == "modifiers") {
+                modifiers = active[key];
+                for (var key in modifiers) {
+                  at = modifiers[key];
+                  for (var key in at) {
+                    value = at[key];
+                    if (value !== "null") {
+                      activeexist = 1;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          if (activeexist == 1) {
+            var slabel = activebox.appendChild(document.createElement('span'));
+            slabel.classList.add('label');
+            slabel.innerHTML = " <br>Active:<hr>";
+            activebox.append(slabel);
+          }
+          for (var key in active) {
+            value = active[key];
+            if (value !== "null" && key !== "modifiers") {
+              if (key == "active_name") {
+                activebox.appendChild(document.createElement('br'));
+                activebox.append(value);
+                activebox.append(": ");
+              } else {
+                key = key.replace(/_/g, ' ');
+                var desc = activebox.appendChild(document.createElement('span'));
+                desc.classList.add('attribs');
+                desc.innerHTML = value;
+                activebox.appendChild(document.createElement('br'));
+              }
 
-                                };
-                            }
-                        }
-                    }/*END ACTIVE */
+            } else {
+              if (key == "modifiers") {
+                modifiers = active[key];
+                for (var key in modifiers) {
+                  at = modifiers[key];
+                  for (var key in at) {
+                    value = at[key];
+                    key = key.replace(/_/g, ' ');
+                    var label = activebox.appendChild(document.createElement('span'));
+                    label.classList.add('attribs');
+                    label.innerHTML = "<br>" + key + ": ";
+                    activebox.append(label);
+                    activebox.append(value);
+                    activebox.appendChild(document.createElement('br'));
+                  }
 
-                  /*START PASSIVE*/
-                  passive = y.passive[0];
-                    var passivebox = document.createElement('div');
-                    for (var key in passive) {
-                        value = passive[key];
-                        if (value !== "null" && key!=="modifiers") {
-                            if (key=="passive_name")
-                            {
-                            passivebox.appendChild(document.createElement('br'));
-                            passivebox.append(value);
-                            passivebox.append(": ");
-                            } else{
-                            key = key.replace(/_/g, ' ');
-                            var desc = passivebox.appendChild(document.createElement('span'));
-                            desc.classList.add('attribs');
-                            desc.innerHTML = value;
-                            passivebox.appendChild(document.createElement('br'));
-                            }
+                };
+              }
+            }
 
-                        } else {
-                            if (key=="modifiers") {
-                                modifiers = passive[key];
-                                for (var key in modifiers) {
-                                    at = modifiers[key];
-                                    for (var key in at) {
-                                        value = at[key];
-                                        key = key.replace(/_/g, ' ');
-                                        var label = passivebox.appendChild(document.createElement('span'));
-                                        label.classList.add('attribs');
-                                        label.innerHTML = "<br>"+key + ": ";
-                                        passivebox.append(label);
-                                        passivebox.append(value);
-                                        passivebox.appendChild(document.createElement('br'));
-                                    }
-
-                                };
-                            }
-                        }
-                    }/*END PASSIVE */
-
-                 /*START UNIQUE-PASSIVE*/
-                  upassive = y.unique_passive[0];
-                    var upassivebox = document.createElement('div');
-                    for (var key in upassive) {
-                        value = upassive[key];
-                        if (value !== "null" && key!=="modifiers") {
-                            if (key=="unique_passive_name")
-                            {
-                            upassivebox.appendChild(document.createElement('br'));
-                            upassivebox.append(value);
-                            upassivebox.append(": ");
-                            } else{
-                            key = key.replace(/_/g, ' ');
-                            var desc = upassivebox.appendChild(document.createElement('span'));
-                            desc.classList.add('attribs');
-                            desc.innerHTML = value;
-                            upassivebox.appendChild(document.createElement('br'));
-                            }
-
-                        } else {
-                            if (key=="modifiers") {
-                                modifiers = upassive[key];
-                                for (var key in modifiers) {
-                                    at = modifiers[key];
-                                    for (var key in at) {
-                                        value = at[key];
-                                        key = key.replace(/_/g, ' ');
-                                        var label = upassivebox.appendChild(document.createElement('span'));
-                                        label.classList.add('attribs');
-                                        label.innerHTML = "<br>"+key + ": ";
-                                        upassivebox.append(label);
-                                        upassivebox.append(value);
-                                        upassivebox.appendChild(document.createElement('br'));
-                                    }
-
-                                };
-                            }
-                        }
-                    }/*END UNIQUE-PASSIVE */
-
-                attribox.append(modbox);
-                attribox.append(activebox);
-                attribox.append(passivebox);
-                attribox.append(upassivebox);
-                });
+          } /*END ACTIVE */
 
 
+          /*START PASSIVE*/
+          passive = y.passive[0];
+          passiveexist = 0;
+
+          var passivebox = document.createElement('div');
+          for (var key in passive) {
+            value = passive[key];
+            if (value !== "null" && key !== "modifiers") {
+              passiveexist = 1;
+            } else {
+              if (key == "modifiers") {
+                modifiers = passive[key];
+                for (var key in modifiers) {
+                  at = modifiers[key];
+                  for (var key in at) {
+                    value = at[key];
+                    if (value !== "null") {
+                      passiveexist = 1;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          if (passiveexist == 1) {
+            var slabel = passivebox.appendChild(document.createElement('span'));
+            slabel.classList.add('label');
+            slabel.innerHTML = " <br>Passive:<hr>";
+            passivebox.append(slabel);
+          }
+          for (var key in passive) {
+            value = passive[key];
+            if (value !== "null" && key !== "modifiers") {
+              if (key == "passive_name") {
+                passivebox.appendChild(document.createElement('br'));
+                passivebox.append(value);
+                passivebox.append(": ");
+              } else {
+                key = key.replace(/_/g, ' ');
+                var desc = passivebox.appendChild(document.createElement('span'));
+                desc.classList.add('attribs');
+                desc.innerHTML = value;
+                passivebox.appendChild(document.createElement('br'));
+              }
+
+            } else {
+              if (key == "modifiers") {
+                modifiers = passive[key];
+                for (var key in modifiers) {
+                  at = modifiers[key];
+                  for (var key in at) {
+                    value = at[key];
+                    key = key.replace(/_/g, ' ');
+                    var label = passivebox.appendChild(document.createElement('span'));
+                    label.classList.add('attribs');
+                    label.innerHTML = "<br>" + key + ": ";
+                    passivebox.append(label);
+                    passivebox.append(value);
+                    passivebox.appendChild(document.createElement('br'));
+                  }
+
+                };
+              }
+            }
+
+          } /*END PASSIVE */
+
+          /*START UNIQUE-PASSIVE*/
+          upassive = y.unique_passive;
+          upassiveexist = 0;
+
+          var upassivebox = document.createElement('div');
+          for (var key in upassive) {
+            skill = upassive[key];
+
+            for (var key in skill) {
+              value = skill[key];
+              console.log(value);
+              if (value !== "null" && key !== "modifiers") {
+                upassiveexist = 1;
+              } else {
+                if (key == "modifiers") {
+                  modifiers = upassive[key];
+                  for (var key in modifiers) {
+                    at = modifiers[key];
+                    for (var key in at) {
+                      value = at[key];
+                      if (value !== "null") {
+                        upassiveexist = 1;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          if (upassiveexist == 1) {
+            var slabel = upassivebox.appendChild(document.createElement('span'));
+            slabel.classList.add('label');
+            slabel.innerHTML = " <br>Unique Passive:<hr>";
+            upassivebox.append(slabel);
+          }
+          for (var key in upassive) {
+            skill = upassive[key];
+            for (var key in skill) {
+              value = skill[key];
+              if (value !== "null" && key !== "modifiers") {
+                if (key == "unique_passive_name") {
+
+                  upassivebox.appendChild(document.createElement('br'));
+                  upassivebox.append(value);
+                  upassivebox.append(": ");
+                } else {
+                  key = key.replace(/_/g, ' ');
+                  var desc = upassivebox.appendChild(document.createElement('span'));
+                  desc.classList.add('attribs');
+                  desc.innerHTML = value;
+                  upassivebox.appendChild(document.createElement('br'));
+                }
+
+              } else {
+                if (key == "modifiers") {
+                  modifiers = upassive[key];
+                  for (var key in modifiers) {
+                    at = modifiers[key];
+                    for (var key in at) {
+                      value = at[key];
+                      key = key.replace(/_/g, ' ');
+                      var label = upassivebox.appendChild(document.createElement('span'));
+                      label.classList.add('attribs');
+                      label.innerHTML = "<br>" + key + ": ";
+                      upassivebox.append(label);
+                      upassivebox.append(value);
+                      upassivebox.appendChild(document.createElement('br'));
+                    }
+
+                  };
+                }
+              }
+            }
+          }; /*END UNIQUE-PASSIVE */
+
+          attribox.append(modbox);
+          attribox.append(activebox);
+          attribox.append(passivebox);
+          attribox.append(upassivebox);
+        });
 
 
-         return selected_items;
-    }
+
+
+        return selected_items;
+      }
     });
   });
 }
@@ -332,7 +421,7 @@ function global(hero_choice, item, optional) {
   if (hero_choice == 0 || buildstring.includes("[]") == true) {
     //buildbox.innerHTML = full_build + "<br>" + full_build_enc
     buildbox.innerHTML = "This build requires more info..."
-    document.getElementById("build-copy").innerHTML='';
+    document.getElementById("build-copy").innerHTML = '';
     if (hero_choice == 0) {
       buildbox.innerHTML += "<li>Please select a hero."
     }
@@ -341,7 +430,7 @@ function global(hero_choice, item, optional) {
     }
   } else {
     buildbox.innerHTML = "<form><textarea rows='4' cols='50' id='build-code' class='buildtext' onclick='copytoclip();'>" + full_build_enc + "</textarea>"
-    buildbox.innerHTML += "<br>You can use this code with the Discord Bot! <br><div class='sharebox'><a href='' class='sharebutt'>Share Build</a></div>"
+    buildbox.innerHTML += "<br>You can use this code with the Discord Bot! <br><div class='sharebox'><a href='javascript:render();' class='sharebutt'>Share Build</a></div>"
 
   }
 };
@@ -353,6 +442,13 @@ function copytoclip() {
   copyText.setSelectionRange(0, 99999); /* For mobile devices */
   navigator.clipboard.writeText(copyText.value);
   document.getElementById("build-copy").innerHTML = "<br>Copied to Clipboard.";
+}
+
+/*HTML2 CANVAS */
+function render() {
+    html2canvas(document.querySelector(".container")).then(canvas => {
+    document.body.appendChild(canvas)
+});
 }
 
 /* LOADABLE ITEMS */
@@ -391,20 +487,20 @@ $(function() {
       for (let x = 0; x <= selected_items.length - 1; x++) {
 
         var slot_div = document.createElement('div');
-          slot_div.classList.add('box_select');
-          icon = "url(./img/items/"+selected_items[1]+");"
-          $(slot_div).attr("style","background-image:"+ icon);
-          $(slot_div).attr("style","background-image:"+ icon);
+        slot_div.classList.add('box_select');
+        icon = "url(./img/items/" + selected_items[1] + ");"
+        $(slot_div).attr("style", "background-image:" + icon);
+        $(slot_div).attr("style", "background-image:" + icon);
         var slot_tip = document.createElement('span');
-          $(slot_tip).attr("class","slottip");
-          slot_tip.innerHTML=selected_items[2];
-          slot_div.appendChild(slot_tip);
+        $(slot_tip).attr("class", "slottip");
+        slot_tip.innerHTML = selected_items[2];
+        slot_div.appendChild(slot_tip);
         var slot_close = document.createElement('a');
-          slot_close.setAttribute('href', 'javascript:;');
-          slot_close.addEventListener("click", ItemLoader.clearSlot(id));
-          slot_close.style.fontSize = '20px';
+        slot_close.setAttribute('href', 'javascript:;');
+        slot_close.addEventListener("click", ItemLoader.clearSlot(id));
+        slot_close.style.fontSize = '20px';
         var closeNode = document.createElement('div');
-          closeNode.setAttribute('class', 'closebutt');
+        closeNode.setAttribute('class', 'closebutt');
         slot_close.appendChild(closeNode)
         slot_div.appendChild(slot_close);
 
@@ -457,20 +553,20 @@ $(function() {
       for (let x = 0; x <= selected_items.length - 1; x++) {
 
         var slot_div = document.createElement('div');
-          slot_div.classList.add('box_select');
-          icon = "url(./img/items/"+selected_items[1]+");"
-          $(slot_div).attr("style","background-image:"+ icon);
-          $(slot_div).attr("style","background-image:"+ icon);
+        slot_div.classList.add('box_select');
+        icon = "url(./img/items/" + selected_items[1] + ");"
+        $(slot_div).attr("style", "background-image:" + icon);
+        $(slot_div).attr("style", "background-image:" + icon);
         var slot_tip = document.createElement('span');
-          $(slot_tip).attr("class","optslottip");
-          slot_tip.innerHTML=selected_items[2];
-          slot_div.appendChild(slot_tip);
+        $(slot_tip).attr("class", "optslottip");
+        slot_tip.innerHTML = selected_items[2];
+        slot_div.appendChild(slot_tip);
         var slot_close = document.createElement('a');
-          slot_close.setAttribute('href', 'javascript:;');
-          slot_close.addEventListener("click", OptionLoader.clearSlot(id));
-          slot_close.style.fontSize = '20px';
+        slot_close.setAttribute('href', 'javascript:;');
+        slot_close.addEventListener("click", OptionLoader.clearSlot(id));
+        slot_close.style.fontSize = '20px';
         var closeNode = document.createElement('div');
-          closeNode.setAttribute('class', 'closebutt');
+        closeNode.setAttribute('class', 'closebutt');
         slot_close.appendChild(closeNode)
         slot_div.appendChild(slot_close);
 
@@ -531,7 +627,6 @@ $(function() {
   }
 
 }); //END LOADABLE
-
 
 
 /* SORTABLE BUILD ITEM  */

@@ -10,6 +10,7 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script src="js/app.js"></script>
+    <script src="js/html2canvas.js"></script>
 
 
   </head>
@@ -60,68 +61,73 @@
             <div id="item-slot-4" class="box"></div>
             <div id="item-slot-5" class="box"></div>
           </div>
-           <div class="optional-slots">
-          Optional Slots:<br>
+          <div class="optional-slots">
+            Optional Slots:<br>
             <div id="opt-slot-0" class="box-opt"></div>
             <div id="opt-slot-1" class="box-opt"></div>
             <div class="spacer"></div>
-        </div>
+          </div>
           <div class="spacer"></div>
         </div>
         <div class="build-container">
 
-        <div class="build-feedback">
-          About Your Build:
-          <div id="build-feedback"></div>
-          <div id="build-copy"></div>
+          <div class="build-feedback">
+            About Your Build:
+            <div id="build-feedback"></div>
+            <div id="build-copy"></div>
+          </div>
+          <div style="clear: both;"></div>
         </div>
+        <!--close drop-targets-->
         <div style="clear: both;"></div>
-      </div>
-      <!--close drop-targets-->
-      <div style="clear: both;"></div>
-      <div id="item-container">
-        <div id="item-tabs">
-          <ul id="cat-tabs-list">
-            <li><a href="#tabs-1">All</a></li>
-          </ul>
-          <div id="tabs-0">
-            <div class="item-tab"></div>
+        <div id="item-container">
+          <div id="item-tabs">
+            <ul id="cat-tabs-list">
+              <li><a href="#tabs-1">All</a></li>
+            </ul>
+            <div id="tabs-0">
+              <div class="item-tab"></div>
+            </div>
+            <div id="tabs-1">
+              <div class="item-tab" id="item-selectable"></div>
+            </div>
           </div>
-          <div id="tabs-1">
-            <div class="item-tab" id="item-selectable"></div>
-          </div>
-        </div>
 
-        <div class="item-info">
+          <div class="item-info">
 
             <div id="select-result">No Item Selected</div>
             <div id="itemicon"></div>
             <table id="itemattribs">
               <tr>
-                 <td class="statlabel">Category:</td>
-                 <td class="statvalue" id="category"></td>
+                <td class="statlabel">Category:</td>
+                <td class="statvalue" id="category"></td>
               </tr>
               <tr>
-                 <td class="statlabel">Cost:</td>
-                 <td class="statvalue" id="cost"></td>
+                <td class="statlabel">Cost:</td>
+                <td class="statvalue" id="cost"></td>
               </tr>
-               <tr>
-                 <td class="statlabel">Summary:</td>
-                 <td class="statvalue" id="summary"></td>
+              <tr>
+                <td class="statlabel">Summary:</td>
+                <td class="statvalue" id="summary"></td>
               </tr>
-               <tr><td colspan=2 class="statlabel">Attributes:</td></tr>
-              <tr><td colspan=2 class="statvalue" id="attributes"></td></tr>
+              <tr>
+                <td colspan=2 class="statlabel">Attributes:</td>
+              </tr>
+              <tr>
+                <td colspan=2 class="statvalue" id="attributes"></td>
+              </tr>
             </table>
+          </div>
+          <div style="clear: both;"></div>
+
         </div>
-        <div style="clear: both;"></div>
+      </div> <!-- close container-->
 
+
+      <div class="footer">
+        <p>MLBB-BuildShare was developed exclusively for the MLBB NA Discord Server. Mobile Legends: Bang Bang, including likenesses or images, is the sole property of Shanghai Moonton Technology Co., Ltd." </p>
       </div>
-    </div> <!-- close container-->
 
-
-<div class="footer">
-  <p>MLBB-BuildShare was developed exclusively for the MLBB NA Discord Server. Mobile Legends: Bang Bang, including likenesses or images, is the sole property of Shanghai Moonton Technology Co., Ltd." </p>
-</div>
   </body>
 
 </html>

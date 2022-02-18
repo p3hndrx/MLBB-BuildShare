@@ -470,10 +470,8 @@
                "active":[
                   {
                      "active_name":"null",
-                     "description":"null",
-                     "modifiers":[
+                     "description":"null"
 
-                     ]
                   }
                ],
                "passive":[
@@ -2687,7 +2685,7 @@
                      "description":"null",
                      "modifiers":[
                         {
-                           "physical_penetration":"15"
+
                         }
                      ]
                   }
@@ -2697,7 +2695,9 @@
                      "passive_name":"null",
                      "description":"null",
                      "modifiers":[
-
+                        {
+                           "physical_penetration": "15"
+                        }
                      ]
                   }
                ],
