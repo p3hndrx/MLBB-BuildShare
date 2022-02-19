@@ -12,11 +12,37 @@
     <script src="js/app.js"></script>
     <script src="js/html2canvas.js"></script>
 
-
   </head>
 
-  <body>
-    <div id="test"></div>
+  <body id="top">
+  <!--help resources -->
+
+      <a href="#top" onclick="openhelp();"><div id="openhelp"></div></a>
+
+      <div id="help">
+      <h1>Welcome to the MLBB-BuildShare App</h1>
+        <p>This app was developed by p3 exclusively for the MLBB NA Discord Server.</p>
+      <hr>
+
+        <h2>Sharing a build is EASY!</h2>
+      <ul>
+        <li>Step1:  Pick a HERO<br>
+        <img class="helpimg" src="./img/help/step1.png">
+        </li>
+        <li>Step2:  Add some EQUIPMENT<br>
+        <img class="helpimg" src="./img/help/step2.png"></li>
+        <li>Step3:  Share!<br>
+          <img class="helpimg" src="./img/help/step3.png"></li>
+        </li>
+      </ul>
+      Ready?
+      <a href="javascript:closehelp()"><div id="closehelp"></div></a>
+
+
+    </div>
+
+  <!--start app -->
+
     <h1>MLBB-BuildShare</h1>
     <div class="container">
       <div id="hero-container">
@@ -161,6 +187,8 @@
 
       </div>
     </div> <!-- close container -->
+
+
   </body>
 
 </html>

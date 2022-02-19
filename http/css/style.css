@@ -5,6 +5,9 @@
 }
 
 /* PAGE ELEMENT STYLES */
+html, body, header, nav, main, footer, article, section, summary{
+    position: relative;
+}
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 16px;
@@ -18,6 +21,10 @@ body {
 }
 
 h1 {
+  padding: 10px
+}
+
+h2 {
   padding: 10px
 }
 
@@ -99,6 +106,12 @@ h1 {
   opacity: .9;
   overflow: hidden;
   background-size: contain;
+}
+
+.hero:hover {
+border: solid 3px yellow;
+  box-shadow: 0 0 5px #D000FE;
+  opacity: 1.0;
 }
 
 .herotip {
@@ -278,6 +291,12 @@ div[id^='item-tabs'] li a:hover {
   opacity: .9;
   overflow: hidden;
   background-size: contain;
+}
+
+.item:hover {
+border: solid 3px yellow;
+  box-shadow: 0 0 5px #D000FE;
+  opacity: 1.0;
 }
 
 .itemtip {
@@ -765,4 +784,38 @@ div[id^='item-selectable'] div {
   padding: 5;
   position: absolute;
   margin: 80 -40 0;
+}
+
+
+/*HELP DIALOG*/
+#help{
+background-color: #0f2b55;
+border-radius: 10px;
+  box-shadow: 0 0 50px #000;
+padding:30px;
+  }
+
+#openhelp{
+position:fixed;
+top:0;
+right:0;
+background-image: url(https://icons.iconarchive.com/icons/martz90/circle-addon2/256/help-icon.png);
+background-size:cover;
+width:50px;
+height:50px;
+z-index:100;
+}
+
+#closehelp{
+background-image: url(https://icons.iconarchive.com/icons/graphicloads/100-flat/256/close-icon.png);
+background-size:cover;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    right: -30;
+    top: 0;
+}
+
+.helpimg {
+width:100%;
 }

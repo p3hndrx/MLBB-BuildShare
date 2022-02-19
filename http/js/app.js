@@ -409,9 +409,9 @@ $(function() {
 });
 
 /* TABBED BUILDER */
-$( function() {
-    $( "#dropslots" ).tabs();
-  } );
+$(function() {
+  $("#dropslots").tabs();
+});
 
 /* GLOBAL MANIPS */
 function global(hero_choice, item, optional) {
@@ -463,13 +463,13 @@ function copytoclip() {
 
 /*HTML2 CANVAS */
 function render() {
-  html2canvas(document.querySelector("#export"),{
-    onclone: function (clonedDoc) {
-        clonedDoc.getElementById('export').style.display = 'block';
-        }
-    }).then(canvas => {
+  html2canvas(document.querySelector("#export"), {
+    onclone: function(clonedDoc) {
+      clonedDoc.getElementById('export').style.display = 'block';
+    }
+  }).then(canvas => {
     //document.body.appendChild(canvas)
-    saveAs(canvas.toDataURL(), full_build_enc+'.png');
+    saveAs(canvas.toDataURL(), full_build_enc + '.png');
   });
 }
 
@@ -682,27 +682,27 @@ $(function() {
 /*SAVE AS*/
 function saveAs(uri, filename) {
 
-    var link = document.createElement('a');
+  var link = document.createElement('a');
 
-    if (typeof link.download === 'string') {
+  if (typeof link.download === 'string') {
 
-        link.href = uri;
-        link.download = filename;
+    link.href = uri;
+    link.download = filename;
 
-        //Firefox requires the link to be in the body
-        document.body.appendChild(link);
+    //Firefox requires the link to be in the body
+    document.body.appendChild(link);
 
-        //simulate click
-        link.click();
+    //simulate click
+    link.click();
 
-        //remove the link when done
-        document.body.removeChild(link);
+    //remove the link when done
+    document.body.removeChild(link);
 
-    } else {
+  } else {
 
-        window.open(uri);
+    window.open(uri);
 
-    }
+  }
 }
 
 
@@ -711,3 +711,30 @@ $(function() {
   //$("#sortable").sortable();
   //$("#sortable").disableSelection();
 });
+
+/*HELP DIALOG*/
+$(function() {
+  $("#help").dialog({
+    autoOpen: false,
+    modal: true,
+    draggable: false,
+    resizable: false,
+
+    width: 800,
+    dialogClass: 'no-close success-dialog',
+    open: function() {
+      $(".ui-dialog-titlebar-close").hide();
+    }
+
+  });
+});
+
+
+
+function openhelp() {
+  $("#help").dialog("open");
+}
+
+function closehelp() {
+  $("#help").dialog("close");
+}
