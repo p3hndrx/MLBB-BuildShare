@@ -720,7 +720,7 @@ $(function() {
     draggable: false,
     resizable: false,
 
-    width: 800,
+    width: 635,
     dialogClass: 'no-close success-dialog',
     open: function() {
       $(".ui-dialog-titlebar-close").hide();

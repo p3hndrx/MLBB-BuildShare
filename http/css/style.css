@@ -795,6 +795,7 @@ border-radius: 10px;
 padding:30px;
   }
 
+
 #openhelp{
 position:fixed;
 top:0;
@@ -817,5 +818,7 @@ background-size:cover;
 }
 
 .helpimg {
-width:100%;
+max-height:200px;
 }
+
+.ui-dialog { position: fixed; }
