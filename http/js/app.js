@@ -472,21 +472,21 @@ function copytoclip() {
       //var data1 = canvas.toDataURL("image/png");
       var data2 = full_build_enc
       var dataURL = canvas.toDataURL();
-      /*$.ajax({
+      $.ajax({
          type: "POST",
          url: "http://155.138.208.114/buildshare/upload2.php",
          data: {name: data2, img: dataURL }
       }).done(function(msg){
          alert(msg);
-      });*/
+      });
 
-               $.ajax({
+               /*$.ajax({
                    url: './uploading.php',
                    type: 'post',
-                   data: dataURL,
+                   data: data1,
                    dataType: 'text',
                    contentType: "application/upload"
-               });
+               });*/
             });
         });
  }
