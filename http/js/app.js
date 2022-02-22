@@ -483,7 +483,7 @@ function copytoclip() {
                $.ajax({
                    url: './uploading.php',
                    type: 'post',
-                   data: data1,
+                   data: dataURL,
                    dataType: 'text',
                    contentType: "application/upload"
                });
