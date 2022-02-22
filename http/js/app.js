@@ -469,18 +469,24 @@ function copytoclip() {
       }
     }).then(canvas => {
       //document.body.appendChild(canvas)
-      var data1 = canvas.toDataURL("image/png");
+      //var data1 = canvas.toDataURL("image/png");
       var data2 = full_build_enc
-               //display 64bit image
-               var image = new Image();
-               image.src = data1;
-               $.ajax({
+      var dataURL = canvas.toDataURL();
+      $.ajax({
+         type: "POST",
+         url: "canvas_ajax_upload_post.php",
+         data: {name: data2, img: dataURL }
+      }).done(function(msg){
+         alert(msg);
+      });
+
+               /*$.ajax({
                    url: './uploading.php',
                    type: 'post',
                    data: data1,
                    dataType: 'text',
                    contentType: "application/upload"
-               });
+               });*/
             });
         });
  }
