@@ -462,7 +462,7 @@ function copytoclip() {
 
 
       $(function click1() {
-      console.log("Posting");
+      console.log("Posting: "+full_build_enc);
       html2canvas(document.querySelector("#export"), {
       onclone: function(clonedDoc) {
         clonedDoc.getElementById('export').style.display = 'block';
@@ -470,6 +470,7 @@ function copytoclip() {
     }).then(canvas => {
       //document.body.appendChild(canvas)
       var data1 = canvas.toDataURL("image/png");
+      var data2 = full_build_enc
                //display 64bit image
                var image = new Image();
                image.src = data1;
