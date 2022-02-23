@@ -473,21 +473,15 @@ function copytoclip() {
       var data2 = full_build_enc
       var dataURL = canvas.toDataURL();
 
-      /*$.ajax({
-         type: "POST",
-         url: "http://155.138.208.114/buildshare/upload2.php",
-         data: {name: data2, img: dataURL }
-      }).done(function(msg){
-         alert(msg);
-      });*/
-
       $.ajax({
-        url: './uploading.php',
-        type: 'post',
-        data: dataURL,
-        dataType: 'text',
-        contentType: "application/upload"
-      });
+    type: "POST",
+    url: "upload.php",
+    data: {
+        imgBase64: dataURL
+    }
+}).done(function(o) {
+    console.log('saved');
+});
     });
   });
 }
