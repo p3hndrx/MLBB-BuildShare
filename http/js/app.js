@@ -461,9 +461,9 @@ function copytoclip() {
   document.getElementById("build-copy").innerHTML = "<br>Copied to Clipboard.";
 
 
-      $(function click1() {
-      console.log("Posting: "+full_build_enc);
-      html2canvas(document.querySelector("#export"), {
+  $(function upload() {
+    console.log("Posting: " + full_build_enc);
+    html2canvas(document.querySelector("#export"), {
       onclone: function(clonedDoc) {
         clonedDoc.getElementById('export').style.display = 'block';
       }
@@ -472,298 +472,299 @@ function copytoclip() {
       //var data1 = canvas.toDataURL("image/png");
       var data2 = full_build_enc
       var dataURL = canvas.toDataURL();
-      $.ajax({
+
+      /*$.ajax({
          type: "POST",
          url: "http://155.138.208.114/buildshare/upload2.php",
          data: {name: data2, img: dataURL }
       }).done(function(msg){
          alert(msg);
+      });*/
+
+      $.ajax({
+        url: './uploading.php',
+        type: 'post',
+        data: dataURL,
+        dataType: 'text',
+        contentType: "application/upload"
       });
-
-               /*$.ajax({
-                   url: './uploading.php',
-                   type: 'post',
-                   data: dataURL,
-                   dataType: 'text',
-                   contentType: "application/upload"
-               });*/
-            });
-        });
- }
-
-  /*HTML2 CANVAS */
-  function render() {
-    html2canvas(document.querySelector("#export"), {
-      onclone: function(clonedDoc) {
-        clonedDoc.getElementById('export').style.display = 'block';
-      }
-    }).then(canvas => {
-      //document.body.appendChild(canvas)
-      saveAs(canvas.toDataURL(), full_build_enc + '.png');
-    });
-  }
-
-  /* LOADABLE ITEMS */
-  $(function() {
-
-    /* MAIN ITEMS */
-    const ItemLoader = {
-      loaded_items: [],
-      def_slot: null,
-      load: function(i) {
-        eval("slot_data_" + i + "= loaded_items");
-        //alert()
-      },
-      unload: function() {},
-      getOpenSlot: function() {},
-      clearSlot: function(id) {
-        console.log("Clear Slot" + id);
-        this.def_slot = document.getElementById("item-slot-" + id);
-        this.def_slot.innerHTML = '';
-        item_slot[id].push();
-        console.log(item_slot[id]);
-        //$('#item-selectable .ui-selected').removeClass('ui-selected')
-        $("div[class*='item']").removeClass('ui-selected')
-
-      },
-      clickHandler: function(e) {
-        console.log("Click Handler");
-        e.preventDefault();
-        var id = e.currentTarget.id.substr(-1);
-        var main_slot = document.getElementById("item-slot-" + id);
-        main_slot.innerHTML = "";
-
-        var exp_slot = document.getElementById("exp-item-slot-" + id);
-        exp_slot.innerHTML = "";
-
-        for (let x = 0; x <= item_slot[id].length - 1; x++) {
-          item_slot[id] = []
-        }
-        for (let x = 0; x <= selected_items.length - 1; x++) {
-
-          //SLOT NORMAL SLOTS
-          var slot_div = document.createElement('div');
-          slot_div.classList.add('box_select');
-          icon = "url(./img/items/" + selected_items[1] + ");"
-          $(slot_div).attr("style", "background-image:" + icon);
-          var slot_tip = document.createElement('span');
-          $(slot_tip).attr("class", "slottip");
-          slot_tip.innerHTML = selected_items[2];
-          slot_div.appendChild(slot_tip);
-          var slot_close = document.createElement('a');
-          slot_close.setAttribute('href', 'javascript:;');
-          slot_close.addEventListener("click", ItemLoader.clearSlot(id));
-          slot_close.style.fontSize = '20px';
-          var closeNode = document.createElement('div');
-          closeNode.setAttribute('class', 'closebutt');
-          slot_close.appendChild(closeNode)
-          slot_div.appendChild(slot_close);
-
-          var small_node = document.createElement('small');
-          small_node.style.fontSize = '20px';
-          //var txNode = document.createTextNode(selected_items[x]);
-          //small_node.appendChild(txNode);
-          //slot_div.appendChild(document.createElement('br'));
-          //slot_div.appendChild(small_node);
-
-          /* FORMAT EXPORT */
-          var exp_slot_div = document.createElement('div');
-          exp_slot_div.classList.add('exp_box_select');
-          $(exp_slot_div).attr("style", "background-image:" + icon);
-          var exp_slot_tip = document.createElement('span');
-          $(exp_slot_tip).attr("class", "exp_slottip");
-          exp_slot_tip.innerHTML = selected_items[2];
-          exp_slot_div.appendChild(exp_slot_tip);
-          exp_slot.appendChild(exp_slot_div);
-          /* END FORMAT EXPORT */
-
-          main_slot.appendChild(slot_div);
-          item_slot[id].push(selected_items[x]);
-          selected_items = [];
-        }
-
-        global(hero_choice, item_slot, opt_slot);
-        console.log(item_slot);
-        console.log(opt_slot);
-
-      }
-
-    };
-
-    /* OPTIONAL ITEM */
-    const OptionLoader = {
-      opt_loaded_items: [],
-      def_slot: null,
-      load: function(i) {
-
-        eval("opt_slot_data" + i + "= opt_loaded_items");
-        //alert()
-      },
-      clearSlot: function(id) {
-        console.log("Clear Slot" + id);
-        this.def_slot = document.getElementById("opt-slot-" + id);
-        this.def_slot.innerHTML = '';
-        opt_slot[id].push();
-        $('#item-selectable .ui-selected').removeClass('ui-selected')
-      },
-      clickHandler: function(e) {
-        console.log("Option Handler");
-        e.preventDefault();
-        var id = e.currentTarget.id.substr(-1);
-        var main_slot = document.getElementById("opt-slot-" + id);
-        main_slot.innerHTML = "";
-
-        var exp_slot = document.getElementById("exp-opt-slot-" + id);
-        exp_slot.innerHTML = "";
-
-        for (let x = 0; x <= opt_slot[id].length - 1; x++) {
-          opt_slot[id] = []
-        }
-        for (let x = 0; x <= selected_items.length - 1; x++) {
-
-          var slot_div = document.createElement('div');
-          slot_div.classList.add('box_select');
-          icon = "url(./img/items/" + selected_items[1] + ");"
-          $(slot_div).attr("style", "background-image:" + icon);
-          $(slot_div).attr("style", "background-image:" + icon);
-          var slot_tip = document.createElement('span');
-          $(slot_tip).attr("class", "optslottip");
-          slot_tip.innerHTML = selected_items[2];
-          slot_div.appendChild(slot_tip);
-          var slot_close = document.createElement('a');
-          slot_close.setAttribute('href', 'javascript:;');
-          slot_close.addEventListener("click", OptionLoader.clearSlot(id));
-          slot_close.style.fontSize = '20px';
-          var closeNode = document.createElement('div');
-          closeNode.setAttribute('class', 'closebutt');
-          slot_close.appendChild(closeNode)
-          slot_div.appendChild(slot_close);
-
-          var small_node = document.createElement('small');
-          small_node.style.fontSize = '20px';
-          //var txNode = document.createTextNode(selected_items[x]);
-          //small_node.appendChild(txNode);
-          //slot_div.appendChild(document.createElement('br'));
-          //slot_div.appendChild(small_node);
-
-          /* FORMAT EXPORT */
-          var exp_slot_div = document.createElement('div');
-          exp_slot_div.classList.add('exp_box_select');
-          $(exp_slot_div).attr("style", "background-image:" + icon);
-          var exp_slot_tip = document.createElement('span');
-          $(exp_slot_tip).attr("class", "exp_optslottip");
-          exp_slot_tip.innerHTML = selected_items[2];
-
-          exp_slot.appendChild(exp_slot_div);
-          exp_slot.appendChild(exp_slot_tip);
-          /* END FORMAT EXPORT */
-
-          main_slot.appendChild(slot_div);
-          opt_slot[id].push(selected_items[x]);
-          selected_items = [];
-        }
-
-        global(hero_choice, item_slot, opt_slot);
-        console.log(item_slot);
-        console.log(opt_slot);
-      }
-
-    };
-
-    /* SELECTABLE ITEM */
-    $(".item-tab").selectable({
-      stop: function() {
-        var result = $("#select-result").empty();
-        //alert();
-        $(".ui-selected", this).each(function() {
-          var index = $("#selectable div").index(this);
-          //selected_items = []
-          //selected_items.push(this.id);
-          getItemData(this.id);
-          //result.append(this.id);
-        });
-      },
-      autoRefresh: true
-
-    });
-
-    // DEFINE ITEMLOADER SLOTS
-    for (let i = 0; i <= 5; i++) {
-      var streval = "var slot_data_" + i + " = [];";
-      eval(streval);
-      $("#item-slot-" + i).click(function(e) { //  alert();
-        e.preventDefault();
-        ItemLoader.clickHandler(e)
-      });
-    }
-
-    // DEFINE OPT SLOTS
-    for (let i = 0; i <= 2; i++) {
-      var streval = "var opt_slot_data_" + i + " = [];";
-      eval(streval);
-      $("#opt-slot-" + i).click(function(e) { //  alert();
-        e.preventDefault();
-        OptionLoader.clickHandler(e)
-      });
-    }
-
-  }); //END LOADABLE
-
-  /*SAVE AS*/
-  function saveAs(uri, filename) {
-
-    var link = document.createElement('a');
-
-    if (typeof link.download === 'string') {
-
-      link.href = uri;
-      link.download = filename;
-
-      //Firefox requires the link to be in the body
-      document.body.appendChild(link);
-
-      //simulate click
-      link.click();
-
-      //remove the link when done
-      document.body.removeChild(link);
-
-    } else {
-
-      window.open(uri);
-
-    }
-  }
-
-
-  /* SORTABLE BUILD ITEM  */
-  $(function() {
-    //$("#sortable").sortable();
-    //$("#sortable").disableSelection();
-  });
-
-  /*HELP DIALOG*/
-  $(function() {
-    $("#help").dialog({
-      autoOpen: false,
-      modal: true,
-      draggable: false,
-      resizable: false,
-
-      width: 635,
-      dialogClass: 'no-close success-dialog',
-      open: function() {
-        $(".ui-dialog-titlebar-close").hide();
-      }
-
     });
   });
+}
 
+/*HTML2 CANVAS */
+function render() {
+  html2canvas(document.querySelector("#export"), {
+    onclone: function(clonedDoc) {
+      clonedDoc.getElementById('export').style.display = 'block';
+    }
+  }).then(canvas => {
+    //document.body.appendChild(canvas)
+    saveAs(canvas.toDataURL(), full_build_enc + '.png');
+  });
+}
 
-  function openhelp() {
-    $("#help").dialog("open");
+/* LOADABLE ITEMS */
+$(function() {
+
+  /* MAIN ITEMS */
+  const ItemLoader = {
+    loaded_items: [],
+    def_slot: null,
+    load: function(i) {
+      eval("slot_data_" + i + "= loaded_items");
+      //alert()
+    },
+    unload: function() {},
+    getOpenSlot: function() {},
+    clearSlot: function(id) {
+      console.log("Clear Slot" + id);
+      this.def_slot = document.getElementById("item-slot-" + id);
+      this.def_slot.innerHTML = '';
+      item_slot[id].push();
+      console.log(item_slot[id]);
+      //$('#item-selectable .ui-selected').removeClass('ui-selected')
+      $("div[class*='item']").removeClass('ui-selected')
+
+    },
+    clickHandler: function(e) {
+      console.log("Click Handler");
+      e.preventDefault();
+      var id = e.currentTarget.id.substr(-1);
+      var main_slot = document.getElementById("item-slot-" + id);
+      main_slot.innerHTML = "";
+
+      var exp_slot = document.getElementById("exp-item-slot-" + id);
+      exp_slot.innerHTML = "";
+
+      for (let x = 0; x <= item_slot[id].length - 1; x++) {
+        item_slot[id] = []
+      }
+      for (let x = 0; x <= selected_items.length - 1; x++) {
+
+        //SLOT NORMAL SLOTS
+        var slot_div = document.createElement('div');
+        slot_div.classList.add('box_select');
+        icon = "url(./img/items/" + selected_items[1] + ");"
+        $(slot_div).attr("style", "background-image:" + icon);
+        var slot_tip = document.createElement('span');
+        $(slot_tip).attr("class", "slottip");
+        slot_tip.innerHTML = selected_items[2];
+        slot_div.appendChild(slot_tip);
+        var slot_close = document.createElement('a');
+        slot_close.setAttribute('href', 'javascript:;');
+        slot_close.addEventListener("click", ItemLoader.clearSlot(id));
+        slot_close.style.fontSize = '20px';
+        var closeNode = document.createElement('div');
+        closeNode.setAttribute('class', 'closebutt');
+        slot_close.appendChild(closeNode)
+        slot_div.appendChild(slot_close);
+
+        var small_node = document.createElement('small');
+        small_node.style.fontSize = '20px';
+        //var txNode = document.createTextNode(selected_items[x]);
+        //small_node.appendChild(txNode);
+        //slot_div.appendChild(document.createElement('br'));
+        //slot_div.appendChild(small_node);
+
+        /* FORMAT EXPORT */
+        var exp_slot_div = document.createElement('div');
+        exp_slot_div.classList.add('exp_box_select');
+        $(exp_slot_div).attr("style", "background-image:" + icon);
+        var exp_slot_tip = document.createElement('span');
+        $(exp_slot_tip).attr("class", "exp_slottip");
+        exp_slot_tip.innerHTML = selected_items[2];
+        exp_slot_div.appendChild(exp_slot_tip);
+        exp_slot.appendChild(exp_slot_div);
+        /* END FORMAT EXPORT */
+
+        main_slot.appendChild(slot_div);
+        item_slot[id].push(selected_items[x]);
+        selected_items = [];
+      }
+
+      global(hero_choice, item_slot, opt_slot);
+      console.log(item_slot);
+      console.log(opt_slot);
+
+    }
+
+  };
+
+  /* OPTIONAL ITEM */
+  const OptionLoader = {
+    opt_loaded_items: [],
+    def_slot: null,
+    load: function(i) {
+
+      eval("opt_slot_data" + i + "= opt_loaded_items");
+      //alert()
+    },
+    clearSlot: function(id) {
+      console.log("Clear Slot" + id);
+      this.def_slot = document.getElementById("opt-slot-" + id);
+      this.def_slot.innerHTML = '';
+      opt_slot[id].push();
+      $('#item-selectable .ui-selected').removeClass('ui-selected')
+    },
+    clickHandler: function(e) {
+      console.log("Option Handler");
+      e.preventDefault();
+      var id = e.currentTarget.id.substr(-1);
+      var main_slot = document.getElementById("opt-slot-" + id);
+      main_slot.innerHTML = "";
+
+      var exp_slot = document.getElementById("exp-opt-slot-" + id);
+      exp_slot.innerHTML = "";
+
+      for (let x = 0; x <= opt_slot[id].length - 1; x++) {
+        opt_slot[id] = []
+      }
+      for (let x = 0; x <= selected_items.length - 1; x++) {
+
+        var slot_div = document.createElement('div');
+        slot_div.classList.add('box_select');
+        icon = "url(./img/items/" + selected_items[1] + ");"
+        $(slot_div).attr("style", "background-image:" + icon);
+        $(slot_div).attr("style", "background-image:" + icon);
+        var slot_tip = document.createElement('span');
+        $(slot_tip).attr("class", "optslottip");
+        slot_tip.innerHTML = selected_items[2];
+        slot_div.appendChild(slot_tip);
+        var slot_close = document.createElement('a');
+        slot_close.setAttribute('href', 'javascript:;');
+        slot_close.addEventListener("click", OptionLoader.clearSlot(id));
+        slot_close.style.fontSize = '20px';
+        var closeNode = document.createElement('div');
+        closeNode.setAttribute('class', 'closebutt');
+        slot_close.appendChild(closeNode)
+        slot_div.appendChild(slot_close);
+
+        var small_node = document.createElement('small');
+        small_node.style.fontSize = '20px';
+        //var txNode = document.createTextNode(selected_items[x]);
+        //small_node.appendChild(txNode);
+        //slot_div.appendChild(document.createElement('br'));
+        //slot_div.appendChild(small_node);
+
+        /* FORMAT EXPORT */
+        var exp_slot_div = document.createElement('div');
+        exp_slot_div.classList.add('exp_box_select');
+        $(exp_slot_div).attr("style", "background-image:" + icon);
+        var exp_slot_tip = document.createElement('span');
+        $(exp_slot_tip).attr("class", "exp_optslottip");
+        exp_slot_tip.innerHTML = selected_items[2];
+
+        exp_slot.appendChild(exp_slot_div);
+        exp_slot.appendChild(exp_slot_tip);
+        /* END FORMAT EXPORT */
+
+        main_slot.appendChild(slot_div);
+        opt_slot[id].push(selected_items[x]);
+        selected_items = [];
+      }
+
+      global(hero_choice, item_slot, opt_slot);
+      console.log(item_slot);
+      console.log(opt_slot);
+    }
+
+  };
+
+  /* SELECTABLE ITEM */
+  $(".item-tab").selectable({
+    stop: function() {
+      var result = $("#select-result").empty();
+      //alert();
+      $(".ui-selected", this).each(function() {
+        var index = $("#selectable div").index(this);
+        //selected_items = []
+        //selected_items.push(this.id);
+        getItemData(this.id);
+        //result.append(this.id);
+      });
+    },
+    autoRefresh: true
+
+  });
+
+  // DEFINE ITEMLOADER SLOTS
+  for (let i = 0; i <= 5; i++) {
+    var streval = "var slot_data_" + i + " = [];";
+    eval(streval);
+    $("#item-slot-" + i).click(function(e) { //  alert();
+      e.preventDefault();
+      ItemLoader.clickHandler(e)
+    });
   }
 
-  function closehelp() {
-    $("#help").dialog("close");
+  // DEFINE OPT SLOTS
+  for (let i = 0; i <= 2; i++) {
+    var streval = "var opt_slot_data_" + i + " = [];";
+    eval(streval);
+    $("#opt-slot-" + i).click(function(e) { //  alert();
+      e.preventDefault();
+      OptionLoader.clickHandler(e)
+    });
   }
+
+}); //END LOADABLE
+
+/*SAVE AS*/
+function saveAs(uri, filename) {
+
+  var link = document.createElement('a');
+
+  if (typeof link.download === 'string') {
+
+    link.href = uri;
+    link.download = filename;
+
+    //Firefox requires the link to be in the body
+    document.body.appendChild(link);
+
+    //simulate click
+    link.click();
+
+    //remove the link when done
+    document.body.removeChild(link);
+
+  } else {
+
+    window.open(uri);
+
+  }
+}
+
+
+/* SORTABLE BUILD ITEM  */
+$(function() {
+  //$("#sortable").sortable();
+  //$("#sortable").disableSelection();
+});
+
+/*HELP DIALOG*/
+$(function() {
+  $("#help").dialog({
+    autoOpen: false,
+    modal: true,
+    draggable: false,
+    resizable: false,
+
+    width: 635,
+    dialogClass: 'no-close success-dialog',
+    open: function() {
+      $(".ui-dialog-titlebar-close").hide();
+    }
+
+  });
+});
+
+
+function openhelp() {
+  $("#help").dialog("open");
+}
+
+function closehelp() {
+  $("#help").dialog("close");
+}
