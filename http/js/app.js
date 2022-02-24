@@ -472,13 +472,14 @@ function upload() {
     }).then(canvas => {
       //document.body.appendChild(canvas)
       //var data1 = canvas.toDataURL("image/png");
-      var data2 = full_build_enc
+      var dataNAME = full_build_enc
       var dataURL = canvas.toDataURL("image/png");
 
       $.ajax({
         type: "POST",
         url: "upload.php",
         data: {
+          name: dataNAME,
           imgBase64: dataURL
         }
       }).done(function(o) {
