@@ -429,6 +429,7 @@ function global(hero_choice, item, optional) {
   //construct full build
   full_build = hero_choice + "-" + build
   full_build_enc = btoa(full_build);
+  full_build_enc = md5(full_build_enc);
 
   console.log(full_build)
   console.log(full_build_enc)
