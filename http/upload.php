@@ -1,5 +1,8 @@
 <?php
 
+ini_set('display_errors',1);
+error_reporting(E_ALL);
+
 // Requires php5
 define('UPLOAD_DIR', 'builds/');
 $img = $_POST['imgBase64'];
