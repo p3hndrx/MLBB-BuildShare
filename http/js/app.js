@@ -474,17 +474,18 @@ function copytoclip() {
       var dataURL = canvas.toDataURL();
 
       $.ajax({
-    type: "POST",
-    url: "upload.php",
-    data: {
-        imgBase64: dataURL
-    }
-}).done(function(o) {
-    console.log('saved');
-});
+        type: "POST",
+        url: "upload.php",
+        data: {
+          imgBase64: dataURL
+        }
+      }).done(function(o) {
+        console.log('saved');
+      });
     });
   });
-}
+
+} /*END COPY-TO-CLIP
 
 /*HTML2 CANVAS */
 function render() {
