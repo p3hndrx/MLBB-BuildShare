@@ -770,7 +770,7 @@ div[id^='item-selectable'] div {
   align-items: center;
   justify-content: center;
   float: left;
-  background-image: url("https://icons.iconarchive.com/icons/graphicloads/100-flat-2/256/add-icon.png");
+  background-image: url(".img/add-icon.png");
   background-size: cover;
 }
 
