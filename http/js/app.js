@@ -461,29 +461,7 @@ function copytoclip() {
   document.getElementById("build-copy").innerHTML = "<br>Copied to Clipboard.";
 
 
-  $(function upload() {
-    console.log("Posting: " + full_build_enc);
-    html2canvas(document.querySelector("#export"), {
-      onclone: function(clonedDoc) {
-        clonedDoc.getElementById('export').style.display = 'block';
-      }
-    }).then(canvas => {
-      //document.body.appendChild(canvas)
-      //var data1 = canvas.toDataURL("image/png");
-      var data2 = full_build_enc
-      var dataURL = canvas.toDataURL();
 
-      $.ajax({
-        type: "POST",
-        url: "upload.php",
-        data: {
-          imgBase64: dataURL
-        }
-      }).done(function(o) {
-        console.log('saved');
-      });
-    });
-  });
 
 } /*END COPY-TO-CLIP
 
