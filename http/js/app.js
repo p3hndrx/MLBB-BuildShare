@@ -486,7 +486,7 @@ function upload() {
           ref: dataREF
         }
       }).done(function(o) {
-        console.log('saved');
+        console.log('saved:'+dataREF);
       });
     });
   };
@@ -521,7 +521,7 @@ $(function() {
       this.def_slot = document.getElementById("item-slot-" + id);
       this.def_slot.innerHTML = '';
       item_slot[id].push();
-      console.log(item_slot[id]);
+      //console.log(item_slot[id]);
       //$('#item-selectable .ui-selected').removeClass('ui-selected')
       $("div[class*='item']").removeClass('ui-selected')
 
