@@ -448,7 +448,7 @@ function global(hero_choice, item, optional) {
     }
   } else {
     $("#dropslots").tabs("option", "active", 1);
-    buildbox.innerHTML = "<form><textarea rows='4' cols='50' id='build-code' class='buildtext' onclick='copytoclip();'>" + full_build_enc + "</textarea>"
+    buildbox.innerHTML = "<form><textarea rows='4' cols='50' id='build-code' class='buildtext' onclick='copytoclip();'>" + full_build_hash + "</textarea>"
     buildbox.innerHTML += "<br>You can use this code with the Discord Bot! <br>OR...<div class='sharebox'><a href='javascript:render();' class='sharebutt'>Download</a></div>"
 
   }
