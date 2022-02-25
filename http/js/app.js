@@ -3,6 +3,7 @@ var heroData;
 var build = 0;
 var full_build = 0;
 var full_build_enc = 0;
+var full_build_hash = 0;
 var selected_items = [];
 var item_data = [];
 var item_slot = {
@@ -429,7 +430,7 @@ function global(hero_choice, item, optional) {
   //construct full build
   full_build = hero_choice + "-" + build
   full_build_enc = btoa(full_build);
-  full_build_enc = md5(full_build_enc);
+  full_build_hash = md5(full_build_enc);
 
   console.log(full_build)
   console.log(full_build_enc)
@@ -471,9 +472,9 @@ function upload() {
         clonedDoc.getElementById('export').style.display = 'block';
       }
     }).then(canvas => {
-      //document.body.appendChild(canvas)
-      //var data1 = canvas.toDataURL("image/png");
-      var dataNAME = full_build_enc
+
+      var dataNAME = full_build_hash
+      var dataREF = full_build_enc
       var dataURL = canvas.toDataURL("image/png");
 
       $.ajax({
@@ -481,7 +482,8 @@ function upload() {
         url: "upload.php",
         data: {
           name: dataNAME,
-          imgBase64: dataURL
+          imgBase64: dataURL,
+          reference: dataREF
         }
       }).done(function(o) {
         console.log('saved');
