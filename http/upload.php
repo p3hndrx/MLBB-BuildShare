@@ -17,10 +17,11 @@ print $success ? $file : 'Unable to save the file.';
 
 // write log
 $log = UPLOAD_DIR  . 'bs.log';
-if not( exec('grep '.escapeshellarg($name).$log)) {
+if (strpos(file_get_contents($log), $name) == false)
+{
         $txt = $name . "," . $reference;
         $myfile = file_put_contents($log, $txt.PHP_EOL , FILE_APPEND | LOCK_EX);
-    }
+ }
 
 
 ?>
