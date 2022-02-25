@@ -7,7 +7,7 @@ error_reporting(E_ALL);
 define('UPLOAD_DIR', 'export/');
 $img = $_POST['imgBase64'];
 $name = $_POST['name'];
-$reference = $__POST['reference'];
+$reference = $_POST['reference'];
 $img = str_replace('data:image/png;base64,', '', $img);
 $img = str_replace(' ', '+', $img);
 $data = base64_decode($img);
@@ -17,7 +17,10 @@ print $success ? $file : 'Unable to save the file.';
 
 // write log
 $log = UPLOAD_DIR  . 'bs.log';
-$txt = $name . "," . $reference;
-$myfile = file_put_contents($log, $txt.PHP_EOL , FILE_APPEND | LOCK_EX);
+if not( exec('grep '.escapeshellarg($name).$log)) {
+        $txt = $name . "," . $reference;
+        $myfile = file_put_contents($log, $txt.PHP_EOL , FILE_APPEND | LOCK_EX);
+    }
+
 
 ?>
