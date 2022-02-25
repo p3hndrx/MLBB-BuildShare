@@ -449,7 +449,7 @@ function global(hero_choice, item, optional) {
   } else {
     $("#dropslots").tabs("option", "active", 1);
     buildbox.innerHTML = "<form><textarea rows='4' cols='50' id='build-code' class='buildtext' onclick='copytoclip();'>" + full_build_hash + "</textarea>"
-    buildbox.innerHTML += "<br>You can use this code with the Discord Bot! <br>OR...<div class='sharebox'><a href='javascript:render();' class='sharebutt'>Download</a></div>"
+    buildbox.innerHTML += "<br>You can use this code with the Discord Bot! <br>OR...<div class='sharebox'><a href='javascript:download();' class='sharebutt'>Download</a></div>"
 
   }
 };
@@ -466,7 +466,7 @@ function copytoclip() {
 
 /*UPLOAD*/
 function upload() {
-    console.log("Posting: " + full_build_enc);
+    //console.log("Posting: " + full_build_enc);
     html2canvas(document.querySelector("#export"), {
       onclone: function(clonedDoc) {
         clonedDoc.getElementById('export').style.display = 'block';
@@ -492,14 +492,14 @@ function upload() {
   };
 
 /*HTML2 CANVAS */
-function render() {
+function download() {
   html2canvas(document.querySelector("#export"), {
     onclone: function(clonedDoc) {
       clonedDoc.getElementById('export').style.display = 'block';
     }
   }).then(canvas => {
     //document.body.appendChild(canvas)
-    saveAs(canvas.toDataURL(), full_build_enc + '.png');
+    saveAs(canvas.toDataURL(), full_build_hash + '.png');
   });
 }
 
