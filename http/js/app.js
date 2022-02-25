@@ -483,7 +483,7 @@ function upload() {
         data: {
           name: dataNAME,
           imgBase64: dataURL,
-          reference: dataREF
+          ref: dataREF
         }
       }).done(function(o) {
         console.log('saved');
