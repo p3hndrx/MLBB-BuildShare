@@ -72,7 +72,7 @@ log.info(f"***Starting BERSI-{version}")
 guild_ids = [850386581135163489]
 log.info(f"Enabling for Server(s):{guild_ids}")
 
-optin = [853816389499748382]
+optin = [947676894365614121]
 
 # endregion
 
