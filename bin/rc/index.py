@@ -82,6 +82,9 @@ today = x.strftime("%Y%m%d")
 
 db = "/var/www/html/MLBB-BuildShare/db/"
 exports = "/var/www/html/MLBB-BuildShare/http/export/"
+
+bot = commands.Bot(command_prefix="/bs ", intents=discord.Intents.all())
+slash = SlashCommand(bot, sync_commands=True)
 # endregion
 
 #region MAIN FUNCTION
