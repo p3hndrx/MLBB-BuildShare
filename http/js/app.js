@@ -55,7 +55,7 @@ $(document).ready(function() {
   }
 
   //BUilD ITEM BUTTONS
-  $.getJSON('../db/itemdb.json', function(e) {
+  $.getJSON(itemjson, function(e) {
     $.each(e.data, function(i, x) {
       //$("#item-selectable").append("<div class=\"item\" id=\"" + x.id + "\">" + x.item_name + "</div>");
       $("#item-selectable").append("<div class=\"item\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/" + x.icon + ")\"><span class=\"itemtip\">" + x.item_name + "</span></div>");
