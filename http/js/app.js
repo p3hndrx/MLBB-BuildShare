@@ -18,6 +18,8 @@ var opt_slot = {
   0: [],
   1: []
 };
+var herojson = '../../MLBB-API/v1/hero-meta-final.json'
+var itemjson = '../../MLBB-API/v1/item-meta-final.json'
 
 /*///BUILD LISTS */
 $(document).ready(function() {
@@ -32,7 +34,7 @@ $(document).ready(function() {
   }
 
   //BUilD HERO BUTTONS
-  $.getJSON('../db/herodb.json', function(h) {
+  $.getJSON(herojson, function(h) {
     $.each(h.data, function(i, x) {
       //$("#hero-selectable").append("<div class=\"hero\" id=\"" + x.id + "\">" + x.hero_name + "</div>");
       $("#hero-selectable").append("<div class=\"hero\" id=\"" + x.id + "\" style=\"background-image: url(./img/heroes/" + x.hero_icon + ")\"><span class=\"herotip\">" + x.hero_name + "</span></div>");
