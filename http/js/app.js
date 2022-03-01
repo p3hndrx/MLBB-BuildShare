@@ -84,7 +84,7 @@ $(function() {
 
 /*GET HERO*/
 function getHeroData(code) {
-  $.getJSON('../db/herodb.json', function(h) {
+  $.getJSON(herojson, function(h) {
     $.each(h.data, function(i, x) {
       if (x.id == code) {
         /*console.log(x.hero_icon);
@@ -108,7 +108,7 @@ function getHeroData(code) {
 }
 /*GET ITEM*/
 function getItemData(code) {
-  $.getJSON('../db/itemdb.json', function(h) {
+  $.getJSON(itemjson, function(h) {
     $.each(h.data, function(i, x) {
       if (x.id == code) {
         /*console.log(x.id);
