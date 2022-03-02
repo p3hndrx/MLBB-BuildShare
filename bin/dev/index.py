@@ -153,7 +153,7 @@ async def on_ready():
     startupembed.set_thumbnail(
         url="https://icons.iconarchive.com/icons/custom-icon-design/flatastic-9/256/Accept-icon.png")
 
-    for channel_id in optin:
+    for channel_id in perms.optin:
         await bot.get_channel(channel_id).send(embed=startupembed)
 
 # endregion
