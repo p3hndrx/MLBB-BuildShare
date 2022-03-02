@@ -12,6 +12,8 @@ from discord_slash import SlashCommand, SlashContext
 from discord_slash.utils.manage_commands import create_option, create_choice
 
 import logging
+
+import perms
 # endregion
 
 # region ENVIRONMENT
@@ -69,10 +71,9 @@ log.info(f"***Starting BERSI-{version}")
 # endregion
 
 # region PERMISSIONS
-guild_ids = [850386581135163489]
+
 log.info(f"Enabling for Server(s):{guild_ids}")
 
-optin = [947676939357913148]
 
 # endregion
 
@@ -80,7 +81,7 @@ optin = [947676939357913148]
 x = datetime.datetime.now()
 today = x.strftime("%Y%m%d")
 
-db = "/var/www/html/MLBB-BuildShare/db/"
+db = "/var/www/html/MLBB-API/db/"
 exports = "/var/www/html/MLBB-BuildShare/http/export/"
 
 bot = commands.Bot(command_prefix="/bs ", intents=discord.Intents.all())

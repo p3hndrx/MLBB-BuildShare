@@ -12,6 +12,8 @@ from discord_slash import SlashCommand, SlashContext
 from discord_slash.utils.manage_commands import create_option, create_choice
 
 import logging
+
+import perms
 # endregion
 
 # region ENVIRONMENT
@@ -68,13 +70,6 @@ print(f"***Starting BERSI-{version}")
 log.info(f"***Starting BERSI-{version}")
 # endregion
 
-# region PERMISSIONS
-guild_ids = [850386581135163489]
-log.info(f"Enabling for Server(s):{guild_ids}")
-
-optin = [947676894365614121]
-
-# endregion
 
 # region VARIABLES
 x = datetime.datetime.now()
@@ -89,6 +84,41 @@ slash = SlashCommand(bot, sync_commands=True)
 # endregion
 
 #region MAIN FUNCTION
+
+@slash.slash(name="build",
+             description="Use this command to fetch and share your builds!",
+             guild_ids=perms.guild_ids,
+             options=[
+                 create_option(
+                     name="build",
+                     description="Enter the build you'd like to find!",
+                     option_type=3,
+                     required=True
+                 ),
+                create_option(
+                     name="do",
+                     description="Build actions",
+                     option_type=3,
+                     required=False,
+                     choices=[
+                         create_choice(
+                             name="Add",
+                             value="add"),
+                         create_choice(
+                             name="Remove",
+                             value="remove"),
+                         create_choice(
+                             name="Remove All",
+                             value="clear")
+                     ]
+                 )
+               ]
+             )
+
+async def _overall(ctx, build="All",do="null"):
+    channelid = ctx.channel.id
+    await ctx.send(f":robot: `Processing request...`")
+
 
 #endregion
 
@@ -114,6 +144,7 @@ async def on_command_error(ctx, error):
 @bot.event
 async def on_ready():
     log.info('We have logged in as {0.user}'.format(bot))
+    log.info(f"Enabling for Server(s):{perms.guild_ids}")
 
     startupembed = discord.Embed(
        title=f"***Started BERSI-{version}",
@@ -122,7 +153,7 @@ async def on_ready():
     startupembed.set_thumbnail(
         url="https://icons.iconarchive.com/icons/custom-icon-design/flatastic-9/256/Accept-icon.png")
 
-    for channel_id in optin:
+    for channel_id in perms.optin:
         await bot.get_channel(channel_id).send(embed=startupembed)
 
 # endregion

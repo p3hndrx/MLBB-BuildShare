@@ -18,6 +18,8 @@ var opt_slot = {
   0: [],
   1: []
 };
+var herojson = '../../MLBB-API/v1/hero-meta-final.json'
+var itemjson = '../../MLBB-API/v1/item-meta-final.json'
 
 /*///BUILD LISTS */
 $(document).ready(function() {
@@ -32,7 +34,7 @@ $(document).ready(function() {
   }
 
   //BUilD HERO BUTTONS
-  $.getJSON('../db/herodb.json', function(h) {
+  $.getJSON(herojson, function(h) {
     $.each(h.data, function(i, x) {
       //$("#hero-selectable").append("<div class=\"hero\" id=\"" + x.id + "\">" + x.hero_name + "</div>");
       $("#hero-selectable").append("<div class=\"hero\" id=\"" + x.id + "\" style=\"background-image: url(./img/heroes/" + x.hero_icon + ")\"><span class=\"herotip\">" + x.hero_name + "</span></div>");
@@ -53,7 +55,7 @@ $(document).ready(function() {
   }
 
   //BUilD ITEM BUTTONS
-  $.getJSON('../db/itemdb.json', function(e) {
+  $.getJSON(itemjson, function(e) {
     $.each(e.data, function(i, x) {
       //$("#item-selectable").append("<div class=\"item\" id=\"" + x.id + "\">" + x.item_name + "</div>");
       $("#item-selectable").append("<div class=\"item\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/" + x.icon + ")\"><span class=\"itemtip\">" + x.item_name + "</span></div>");
@@ -82,7 +84,7 @@ $(function() {
 
 /*GET HERO*/
 function getHeroData(code) {
-  $.getJSON('../db/herodb.json', function(h) {
+  $.getJSON(herojson, function(h) {
     $.each(h.data, function(i, x) {
       if (x.id == code) {
         /*console.log(x.hero_icon);
@@ -106,7 +108,7 @@ function getHeroData(code) {
 }
 /*GET ITEM*/
 function getItemData(code) {
-  $.getJSON('../db/itemdb.json', function(h) {
+  $.getJSON(itemjson, function(h) {
     $.each(h.data, function(i, x) {
       if (x.id == code) {
         /*console.log(x.id);
