@@ -81,7 +81,7 @@ log.info(f"Enabling for Server(s):{guild_ids}")
 x = datetime.datetime.now()
 today = x.strftime("%Y%m%d")
 
-db = "/var/www/html/MLBB-BuildShare/db/"
+db = "/var/www/html/MLBB-API/db/"
 exports = "/var/www/html/MLBB-BuildShare/http/export/"
 
 bot = commands.Bot(command_prefix="/bs ", intents=discord.Intents.all())
