@@ -12,6 +12,8 @@ from discord_slash import SlashCommand, SlashContext
 from discord_slash.utils.manage_commands import create_option, create_choice
 
 import logging
+
+import perms
 # endregion
 
 # region ENVIRONMENT
@@ -69,10 +71,9 @@ log.info(f"***Starting BERSI-{version}")
 # endregion
 
 # region PERMISSIONS
-guild_ids = [850386581135163489]
+
 log.info(f"Enabling for Server(s):{guild_ids}")
 
-optin = [947676894365614121]
 
 # endregion
 
@@ -89,6 +90,164 @@ slash = SlashCommand(bot, sync_commands=True)
 # endregion
 
 #region MAIN FUNCTION
+
+@slash.slash(name="build",
+             description="Use this command to fetch and share your builds!",
+             guild_ids=perms.guild_ids,
+             options=[
+                 create_option(
+                     name="elo",
+                     description="Look at TierData by Player Performance!",
+                     option_type=3,
+                     required=False,
+                     choices=[
+                         create_choice(
+                             name="All",
+                             value="All"),
+                         create_choice(
+                             name="Legend+",
+                             value="Legend"),
+                         create_choice(
+                             name="Mythic (400+)",
+                             value="Mythic")
+                     ]
+                 ),
+                 create_option(
+                     name="period",
+                     description="Look at TierData averages for the previous time-period.",
+                     option_type=3,
+                     required=False,
+                     choices=[
+                         create_choice(
+                             name="Week",
+                             value="Week"),
+                         create_choice(
+                             name="Month",
+                             value="Month"),
+                         create_choice(
+                             name="3-Months",
+                             value="Season"),
+                     ]
+                 ),
+                 create_option(
+                     name="sort",
+                     description="Look at Top Values or Bottom Values.",
+                     option_type=3,
+                     required=False,
+                     choices=[
+                         create_choice(
+                             name="Top",
+                             value="Top"),
+                         create_choice(
+                             name="Bottom",
+                             value="Bottom")
+                     ]
+                 ),
+                 create_option(
+                     name="role",
+                     description="Look at TierStats for your Favorite Role!",
+                     option_type=3,
+                     required=False,
+                     choices=[
+                         create_choice(
+                             name="Fighter",
+                             value="fighter"),
+                         create_choice(
+                             name="Mage",
+                             value="mage"),
+                         create_choice(
+                             name="Support",
+                             value="support"),
+                         create_choice(
+                             name="Assassin",
+                             value="assassin"),
+                         create_choice(
+                             name="Marksman",
+                             value="marksman"),
+                         create_choice(
+                             name="Tank",
+                             value="tank")
+                     ]
+                 ),
+                 create_option(
+                     name="view",
+                     description="Look at Different Views!",
+                     option_type=3,
+                     required=False,
+                     choices=[
+                         create_choice(
+                             name="Normal",
+                             value="normal"),
+                         create_choice(
+                             name="Meta",
+                             value="meta"),
+                         create_choice(
+                             name="Role",
+                             value="role"),
+                         create_choice(
+                             name="WinRate",
+                             value="win"),
+                         create_choice(
+                             name="Ban",
+                             value="ban"),
+                         create_choice(
+                             name="Use",
+                             value="use"),
+                         create_choice(
+                             name="Delta",
+                             value="delta")
+                     ]
+                 ),
+                 create_option(
+                     name="chartview",
+                     description="Look at Different Chart Views!",
+                     option_type=3,
+                     required=False,
+                     choices=[
+                         create_choice(
+                            name="TOP x WIN",
+                             value="topxwin"),
+                         create_choice(
+                             name="TOP x BAN",
+                             value="topxban"),
+                         create_choice(
+                             name="TOP x USE",
+                             value="topxuse"),
+                         create_choice(
+                             name="TOP x WIN (box)",
+                             value="topxwinbox"),
+                         create_choice(
+                             name="TOP x BAN (box)",
+                             value="topxbanbox"),
+                         create_choice(
+                             name="TOP x USE (box)",
+                             value="topxusebox")
+                     ]
+                 ),
+                 create_option(
+                     name="about",
+                     description="view README",
+                     option_type=3,
+                     required=False,
+                     choices=[
+                         create_choice(
+                             name="Teddy",
+                             value="show"),
+                         create_choice(
+                             name="Commands",
+                             value="commands"),
+                         create_choice(
+                             name="The Data",
+                             value="data")
+                        ]
+                         )
+                     ]
+                 )
+
+async def _overall(ctx, elo="All",period="Day", sort="Top", role="null", view="normal",chartview="null", about="null"):
+    channelid = ctx.channel.id
+    await ctx.send(f":robot: `Processing request...`")
+
 
 #endregion
 
