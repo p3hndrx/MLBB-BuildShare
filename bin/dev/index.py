@@ -90,8 +90,8 @@ slash = SlashCommand(bot, sync_commands=True)
              guild_ids=perms.guild_ids,
              options=[
                  create_option(
-                     name="build",
-                     description="Enter the build you'd like to find!",
+                     name="code",
+                     description="Enter the build-code you'd like to find!",
                      option_type=3,
                      required=True
                  ),
