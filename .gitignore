@@ -8,3 +8,4 @@
 /http/export/
 *.env
 /bin/*/perms.py
+*.htaccess
