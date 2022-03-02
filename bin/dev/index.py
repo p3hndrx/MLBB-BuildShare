@@ -144,7 +144,7 @@ async def on_command_error(ctx, error):
 @bot.event
 async def on_ready():
     log.info('We have logged in as {0.user}'.format(bot))
-    log.info(f"Enabling for Server(s):{guild_ids}")
+    log.info(f"Enabling for Server(s):{perms.guild_ids}")
 
     startupembed = discord.Embed(
        title=f"***Started BERSI-{version}",
