@@ -70,12 +70,6 @@ print(f"***Starting BERSI-{version}")
 log.info(f"***Starting BERSI-{version}")
 # endregion
 
-# region PERMISSIONS
-
-log.info(f"Enabling for Server(s):{guild_ids}")
-
-
-# endregion
 
 # region VARIABLES
 x = datetime.datetime.now()
@@ -150,6 +144,7 @@ async def on_command_error(ctx, error):
 @bot.event
 async def on_ready():
     log.info('We have logged in as {0.user}'.format(bot))
+    log.info(f"Enabling for Server(s):{guild_ids}")
 
     startupembed = discord.Embed(
        title=f"***Started BERSI-{version}",
