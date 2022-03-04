@@ -79,7 +79,7 @@ bin = "/var/www/html/MLBB-BuildShare/bin/dev/"
 exports = "/var/www/html/MLBB-BuildShare/http/export/"
 
 
-bot = commands.Bot(command_prefix="/bsd ", intents=discord.Intents.all())
+bot = commands.Bot(command_prefix="/buildd ", intents=discord.Intents.all())
 slash = SlashCommand(bot, sync_commands=True)
 
 # endregion
@@ -228,7 +228,7 @@ async def _overall(ctx, code="0",do="null",about="null"):
 
                 else:
                     log.warning(f"Bad Request: Missing: {buildpath}")
-                    await ctx.channel.send(content="```I cannot find that build!...```")
+                    await ctx.channel.send(content="```I cannot find that build!...```\n Visit: https://mlbb.site/builder to get started!")
             else:
                 log.warning(f"Bad Request: Missing: {exports}")
                 await ctx.channel.send(content="```No Builds Found!...```")

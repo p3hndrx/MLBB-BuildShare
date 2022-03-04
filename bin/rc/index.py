@@ -228,7 +228,7 @@ async def _overall(ctx, code="0",do="null",about="null"):
 
                 else:
                     log.warning(f"Bad Request: Missing: {buildpath}")
-                    await ctx.channel.send(content="```I cannot find that build!...```")
+                    await ctx.channel.send(content="```I cannot find that build!...```\n Visit: https://mlbb.site/builder to get started!")
             else:
                 log.warning(f"Bad Request: Missing: {exports}")
                 await ctx.channel.send(content="```No Builds Found!...```")
