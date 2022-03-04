@@ -86,7 +86,7 @@ slash = SlashCommand(bot, sync_commands=True)
 
 #region MAIN FUNCTION
 
-@slash.slash(name="build",
+@slash.slash(name="buildd",
              description="Use this command to fetch and share your builds!",
              guild_ids=perms.guild_ids,
              options=[
@@ -203,12 +203,12 @@ async def _overall(ctx, code="All",do="null",about="null"):
                     log.info(f"Reading File: {buildpath}")
 
                     color = discord.Color.blurple()
-                    ico = f"{bin}ico.png"
+                    ico = f"https://mlbb.site/MLBB-BuildShare/http/img/ico-dev.png"
 
                     #### DECLARE EMBED ####
                     embed = discord.Embed(
                         title=f"Your Build:",
-                        description=f"Build Code: {code})\n",
+                        description=f"Build Code: {code}\n",
                         color=color)
 
                     #### Generate Thumbnail ####
