@@ -7,5 +7,6 @@
 /.idea/vcs.xml
 /http/export/
 *.env
-/bin/*/perms.py
 *.htaccess
+/bin/*/perms.py
+*perms.py
