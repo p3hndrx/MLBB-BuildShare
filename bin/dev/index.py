@@ -65,7 +65,7 @@ else:
 # endregion
 
 # region VERSION
-version = "DEVELOPMENT Ver.1.10 (20220303)"
+version = "DEVELOPMENT Ver.1.11 (20220304)"
 print(f"***Starting BERSI-{version}")
 log.info(f"***Starting BERSI-{version}")
 # endregion
@@ -133,9 +133,11 @@ slash = SlashCommand(bot, sync_commands=True)
                ]
              )
 
-async def _overall(ctx, code="All",do="null",about="null"):
+async def _overall(ctx, code="0",do="null",about="null"):
     channelid = ctx.channel.id
     await ctx.send(f":robot: `Processing request...`")
+    if code == "0":
+        about = "code"
 
     if channelid in perms.optout:
         await ctx.channel.send(content="`Sorry, I'm not allowed to do that here. \nPlease try a different channel.`")
@@ -146,6 +148,7 @@ async def _overall(ctx, code="All",do="null",about="null"):
         user = ctx.author
         audit.info(f"{user},{code},{do}")
         log.info(f"{user} used /bersi")
+
 
         # HELP VIEW
         if about != "null":
@@ -225,7 +228,7 @@ async def _overall(ctx, code="All",do="null",about="null"):
 
                 else:
                     log.warning(f"Bad Request: Missing: {buildpath}")
-                    await ctx.channel.send(content="Sorry \n ```I cannot find that build!...```")
+                    await ctx.channel.send(content="```I cannot find that build!...```")
             else:
                 log.warning(f"Bad Request: Missing: {exports}")
                 await ctx.channel.send(content="```No Builds Found!...```")
