@@ -65,7 +65,7 @@ else:
 # endregion
 
 # region VERSION
-version = "DEVELOPMENT Ver.1.0 (20220227)"
+version = "DEVELOPMENT Ver.1.10 (20220303)"
 print(f"***Starting BERSI-{version}")
 log.info(f"***Starting BERSI-{version}")
 # endregion
