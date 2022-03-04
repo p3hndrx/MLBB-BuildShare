@@ -1,0 +1,6 @@
+guild_ids = []                              #these are the servers
+
+optin = []                                  #post to this channel on init, must have scope
+optout = []                                 #deny channel message, *if posting in xxx, respond
+
+summaryroles = ['Everyone', Developer','Moderator'] #role names, strings
