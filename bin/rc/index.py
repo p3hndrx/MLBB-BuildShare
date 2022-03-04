@@ -199,7 +199,7 @@ async def _overall(ctx, code="All",do="null",about="null"):
             if os.path.isdir(exports):
                 buildpath = f"{exports}{code}.png"
                 if os.path.exists(buildpath):
-                    await ctx.channel.send(content="\n ```Searching....```")
+                    #await ctx.channel.send(content="\n ```Searching....```")
                     log.info(f"Reading File: {buildpath}")
 
                     color = discord.Color.blurple()
