@@ -75,7 +75,9 @@ x = datetime.datetime.now()
 today = x.strftime("%Y%m%d")
 
 db = "/var/www/html/MLBB-BuildShare/db/"
+bin = "/var/www/html/MLBB-BuildShare/bin/dev/"
 exports = "/var/www/html/MLBB-BuildShare/http/export/"
+
 
 bot = commands.Bot(command_prefix="/bsd ", intents=discord.Intents.all())
 slash = SlashCommand(bot, sync_commands=True)
@@ -200,8 +202,8 @@ async def _overall(ctx, code="All",do="null",about="null"):
                     await ctx.channel.send(content="\n ```Searching....```")
                     log.info(f"Reading File: {buildpath}")
 
-                    color = discord.Color.black()
-                    ico = "https://static.wikia.nocookie.net/mobile-legends/images/2/26/Epic.png"
+                    color = discord.Color.blurple()
+                    ico = f"{bin}ico.png"
 
                     #### DECLARE EMBED ####
                     embed = discord.Embed(
@@ -216,8 +218,8 @@ async def _overall(ctx, code="All",do="null",about="null"):
                     file = discord.File(buildpath, filename=f"{filename}")
                     embed.set_image(url=f"attachment://{filename}")
 
-                    embed.add_field(name=f"Source:",
-                                    value=f"Data provided by https://m.mobilelegends.com/en/rank\nLast DataSync: {runtime}",
+                    embed.add_field(name=f"Created by MLBB BuildShare::",
+                                    value=f"https://mlbb.site/builder\n",
                                     inline=False)
                     await ctx.channel.send(file=file, embed=embed)
 
