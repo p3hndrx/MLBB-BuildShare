@@ -203,7 +203,7 @@ async def _overall(ctx, code="All",do="null",about="null"):
                     log.info(f"Reading File: {buildpath}")
 
                     color = discord.Color.blurple()
-                    ico = f"https://mlbb.site/MLBB-BuildShare/http/img/ico-dev.png"
+                    ico = f"https://mlbb.site/MLBB-BuildShare/http/img/ico.png"
 
                     #### DECLARE EMBED ####
                     embed = discord.Embed(
