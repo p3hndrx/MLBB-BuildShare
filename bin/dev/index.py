@@ -154,7 +154,7 @@ async def _overall(ctx, code="0",do="null",about="null"):
         # audit
         user = ctx.author
         audit.info(f"{user},{code},{do}")
-        log.info(f"{user} used /bersi")
+        log.info(f"{user} used /buildshare")
 
 
         # HELP VIEW
@@ -168,8 +168,8 @@ async def _overall(ctx, code="0",do="null",about="null"):
             elif about == "do":
                 about_title = "What can BERSI 'do'?"
                 desc = "Command Options List:\
-                           \n\n`/build` - Show a build \
-                           \n `code:(your code here)` - required, options: (`0`,`1`,`2` - Show the commands) \
+                           \n\n`/buildshare` - Show a build \
+                           \n `code:(your code here)` - required, options: (`0`,`1`,`2`) \
                            \n `about:(Show, Code, Do)` - Show the commands \
                            \n COMING SOON!: \
                            \n- `do:(Add,Remove,Clear,List)`, default: `nothing` - Look at your saved builds!"
@@ -177,9 +177,9 @@ async def _overall(ctx, code="0",do="null",about="null"):
                 about_title = "Invalid Code"
                 desc = "Build Share codes will be *32-characters* long. \
                        \n\n Try some of the following codes to view the help pages:  \
-                       \n `/build Code: 0` - Same as `About:Show` \
-                       \n `/build Code: 1` - Same as `About:Code` \
-                       \n `/build Code: 2` - Same as `About:Do` \
+                       \n `/buildshare Code: 0` - Same as `About:Show` \
+                       \n `/buildshare Code: 1` - Same as `About:Code` \
+                       \n `/buildshare Code: 2` - Same as `About:Do` \
                        \n\nOr visit: https://mlbb.site/builder to create a new code, and try again!"
 
             # Declare Embed
