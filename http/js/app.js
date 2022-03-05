@@ -90,6 +90,7 @@ function getHeroData(code) {
         /*console.log(x.hero_icon);
         console.log(x.hero_name);
         console.log(x.class);*/
+        heroData = []
         icon = "url(./img/heroes/" + x.hero_icon + ");"
         heroData = [x.hero_icon, x.hero_name, x.class];
         heropic = document.getElementById("hero-portrait");
