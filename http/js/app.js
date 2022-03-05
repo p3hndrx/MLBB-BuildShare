@@ -93,6 +93,7 @@ function getHeroData(code) {
         heroData = []
         icon = "url(./img/heroes/" + x.hero_icon + ");"
         heroData = [x.hero_icon, x.hero_name, x.class];
+
         heropic = document.getElementById("hero-portrait");
         $(heropic).attr("style", "background-image:" + icon);
         herolabel = document.getElementById("hero-result");
@@ -102,6 +103,7 @@ function getHeroData(code) {
         expport = document.getElementById("exp-port");
         $(expport).attr("style", "background-image:" + icon);
         expherolabel = document.getElementById("exp-hero-name");
+        expherolabel.innerHTML = "";
         expherolabel.append(x.hero_name);
       }
     });
