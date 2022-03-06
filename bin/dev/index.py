@@ -251,6 +251,125 @@ async def _overall(ctx, code="0",do="null",about="null"):
 
 #endregion
 
+#region SAVE FUNCTION
+
+@slash.slash(name="buildsaved",
+             description="Use this command to save your builds!",
+             guild_ids=perms.guild_ids,
+             options=[
+                 create_option(
+                     name="code",
+                     description="Enter the build-code you'd like to find!",
+                     option_type=3,
+                     required=False
+                 ),
+                create_option(
+                     name="do",
+                     description="Build actions",
+                     option_type=3,
+                     required=False,
+                     choices=[
+                         create_choice(
+                             name="Add",
+                             value="add"),
+                         create_choice(
+                             name="Remove",
+                             value="remove"),
+                         create_choice(
+                             name="Remove All",
+                             value="clear")
+                     ]
+                 ),
+                create_option(
+                     name="hero",
+                     description="Enter the hero you'd like to find!",
+                     option_type=3,
+                     required=False
+                 )
+               ]
+             )
+
+async def _overall(ctx, code="0",hero="null", do="null"):
+    channelid = ctx.channel.id
+    await ctx.send(f":robot: `Processing request...`")
+
+    about="null"
+    if len(code) != 32:
+        about = "helper"
+
+    if channelid in perms.optout:
+        await ctx.channel.send(content="`Sorry, I'm not allowed to do that here. \nPlease try a different channel.`")
+        channelname = ctx.channel.name
+        log.info(f"Permission Denied for Channel: {channelname}({channelid})")
+    else:
+        # audit
+        user = ctx.author
+        uid = ctx.author.id
+        audit.info(f"{user},{code},{hero},{do}")
+        log.info(f"{user} used /buildsave")
+
+        # HELP VIEW
+        if about != "null":
+            if about == "helper":
+                about_title = "Invalid Code"
+                desc = "Build Share codes will be *32-characters* long. \
+                       \n\n Try some of the following commands to learn more about build codes:  \
+                       \n `/buildshare Code: 0` - Same as `About:Show` \
+                       \n `/buildshare Code: 1` - Same as `About:Code` \
+                       \n `/buildshare Code: 2` - Same as `About:Do` \
+                       \n\nOr visit: https://mlbb.site/builder to create a new code, and try again!"
+
+            # Declare Embed
+            helpembed = discord.Embed(
+                    title=f"{about_title}",
+                    description=f"{desc}\n"
+                )
+            helpembed.set_thumbnail(
+                url="https://icons.iconarchive.com/icons/custom-icon-design/flatastic-2/256/help-desk-icon.png")
+            helpembed.set_author(name="p3", url="https://github.com/p3hndrx",
+                                 icon_url="https://cdn.discordapp.com/avatars/336978363669282818/74ce51e0a6b2990a5c4153a8a7a36f37.png")
+
+            await ctx.channel.send(embed=helpembed)
+
+        else:
+        # MAIN OUTPUT
+            #check for export path:
+            if os.path.isdir(exports):
+                buildpath = f"{exports}{code}.png"
+                if os.path.exists(buildpath):
+                    #await ctx.channel.send(content="\n ```Searching....```")
+                    log.info(f"Reading File: {buildpath}")
+
+                    color = discord.Color.blurple()
+                    ico = f"https://mlbb.site/MLBB-BuildShare/http/img/ico-dev.png"
+
+                    #### DECLARE EMBED ####
+                    embed = discord.Embed(
+                        title=f"Your Build:",
+                        description=f"Build Code: {code}\n",
+                        color=color)
+
+                    #### Generate Thumbnail ####
+                    embed.set_thumbnail(url=ico)
+
+                    filename = f"{code}.png"
+                    file = discord.File(buildpath, filename=f"{filename}")
+                    embed.set_image(url=f"attachment://{filename}")
+
+                    embed.add_field(name=f"Created by MLBB BuildShare::",
+                                    value=f"https://mlbb.site/builder\n",
+                                    inline=False)
+                    await ctx.channel.send(file=file, embed=embed)
+
+                else:
+                    log.warning(f"Bad Request: Missing: {buildpath}")
+                    await ctx.channel.send(content="```I cannot find that build!...```\n Visit: https://mlbb.site/builder to get started!")
+            else:
+                log.warning(f"Bad Request: Missing: {exports}")
+                await ctx.channel.send(content="```No Builds Found!...```")
+
+#endregion
+
 # region DISCORD STUFF
 # discord basic error handling:
 @bot.event
