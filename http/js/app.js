@@ -18,8 +18,11 @@ var opt_slot = {
   0: [],
   1: []
 };
-var herojson = '../../MLBB-API/v1/hero-meta-final.json'
-var itemjson = '../../MLBB-API/v1/item-meta-final.json'
+var rj_slot = 0;
+//var herojson = '../../MLBB-API/v1/hero-meta-final.json'
+//var itemjson = '../../MLBB-API/v1/item-meta-final.json'
+var herojson = 'db/hero-meta-final.json'
+var itemjson = 'db/item-meta-final.json'
 
 /*///BUILD LISTS */
 $(document).ready(function() {
@@ -46,23 +49,32 @@ $(document).ready(function() {
 
   //BUILD ITEM CATEGORIES
   itemcat = ["Defense", "Attack", "Magic", "Movement", "Roaming", "Jungling"];
+  //itemcat = ["Defense", "Attack", "Magic", "Movement"]
   itemcat.forEach(cattabs);
 
   function cattabs(item, i) {
     equip = item.toLowerCase()
     $("#cat-tabs-list").append("<li><a href=\"#tab-" + equip + "\">" + item + "</a></li>");
-    $("#item-tabs").append("<div id=\"tab-" + equip + "\"><div class=\"item-tab\" id=\"item-selectable-" + equip + "\"></div></div>");
+    if (equip != "roaming" && equip != "jungling") {
+        $("#item-tabs").append("<div id=\"tab-" + equip + "\"><div class=\"item-tab\" id=\"item-selectable-" + equip + "\"></div></div>");
+        } else {
+        $("#item-tabs").append("<div id=\"tab-" + equip + "\"><div class=\"rj-tab\" id=\"rj-selectable-" + equip + "\"></div></div>");
+        }
   }
 
   //BUilD ITEM BUTTONS
   $.getJSON(itemjson, function(e) {
     $.each(e.data, function(i, x) {
-      //$("#item-selectable").append("<div class=\"item\" id=\"" + x.id + "\">" + x.item_name + "</div>");
-      $("#item-selectable").append("<div class=\"item\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/" + x.icon + ")\"><span class=\"itemtip\">" + x.item_name + "</span></div>");
-
       equip = x.item_category.toLowerCase()
-      //$("#item-selectable-" + equip).append("<div class=\"item\" id=\"" + x.id + "\">" + x.item_name + "</div>");
-      $("#item-selectable-" + equip).append("<div class=\"item\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/" + x.icon + ")\"><span class=\"itemtip\">" + x.item_name + "</span></div>");
+      //$("#item-selectable").append("<div class=\"item\" id=\"" + x.id + "\">" + x.item_name + "</div>");
+
+      if (equip != "roaming" && equip != "jungling") {
+        $("#item-selectable").append("<div class=\"item\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/" + x.icon + ")\"><span class=\"itemtip\">" + x.item_name + "</span></div>");
+        $("#item-selectable-" + equip).append("<div class=\"item\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/" + x.icon + ")\"><span class=\"itemtip\">" + x.item_name + "</span></div>");
+        } else {
+        $("#rj-selectable").append("<div class=\"rj\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/" + x.icon + ")\"><span class=\"itemtip\">" + x.item_name + "</span></div>");
+        $("#rj-selectable-" + equip).append("<div class=\"rj\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/" + x.icon + ")\"><span class=\"itemtip\">" + x.item_name + "</span></div>");
+        }
     });
   });
 });
@@ -393,7 +405,7 @@ $(function() {
       var result = $("#hero-result").empty();
       $(".ui-selected", this).each(function() {
         var index = $(".hero-tab div").index(this);
-        getHeroData(this.id);
+        getItemData(this.id);
         //result.append(this.id);
         $(function() {
           $("#hero-menu").tabs({
@@ -402,6 +414,23 @@ $(function() {
           });
         });
         hero_choice = this.id;
+        global(hero_choice, item_slot, opt_slot);
+      });
+    }
+  });
+});
+
+/* RJ SELECTABLE */
+$(function() {
+  $(".rj-tab").selectable({
+    stop: function() {
+      var result = $("#rj-slot").empty();
+      $(".ui-selected", this).each(function() {
+        var index = $(".rj-tab div").index(this);
+        getHeroData(this.id);
+
+        rj_slot = this.id;
+        console.log(rj_slot)
         global(hero_choice, item_slot, opt_slot);
       });
     }
