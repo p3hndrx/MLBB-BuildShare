@@ -1,10 +1,9 @@
 # region IMPORTS
 import datetime
+import base64
 import os
 from os.path import exists
 from dotenv import load_dotenv
-
-import json
 
 import discord
 from discord.ext import commands
@@ -14,6 +13,7 @@ from discord_slash.utils.manage_commands import create_option, create_choice
 import logging
 
 import perms
+import mlbb_api
 # endregion
 
 # region ENVIRONMENT
@@ -81,6 +81,9 @@ exports = "/var/www/html/MLBB-BuildShare/http/export/"
 
 bot = commands.Bot(command_prefix="/buildd ", intents=discord.Intents.all())
 slash = SlashCommand(bot, sync_commands=True)
+
+color = discord.Color.blurple()
+ico = f"https://mlbb.site/MLBB-BuildShare/http/img/ico-dev.png"
 
 # endregion
 
@@ -333,34 +336,21 @@ async def _overall(ctx, code="0",hero="null", do="null"):
 
         else:
         # MAIN OUTPUT
+
+
             #check for export path:
             if os.path.isdir(exports):
                 buildpath = f"{exports}{code}.png"
                 if os.path.exists(buildpath):
                     #await ctx.channel.send(content="\n ```Searching....```")
-                    log.info(f"Reading File: {buildpath}")
+                    log.info(f"Build Exists: {buildpath}")
 
-                    color = discord.Color.blurple()
-                    ico = f"https://mlbb.site/MLBB-BuildShare/http/img/ico-dev.png"
 
-                    #### DECLARE EMBED ####
-                    embed = discord.Embed(
-                        title=f"Your Build:",
-                        description=f"Build Code: {code}\n",
-                        color=color)
 
-                    #### Generate Thumbnail ####
-                    embed.set_thumbnail(url=ico)
-
-                    filename = f"{code}.png"
-                    file = discord.File(buildpath, filename=f"{filename}")
-                    embed.set_image(url=f"attachment://{filename}")
-
-                    embed.add_field(name=f"Created by MLBB BuildShare::",
-                                    value=f"https://mlbb.site/builder\n",
-                                    inline=False)
-                    await ctx.channel.send(file=file, embed=embed)
-
+                    else:
+                        log.warning(f"Bad Request: Missing: {buildlookup}")
+                        await ctx.channel.send(
+                            content="```I cannot find the build database! Contact support!!!```")
                 else:
                     log.warning(f"Bad Request: Missing: {buildpath}")
                     await ctx.channel.send(content="```I cannot find that build!...```\n Visit: https://mlbb.site/builder to get started!")

@@ -1,0 +1,28 @@
+# lookup hero from build:
+                    buildlookup = f"{exports}bs.log"
+                    if os.path.exists(buildlookup):
+                        log.info(f"Record Exists: {buildlookup}")
+                        file = open(buildlookup, "r")
+                        lookup = file.readlines()
+                        result = []
+                        idx = 0
+                        for line in lookup:
+                            if code in line:
+                                result.insert(idx, line)
+                                idx += 1
+                        file.close()
+                        if len(result) == 0:
+                            log.info(f"{code} is not found in lookup.")
+                        else:
+
+                            log.info(f"{result} found.")
+                            log.info(f"Decoding...")
+                            build_enc = result[0].replace(f"{code}, ","")
+                            buildraw = base64.b64decode(build_enc).decode()
+                            log.info(f"{buildraw}")
+                            buildarr = buildraw.split("-")
+                            print(buildarr)
+
+
+                            hnl = mlbb_api.idlist[buildarr[0]]
+                            print(hnl)
