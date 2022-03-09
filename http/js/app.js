@@ -58,7 +58,7 @@ $(document).ready(function() {
     if (equip != "roaming" && equip != "jungling") {
         $("#item-tabs").append("<div id=\"tab-" + equip + "\"><div class=\"item-tab\" id=\"item-selectable-" + equip + "\"></div></div>");
         } else {
-        $("#item-tabs").append("<div id=\"tab-" + equip + "\"><div class=\"rj-tab\" id=\"rj-selectable-" + equip + "\"></div></div>");
+        $("#item-tabs").append("<div id=\"tab-" + equip + "\"><div class=\"bless-tab\" id=\"bless-selectable-" + equip + "\"></div></div>");
         }
   }
 
@@ -72,8 +72,8 @@ $(document).ready(function() {
         $("#item-selectable").append("<div class=\"item\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/" + x.icon + ")\"><span class=\"itemtip\">" + x.item_name + "</span></div>");
         $("#item-selectable-" + equip).append("<div class=\"item\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/" + x.icon + ")\"><span class=\"itemtip\">" + x.item_name + "</span></div>");
         } else {
-        $("#rj-selectable").append("<div class=\"rj\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/" + x.icon + ")\"><span class=\"itemtip\">" + x.item_name + "</span></div>");
-        $("#rj-selectable-" + equip).append("<div class=\"rj\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/" + x.icon + ")\"><span class=\"itemtip\">" + x.item_name + "</span></div>");
+        $("#bless-selectable").append("<div class=\"bless\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/" + x.icon + ")\"><span class=\"itemtip\">" + x.item_name + "</span></div>");
+        $("#bless-selectable-" + equip).append("<div class=\"bless\" id=\"" + x.id + "\" style=\"background-image: url(./img/items/" + x.icon + ")\"><span class=\"itemtip\">" + x.item_name + "</span></div>");
         }
     });
   });
@@ -396,6 +396,294 @@ function getItemData(code) {
     });
   });
 }
+/*GET BLESS*/
+function getBlessData(code) {
+  $.getJSON(itemjson, function(h) {
+    $.each(h.data, function(i, x) {
+      if (x.id == code) {
+        /*console.log(x.id);
+        console.log(x.icon);
+        console.log(x.item_name);
+        console.log(x.item_category);*/
+        blessingData = []
+        icon = "url(./img/items/" + x.icon + ");"
+        blessingData = [x.id, x.icon, x.item_name, x.item_category];
+        console.log("Blessing Items:" + blessingData);
+
+        /*UPDATE ICON*/
+        blesspic = document.getElementById("bless-slot");
+        $(blesspic).attr("style", "background-image:" + icon);
+
+        /*BUILD EXPORTABLE
+        expport = document.getElementById("exp-port");
+        $(expport).attr("style", "background-image:" + icon);
+        expherolabel = document.getElementById("exp-hero-name");
+        expherolabel.innerHTML = "";
+        expherolabel.append(x.hero_name);*/
+
+        /*BLESSING INFO*/
+        var itemoverview = document.getElementById("select-result")
+        itemoverview.innerHTML = x.item_name;
+        itemoverview.classList.add('feedback2');
+        var itemicon = document.getElementById("itemicon")
+        itemicon.classList.add('itemicon');
+        $(itemicon).attr("style", "background-image:" + icon);
+
+        document.getElementById("category").innerHTML = x.item_category;
+
+        $.each(x.data, function(i, y) {
+
+          /*console.log(y.cost);
+          console.log(y.summary);*/
+          document.getElementById("cost").innerHTML = y.cost;
+          document.getElementById("summary").innerHTML = y.summary;
+
+          /*console.log(y.modifiers);
+          console.log(y.active);
+          console.log(y.passive);
+          console.log(y.unique_passive);*/
+
+          var attribox = document.getElementById("attributes");
+          attribox.innerHTML = '';
+          modifiers = y.modifiers[0];
+          var modbox = document.createElement('div');
+
+          for (var key in modifiers) {
+            value = modifiers[key];
+            key = key.replace(/_/g, ' ');
+            var label = modbox.appendChild(document.createElement('span'));
+            label.classList.add('attribs');
+            label.innerHTML = key + ": ";
+            modbox.append(label);
+            modbox.append(value);
+            modbox.appendChild(document.createElement('br'));
+          };
+
+          /*START ACTIVE*/
+          active = y.active[0];
+          activeexist = 0;
+
+          var activebox = document.createElement('div');
+          for (var key in active) {
+            value = active[key];
+            if (value !== "null" && key !== "modifiers") {
+              activeexist = 1;
+            } else {
+              if (key == "modifiers") {
+                modifiers = active[key];
+                for (var key in modifiers) {
+                  at = modifiers[key];
+                  for (var key in at) {
+                    value = at[key];
+                    if (value !== "null") {
+                      activeexist = 1;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          if (activeexist == 1) {
+            var slabel = activebox.appendChild(document.createElement('span'));
+            slabel.classList.add('label');
+            slabel.innerHTML = " <br>Active:<hr>";
+            activebox.append(slabel);
+          }
+          for (var key in active) {
+            value = active[key];
+            if (value !== "null" && key !== "modifiers") {
+              if (key == "active_name") {
+                activebox.appendChild(document.createElement('br'));
+                activebox.append(value);
+                activebox.append(": ");
+              } else {
+                key = key.replace(/_/g, ' ');
+                var desc = activebox.appendChild(document.createElement('span'));
+                desc.classList.add('attribs');
+                desc.innerHTML = value;
+                activebox.appendChild(document.createElement('br'));
+              }
+
+            } else {
+              if (key == "modifiers") {
+                modifiers = active[key];
+                for (var key in modifiers) {
+                  at = modifiers[key];
+                  for (var key in at) {
+                    value = at[key];
+                    key = key.replace(/_/g, ' ');
+                    var label = activebox.appendChild(document.createElement('span'));
+                    label.classList.add('attribs');
+                    label.innerHTML = "<br>" + key + ": ";
+                    activebox.append(label);
+                    activebox.append(value);
+                    activebox.appendChild(document.createElement('br'));
+                  }
+
+                };
+              }
+            }
+
+          } /*END ACTIVE */
+
+
+          /*START PASSIVE*/
+          passive = y.passive[0];
+          passiveexist = 0;
+
+          var passivebox = document.createElement('div');
+          for (var key in passive) {
+            value = passive[key];
+            if (value !== "null" && key !== "modifiers") {
+              passiveexist = 1;
+            } else {
+              if (key == "modifiers") {
+                modifiers = passive[key];
+                for (var key in modifiers) {
+                  at = modifiers[key];
+                  for (var key in at) {
+                    value = at[key];
+                    if (value !== "null") {
+                      passiveexist = 1;
+                    }
+                  }
+                }
+              }
+            }
+          }
+          if (passiveexist == 1) {
+            var slabel = passivebox.appendChild(document.createElement('span'));
+            slabel.classList.add('label');
+            slabel.innerHTML = " <br>Passive:<hr>";
+            passivebox.append(slabel);
+          }
+          for (var key in passive) {
+            value = passive[key];
+            if (value !== "null" && key !== "modifiers") {
+              if (key == "passive_name") {
+                passivebox.appendChild(document.createElement('br'));
+                passivebox.append(value);
+                passivebox.append(": ");
+              } else {
+                key = key.replace(/_/g, ' ');
+                var desc = passivebox.appendChild(document.createElement('span'));
+                desc.classList.add('attribs');
+                desc.innerHTML = value;
+                passivebox.appendChild(document.createElement('br'));
+              }
+
+            } else {
+              if (key == "modifiers") {
+                modifiers = passive[key];
+                for (var key in modifiers) {
+                  at = modifiers[key];
+                  for (var key in at) {
+                    value = at[key];
+                    key = key.replace(/_/g, ' ');
+                    var label = passivebox.appendChild(document.createElement('span'));
+                    label.classList.add('attribs');
+                    label.innerHTML = "<br>" + key + ": ";
+                    passivebox.append(label);
+                    passivebox.append(value);
+                    passivebox.appendChild(document.createElement('br'));
+                  }
+
+                };
+              }
+            }
+
+          } /*END PASSIVE */
+
+          /*START UNIQUE-PASSIVE*/
+          upassive = y.unique_passive;
+          upassiveexist = 0;
+
+          var upassivebox = document.createElement('div');
+          for (var key in upassive) {
+            skill = upassive[key];
+
+            for (var key in skill) {
+              value = skill[key];
+              console.log(value);
+              if (value !== "null" && key !== "modifiers") {
+                upassiveexist = 1;
+              } else {
+                if (key == "modifiers") {
+                  modifiers = upassive[key];
+                  for (var key in modifiers) {
+                    at = modifiers[key];
+                    for (var key in at) {
+                      value = at[key];
+                      if (value !== "null") {
+                        upassiveexist = 1;
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+
+          if (upassiveexist == 1) {
+            var slabel = upassivebox.appendChild(document.createElement('span'));
+            slabel.classList.add('label');
+            slabel.innerHTML = " <br>Unique Passive:<hr>";
+            upassivebox.append(slabel);
+          }
+          for (var key in upassive) {
+            skill = upassive[key];
+            for (var key in skill) {
+              value = skill[key];
+              if (value !== "null" && key !== "modifiers") {
+                if (key == "unique_passive_name") {
+
+                  upassivebox.appendChild(document.createElement('br'));
+                  upassivebox.append(value);
+                  upassivebox.append(": ");
+                } else {
+                  key = key.replace(/_/g, ' ');
+                  var desc = upassivebox.appendChild(document.createElement('span'));
+                  desc.classList.add('attribs');
+                  desc.innerHTML = value;
+                  upassivebox.appendChild(document.createElement('br'));
+                }
+
+              } else {
+                if (key == "modifiers") {
+                  modifiers = upassive[key];
+                  for (var key in modifiers) {
+                    at = modifiers[key];
+                    for (var key in at) {
+                      value = at[key];
+                      key = key.replace(/_/g, ' ');
+                      var label = upassivebox.appendChild(document.createElement('span'));
+                      label.classList.add('attribs');
+                      label.innerHTML = "<br>" + key + ": ";
+                      upassivebox.append(label);
+                      upassivebox.append(value);
+                      upassivebox.appendChild(document.createElement('br'));
+                    }
+
+                  };
+                }
+              }
+            }
+          }; /*END UNIQUE-PASSIVE */
+
+          attribox.append(modbox);
+          attribox.append(activebox);
+          attribox.append(passivebox);
+          attribox.append(upassivebox);
+        });
+
+
+
+
+        return selected_items;
+      }
+    });
+  });
+}
 
 
 /* SELECTABLE HEROES */
@@ -405,7 +693,7 @@ $(function() {
       var result = $("#hero-result").empty();
       $(".ui-selected", this).each(function() {
         var index = $(".hero-tab div").index(this);
-        getItemData(this.id);
+        getHeroData(this.id);
         //result.append(this.id);
         $(function() {
           $("#hero-menu").tabs({
@@ -420,17 +708,16 @@ $(function() {
   });
 });
 
-/* RJ SELECTABLE */
+/* BLESSING SELECTABLE */
 $(function() {
-  $(".rj-tab").selectable({
+  $(".bless-tab").selectable({
     stop: function() {
-      var result = $("#rj-slot").empty();
+      var result = $("#bless-slot").empty();
       $(".ui-selected", this).each(function() {
-        var index = $(".rj-tab div").index(this);
-        getHeroData(this.id);
-
-        rj_slot = this.id;
-        console.log(rj_slot)
+        var index = $(".bless-tab div").index(this);
+        getBlessData(this.id);
+        bless_slot = this.id;
+        console.log(bless_slot)
         global(hero_choice, item_slot, opt_slot);
       });
     }

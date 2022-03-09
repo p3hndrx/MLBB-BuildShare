@@ -357,6 +357,58 @@ div[id^='item-selectable'] div {
   font-size: 1.4em;
 }
 
+/* BLESSING ITEM SELECTOR STYLES */
+
+.bless {
+  height: 75px;
+  width: 75px;
+  border-radius: 75px;
+  background-color: #F0DB4F;
+  color: #000;
+  float: left;
+  margin: 10px;
+  opacity: .9;
+  overflow: hidden;
+  background-size: contain;
+}
+
+.bless:hover {
+border: solid 3px yellow;
+  box-shadow: 0 0 5px #D000FE;
+  opacity: 1.0;
+}
+
+.bless:hover .itemtip {
+  visibility: visible;
+}
+
+div[id^='bless-selectable'] .ui-selecting {
+  #background: #FECA40;
+  opacity: 1.0;
+}
+
+div[id^='bless-selectable'] .ui-selected {
+  #background: #F39814;
+  color: white;
+  border: solid 3px red;
+  box-shadow: 0 0 5px #D000FE;
+  opacity: 1.0;
+}
+
+div[id^='bless-selectable'] {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  opacity: .9;
+}
+
+div[id^='bless-selectable'] div {
+  margin: 3px;
+  padding: 0.4em;
+  font-size: 1.4em;
+}
+
+
 
 /* BUILD ITEM SELECTOR STYLES */
 .drop-targets {
@@ -390,7 +442,7 @@ div[id^='item-selectable'] div {
   align-items: center;
   margin: 20px;
   float: left;
-  width: 45%
+
 }
 
 .build-feedback {
