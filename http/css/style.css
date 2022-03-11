@@ -5,9 +5,18 @@
 }
 
 /* PAGE ELEMENT STYLES */
-html, body, header, nav, main, footer, article, section, summary{
-    position: relative;
+html,
+body,
+header,
+nav,
+main,
+footer,
+article,
+section,
+summary {
+  position: relative;
 }
+
 body {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 16px;
@@ -16,7 +25,7 @@ body {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: top;
-   background-attachment: fixed;
+  background-attachment: fixed;
   color: #fff;
 }
 
@@ -109,7 +118,7 @@ h2 {
 }
 
 .hero:hover {
-border: solid 3px yellow;
+  border: solid 3px yellow;
   box-shadow: 0 0 5px #D000FE;
   opacity: 1.0;
 }
@@ -294,7 +303,7 @@ div[id^='item-tabs'] li a:hover {
 }
 
 .item:hover {
-border: solid 3px yellow;
+  border: solid 3px yellow;
   box-shadow: 0 0 5px #D000FE;
   opacity: 1.0;
 }
@@ -357,6 +366,58 @@ div[id^='item-selectable'] div {
   font-size: 1.4em;
 }
 
+/* BLESSING ITEM SELECTOR STYLES */
+
+.bless {
+  height: 75px;
+  width: 75px;
+  border-radius: 75px;
+  background-color: #F0DB4F;
+  color: #000;
+  float: left;
+  margin: 10px;
+  opacity: .9;
+  overflow: hidden;
+  background-size: contain;
+}
+
+.bless:hover {
+  border: solid 3px yellow;
+  box-shadow: 0 0 5px #D000FE;
+  opacity: 1.0;
+}
+
+.bless:hover .itemtip {
+  visibility: visible;
+}
+
+div[id^='bless-selectable'] .ui-selecting {
+  #background: #FECA40;
+  opacity: 1.0;
+}
+
+div[id^='bless-selectable'] .ui-selected {
+  #background: #F39814;
+  color: white;
+  border: solid 3px red;
+  box-shadow: 0 0 5px #D000FE;
+  opacity: 1.0;
+}
+
+div[id^='bless-selectable'] {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  opacity: .9;
+}
+
+div[id^='bless-selectable'] div {
+  margin: 3px;
+  padding: 0.4em;
+  font-size: 1.4em;
+}
+
+
 
 /* BUILD ITEM SELECTOR STYLES */
 .drop-targets {
@@ -390,7 +451,7 @@ div[id^='item-selectable'] div {
   align-items: center;
   margin: 20px;
   float: left;
-  width: 45%
+
 }
 
 .build-feedback {
@@ -407,7 +468,7 @@ div[id^='item-selectable'] div {
 }
 
 #build-feedback li {
-  float:none;
+  float: none;
 }
 
 
@@ -459,8 +520,11 @@ div[id^='item-selectable'] div {
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+}
 
-
+.highlight {
+  border: solid 3px red;
+  box-shadow: 0 0 10px #D000FE;
 }
 
 .box_select {
@@ -677,11 +741,11 @@ div[id^='item-selectable'] div {
 }
 
 .export {
-  padding: 20px;
+  padding: 10px;
   width: 920px;
   background: url(https://www.mobilelegends.com/img/bg.c9a48115.png);
-  background: rgb(13,30,55);
-  background: linear-gradient(90deg, rgba(13,30,55,1) 0%, rgba(44,76,125,1) 28%, rgba(73,114,173,1) 48%, rgba(43,74,120,1) 64%, rgba(13,30,55,1) 100%);
+  background: rgb(13, 30, 55);
+  background: linear-gradient(90deg, rgba(13, 30, 55, 1) 0%, rgba(44, 76, 125, 1) 28%, rgba(73, 114, 173, 1) 48%, rgba(43, 74, 120, 1) 64%, rgba(13, 30, 55, 1) 100%);
 
 }
 
@@ -690,10 +754,12 @@ div[id^='item-selectable'] div {
   float: left;
 }
 
-#exp-hero-name {font-size: 1em;
-    background-color: 000;
-    border-radius: 10px;
-    padding: 5 10 5 20;}
+#exp-hero-name {
+  font-size: 1em;
+  background-color: 000;
+  border-radius: 10px;
+  padding: 5 10 5 20;
+}
 
 
 #exp-port {
@@ -709,14 +775,16 @@ div[id^='item-selectable'] div {
 
 .exp-build {
   float: left;
-  #background-color: #00FF00;
-  width: 650px;
+  /*background-color: #00FF00;*/
+  /*width: 650px;*/
+  height: 200px;
+  padding-top:20px;
 }
 
 .exp_box {
   border-radius: 150px;
-  height: 100px;
-  width: 100px;
+  height: 95px;
+  width: 95px;
   border: solid 3px #ccc;
   margin: 3px;
   display: flex;
@@ -750,14 +818,14 @@ div[id^='item-selectable'] div {
   border-radius: 10px;
   padding: 7;
   position: absolute;
-  margin: 100 -50 0;
+  margin: 95 -50 0;
 }
 
 .exp-opt {
   float: left;
   #background-color: #ff0000;
   width: 70px;
-  height: 100px;
+  height: 200px;
 }
 
 
@@ -766,7 +834,7 @@ div[id^='item-selectable'] div {
   width: 60px;
   border-radius: 60px;
   border: solid 3px #ccc;
-  margin: -10 0 30 5;
+  margin: 15px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -774,6 +842,22 @@ div[id^='item-selectable'] div {
   float: left;
   background-image: url("https://mlbb.site/MLBB-BuildShare/http/img/add-icon.png");
   background-size: cover;
+}
+
+#exp-bless-slot {
+  height: 60px;
+  width: 60px;
+  border-radius: 60px;
+  border: solid 3px #ccc;
+  margin: 60 0 0 20;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  float: left;
+  background-image: url("https://mlbb.site/MLBB-BuildShare/http/img/add-icon.png");
+  background-size: cover;
+  visibility: hidden;
 }
 
 
@@ -790,37 +874,39 @@ div[id^='item-selectable'] div {
 
 
 /*HELP DIALOG*/
-#help{
-background-color: #0f2b55;
-border-radius: 10px;
+#help {
+  background-color: #0f2b55;
+  border-radius: 10px;
   box-shadow: 0 0 50px #000;
-padding:30px;
-  }
-
-
-#openhelp{
-position:fixed;
-top:0;
-right:0;
-background-image: url(https://icons.iconarchive.com/icons/martz90/circle-addon2/256/help-icon.png);
-background-size:cover;
-width:50px;
-height:50px;
-z-index:100;
+  padding: 30px;
 }
 
-#closehelp{
-background-image: url(https://icons.iconarchive.com/icons/graphicloads/100-flat/256/close-icon.png);
-background-size:cover;
-    width: 50px;
-    height: 50px;
-    position: absolute;
-    right: -30;
-    top: 0;
+
+#openhelp {
+  position: fixed;
+  top: 0;
+  right: 0;
+  background-image: url(https://icons.iconarchive.com/icons/martz90/circle-addon2/256/help-icon.png);
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  z-index: 100;
+}
+
+#closehelp {
+  background-image: url(https://icons.iconarchive.com/icons/graphicloads/100-flat/256/close-icon.png);
+  background-size: cover;
+  width: 50px;
+  height: 50px;
+  position: absolute;
+  right: -30;
+  top: 0;
 }
 
 .helpimg {
-max-height:200px;
+  max-height: 200px;
 }
 
-.ui-dialog { position: fixed; }
+.ui-dialog {
+  position: fixed;
+}
