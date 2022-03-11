@@ -5,7 +5,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MLBB-BuildShare - "BERSI"</title>
-    <link rel="shortcut icon" type="image/png" href="img/ico.png"/>
+    <link rel="shortcut icon" type="image/png" href="img/ico.png" />
     <link rel="stylesheet" href="css/style.css">
 
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
@@ -17,33 +17,37 @@
   </head>
 
   <body id="top">
-  <!--help resources -->
+    <!--help resources -->
 
-      <a href="javascript:openhelp();" onclick=""><div id="openhelp"></div></a>
+    <a href="javascript:openhelp();" onclick="">
+      <div id="openhelp"></div>
+    </a>
 
-      <div id="help">
+    <div id="help">
       <h1>Welcome to MLBB-BuildShare</h1>
-        <p>This app was developed by p3 exclusively for the MLBB NA Discord Server.</p>
+      <p>This app was developed by p3 exclusively for the MLBB NA Discord Server.</p>
       <hr>
 
-        <h2>Sharing a build is EASY!</h2>
+      <h2>Sharing a build is EASY!</h2>
       <ul>
-        <li>Step1:  Pick a HERO<br>
-        <img class="helpimg" src="./img/help/step1.png">
+        <li>Step1: Pick a HERO<br>
+          <img class="helpimg" src="./img/help/step1.png">
         </li>
-        <li>Step2:  Add some EQUIPMENT<br>
-        <img class="helpimg" src="./img/help/step2.png"></li>
-        <li>Step3:  Share!<br>
+        <li>Step2: Add some EQUIPMENT<br>
+          <img class="helpimg" src="./img/help/step2.png"></li>
+        <li>Step3: Share!<br>
           <img class="helpimg" src="./img/help/step3.png"></li>
 
       </ul>
       Ready?
-      <a href="javascript:closehelp()"><div id="closehelp"></div></a>
+      <a href="javascript:closehelp()">
+        <div id="closehelp"></div>
+      </a>
 
 
     </div>
 
-  <!--start app -->
+    <!--start app -->
 
     <h1>MLBB-BuildShare</h1>
     <div class="container">
@@ -95,7 +99,7 @@
             <div id="opt-slot-1" class="box-opt"></div>
             <div class="spacer"></div>
           </div>
-           <div class="optional-slots">
+          <div class="optional-slots">
             Blessing: <br>
             <div id="bless-slot" class="box-opt"></div>
             <div class="spacer"></div>
@@ -103,66 +107,66 @@
           <div class="spacer"></div>
         </div>
 
-        <div id="dropslots"  class="build-container" >
-        <ul>
-        <li><a href="#item-container">Item Selector</a></li>
-        <li><a href="#export-menu">Export Your Build</a></li>
-        </ul>
+        <div id="dropslots" class="build-container">
+          <ul>
+            <li><a href="#item-container">Item Selector</a></li>
+            <li><a href="#export-menu">Export Your Build</a></li>
+          </ul>
 
-        <div id="export-menu">
-          About Your Build:
-          <div>
-            <div class="build-feedback">
+          <div id="export-menu">
+            About Your Build:
+            <div>
+              <div class="build-feedback">
 
-              <div id="build-feedback"></div>
+                <div id="build-feedback"></div>
+              </div>
+              <div style="clear: both;"></div>
+            </div>
+            <div id="build-copy"></div>
+          </div>
+          <!--close drop-targets-->
+          <div style="clear: both;"></div>
+          <div id="item-container">
+            <div id="item-tabs">
+              <ul id="cat-tabs-list">
+                <li><a href="#tabs-1">All</a></li>
+              </ul>
+              <div id="tabs-0">
+                <div class="item-tab"></div>
+              </div>
+              <div id="tabs-1">
+                <div class="item-tab" id="item-selectable"></div>
+              </div>
+            </div>
+
+            <div class="item-info">
+
+              <div id="select-result">No Item Selected</div>
+              <div id="itemicon"></div>
+              <table id="itemattribs">
+                <tr>
+                  <td class="statlabel">Category:</td>
+                  <td class="statvalue" id="category"></td>
+                </tr>
+                <tr>
+                  <td class="statlabel">Cost:</td>
+                  <td class="statvalue" id="cost"></td>
+                </tr>
+                <tr>
+                  <td class="statlabel">Summary:</td>
+                  <td class="statvalue" id="summary"></td>
+                </tr>
+                <tr>
+                  <td colspan=2 class="statlabel">Attributes:</td>
+                </tr>
+                <tr>
+                  <td colspan=2 class="statvalue" id="attributes"></td>
+                </tr>
+              </table>
             </div>
             <div style="clear: both;"></div>
-          </div>
-          <div id="build-copy"></div>
-        </div>
-        <!--close drop-targets-->
-        <div style="clear: both;"></div>
-        <div id="item-container">
-          <div id="item-tabs">
-            <ul id="cat-tabs-list">
-              <li><a href="#tabs-1">All</a></li>
-            </ul>
-            <div id="tabs-0">
-              <div class="item-tab"></div>
-            </div>
-            <div id="tabs-1">
-              <div class="item-tab" id="item-selectable"></div>
-            </div>
-          </div>
 
-          <div class="item-info">
-
-            <div id="select-result">No Item Selected</div>
-            <div id="itemicon"></div>
-            <table id="itemattribs">
-              <tr>
-                <td class="statlabel">Category:</td>
-                <td class="statvalue" id="category"></td>
-              </tr>
-              <tr>
-                <td class="statlabel">Cost:</td>
-                <td class="statvalue" id="cost"></td>
-              </tr>
-              <tr>
-                <td class="statlabel">Summary:</td>
-                <td class="statvalue" id="summary"></td>
-              </tr>
-              <tr>
-                <td colspan=2 class="statlabel">Attributes:</td>
-              </tr>
-              <tr>
-                <td colspan=2 class="statvalue" id="attributes"></td>
-              </tr>
-            </table>
           </div>
-          <div style="clear: both;"></div>
-
-        </div>
         </div>
       </div> <!-- close drop-targets-->
 
@@ -190,6 +194,9 @@
         <div class="exp-opt" id="exp-opt">
           <div id="exp-opt-slot-0" class="exp_box-opt"></div>
           <div id="exp-opt-slot-1" class="exp_box-opt"></div>
+        </div>
+        <div class="exp-opt">
+          <div id="exp-bless-slot"></div>
         </div>
 
       </div>
