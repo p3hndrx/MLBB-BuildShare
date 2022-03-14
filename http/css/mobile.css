@@ -1,200 +1,254 @@
 @media all and (max-width: 750px) {
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
 
-/* PAGE ELEMENT STYLES */
-html, body, header, nav, main, footer, article, section, summary{
+  /* PAGE ELEMENT STYLES */
+  html,
+  body,
+  header,
+  nav,
+  main,
+  footer,
+  article,
+  section,
+  summary {
     position: relative;
-    
-}
-body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 16px;
-  background-color: #0f2b55;
-  background-image: url(https://www.mobilelegends.com/img/bg.c9a48115.png);
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: top;
-  background-size: cover;
-  background-position: top;
-   background-attachment: fixed;
-  color: #fff; 
-  
- 
-}
-   
 
-  .container{
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    background-color: #0f2b55;
+    background-image: url(https://www.mobilelegends.com/img/bg.c9a48115.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: top;
+    background-size: cover;
+    background-position: top;
+    background-attachment: fixed;
+    color: #fff;
+
+
+  }
+
+
+  .container {
     height: 100vh;
     display: flex;
     flex-direction: column;
-    align-items:center;       
-    width:90% !important;
-    margin:0 auto !important; 
-   
-     
-                       
-     
+    align-items: center;
+    width: 90% !important;
+    margin: 0 auto !important;
+
+
+
+
   }
-  #wrapper{
-     
-     position: relative;      
-     min-height:100%; 
-     width:100vw !important;
-   
-     
-       
+
+  #wrapper {
+
+    position: relative;
+    min-height: 100%;
+    /*width:100vw !important;*/
+
+
   }
+
   /*END ITEM INFO*/
 
-.footer {
-  position: relative;
-  left: 0;
-  bottom: 0;
-  width: 100%;
-  color: white;
-  text-align: center;
-  font-size: .5em;
-}
-  .box {
-  border-radius: 130px;
-  height: 130px;
-  width: 130px;
-  border: solid 3px #ccc;
-  margin: 7px;
-  display: flex;
-  flex-direction: column;
-  flex-basis:auto;
-  align-items: center;
-  justify-content: center;
-  float: left;
-  background-image: url("https://mlbb.site/MLBB-BuildShare/http/img/add-icon.png");
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
 
+  .hero-portrait {
+    height: 150px;
+    width: 150px;
+    border-radius: 150px;
+    border: solid 3px #ccc;
+    margin: 10px;
 
-  }
-  #item-container {
-  display: flex;
-  flex-direction: row;
-  #align-items: center;
-  justify-content: center;
-  #flex-wrap: wrap;
-  background-color: #27426a;
-  border-radius: 30px;
-  
-
-}
-
-#item-tabs {
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  min-width: 350px;
-  
-
-}
-
-.menu {
-  width: 100%;
-  #display: flex;
-}
-  .item-info {
-  
-  height: 100px;
-  min-width: 250px;
-  position:absolute;
-  z-index:10;
-  border: solid 3px #ccc;
-/*  width: 250px;
-  
-  margin: 15px;
-  padding: 10px;
-   align items in the box */
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  float: left;border:thin solid #fff; display:none;  
-}               
- .item {
-  height: 75px;
-  width: 75px;
-  border-radius: 75px;
-  background-color: #F0DB4F;
-  color: #000;
-  float: left;
-  margin: 10px;
-  opacity: .9;
-  overflow: hidden;
-  background-size: contain; 
-}
-
- .drop-targets {
-  #display: flex;
-  flex-direction: row;
-  justify-content: space-around;
-  align-items: center;
-
-  margin: 20px 0;
-}
-
-.build-container {
-  #display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  background: linear-gradient(90deg, #1e406b, #346094 50%, #1e4474);
-  border-radius: 30px;
-  margin: 10px 0 10px 0;
-  padding: 10px 0 10px 0;
-}
-
-.main-slots {
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.optional-slots {
-  align-items: center;
-  margin: 20px;
-  float: left;
-  width: 45%
-}
-
-.build-feedback {
-  margin: 0 0 0 0;
-  width: 100%;
-  #float: left;
-}
-
- 
-  #hero-menu {
+    /* align items in the box */
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    float: left;
+
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+
+  #feedback {
+    font-size: .75em;
+    background-color: 000;
+    border-radius: 10px;
+    padding: 10 20 10 20;
+    margin-top: 140px;
+  }
+
+  .hero-tab {
     width: 100%;
+  }
+
+  div[id^='hero-selectable'] div {
+    margin: 2px;
+    /* padding: 0.4em; */
+    font-size: 1.4em;
+    opacity: .9;
+  }
+
+  .footer {
+    position: relative;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: white;
+    text-align: center;
+    font-size: .5em;
+  }
+
+  .box {
+    border-radius: 90px;
+    height: 90px;
+    width: 90px;
+    #border: solid 3px #ccc;
+    margin: 7px;
+    display: flex;
+    flex-direction: column;
+    flex-basis: auto;
+    align-items: center;
+    justify-content: center;
+    float: left;
+    background-image: url("https://mlbb.site/MLBB-BuildShare/http/img/add-icon.png");
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+
+  .box-opt {
+    height: 60px;
+    width: 60px;
+    border-radius: 60px;
+    border: solid 3px #ccc;
     margin: 10px;
-    
+
+  }
+
+
+  #item-container {
+    display: flex;
+    flex-direction: row;
+    #align-items: center;
+    justify-content: center;
+    #flex-wrap: wrap;
+    background-color: #27426a;
+    border-radius: 30px;
+
+
   }
 
   #item-tabs {
     display: flex;
     flex-direction: column;
     width: 90%;
-   
+    min-width: 350px;
+
+
+  }
+
+  .menu {
+    width: 100%;
+    #display: flex;
+  }
+
+  div[id^='item-selectable'] {
+    padding: 0 0 0 10;
+  }
+
+  div[id^='bless-selectable'] {
+    padding: 0 0 0 10;
+  }
+
+  .item-info {
+
+    height: 100px;
+    min-width: 250px;
+    position: absolute;
+    z-index: 10;
+    border: solid 3px #ccc;
+    /*  width: 250px;
+
+  margin: 15px;
+  padding: 10px;
+   align items in the box */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    float: left;
+    border: thin solid #fff;
+    display: none;
+  }
+
+  .item {
+    height: 75px;
+    width: 75px;
+    border-radius: 75px;
+    background-color: #F0DB4F;
+    color: #000;
+    float: left;
+    margin: 10px;
+    opacity: .9;
+    overflow: hidden;
+    background-size: contain;
+  }
+
+  .drop-targets {
+    #display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+
+    margin: 20px 0;
+  }
+
+  .build-container {
+    #display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    background: linear-gradient(90deg, #1e406b, #346094 50%, #1e4474);
+    border-radius: 30px;
+    margin: 10px 0 10px 0;
+    padding: 10px 0 10px 0;
+  }
+
+  .main-slots {
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-width: 350px;
+    padding: 0 0 0 20;
+  }
+
+  #hero-menu {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    margin: 10px;
+
   }
 
   .optional-slots {
     align-items: center;
-    margin: 20px;
+    margin: 0px;
     float: left;
-    width: 100%
+    width: 100%;
+    padding: 0px;
   }
 
   .build-feedback {
@@ -203,16 +257,44 @@ body {
     float: left;
   }
 
+  #build-feedback {
+    width: 100%;
+  }
+
+  .buildtext {
+    resize: none;
+    font-size: 1.4em;
+    font-weight: bold;
+    color: #0e004d;
+    width: 100%;
+    height: 50px;
+    margin: 0 auto;
+  }
+
+  .closebutt {
+    height: 20px;
+    width: 20px;
+    background-image: url(https://icons.iconarchive.com/icons/hopstarter/sleek-xp-basic/256/Close-icon.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: relative;
+    opacity: .5;
+  }
+
+  .ui-tabs-panel {
+    padding: 2px;
+  }
 
 }
 
-@media all and (max-width: 815px) {
-  #feedback {
-    font-size: 1em;
-    background-color: 000;
-    border-radius: 10px;
-    padding: 10 20 10 20;
-    margin-top: 235px;
-    padding:10px;
+@media (max-width: 500px) {
+  .optional-slots {
+    align-items: center;
+    margin: 0px;
+    float: left;
+    /*width: 100%*/
+    width: 50%;
+    padding: 0px;
   }
 }

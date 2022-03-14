@@ -43,11 +43,11 @@ h2 {
   height: 100vh;
   display: flex;
   flex-direction: column;
-  #justify-content: center;
-  #align-items: center;
-  #margin: 20px;
+  /*justify-content: center;
+  align-items: center;
+  margin: 20px;*/
   text-align: center;
-  min-width: 500px;
+  /*min-width: 500px;*/
   max-width: 1024px;
   margin: auto;
 }
@@ -524,11 +524,6 @@ div[id^='bless-selectable'] div {
   background-size: cover;
 }
 
-.highlight {
-  border: solid 3px red;
-  box-shadow: 0 0 10px #D000FE;
-}
-
 .box_select {
   #background-color: #fff;
   color: #000;
@@ -575,6 +570,13 @@ div[id^='bless-selectable'] div {
 .box-opt:hover {
   border: solid 3px #000;
 }
+
+
+.highlight {
+  border: solid 3px red;
+  box-shadow: 0 0 10px #D000FE;
+}
+
 
 .closebutt {
   height: 20%;
@@ -743,8 +745,9 @@ div[id^='bless-selectable'] div {
 }
 
 .export {
-  /*padding: 10px;*/
-  width: 920px;
+  padding: 20 0 0 0;
+  width: 925px;
+  max-height: 200px;
   background: url(https://www.mobilelegends.com/img/bg.c9a48115.png);
   background: rgb(13, 30, 55);
   background: linear-gradient(90deg, rgba(13, 30, 55, 1) 0%, rgba(44, 76, 125, 1) 28%, rgba(73, 114, 173, 1) 48%, rgba(43, 74, 120, 1) 64%, rgba(13, 30, 55, 1) 100%);
@@ -780,7 +783,7 @@ div[id^='bless-selectable'] div {
   /*background-color: #00FF00;*/
   /*width: 650px;*/
   height: 200px;
-  padding-top:20px;
+  padding-top: 20px;
 }
 
 .exp_box {
@@ -911,4 +914,8 @@ div[id^='bless-selectable'] div {
 
 .ui-dialog {
   position: fixed;
+}
+
+.ui-tabs-panel {
+  padding: 20px;
 }
