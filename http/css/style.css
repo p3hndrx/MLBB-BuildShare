@@ -745,7 +745,7 @@ div[id^='bless-selectable'] div {
 }
 
 .export {
-  padding: 20 0 0 0;
+  padding: 10 0 0 2;
   width: 925px;
   max-height: 200px;
   background: url(https://www.mobilelegends.com/img/bg.c9a48115.png);
@@ -874,7 +874,7 @@ div[id^='bless-selectable'] div {
   border-radius: 10px;
   padding: 5;
   position: absolute;
-  margin: 80 0 0 0;
+  /*margin: 80 0 0 0;*/
 }
 
 
