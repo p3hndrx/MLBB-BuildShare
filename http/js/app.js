@@ -22,10 +22,10 @@ var opt_slot = {
 };
 var blessingData = []
 var bless_slot = 0
-var herojson = '../../MLBB-API/v1/hero-meta-final.json'
-var itemjson = '../../MLBB-API/v1/item-meta-final.json'
-//var herojson = 'db/hero-meta-final.json'
-//var itemjson = 'db/item-meta-final.json'
+//var herojson = '../../MLBB-API/v1/hero-meta-final.json'
+//var itemjson = '../../MLBB-API/v1/item-meta-final.json'
+var herojson = 'db/hero-meta-final.json'
+var itemjson = 'db/item-meta-final.json'
 
 /*///BUILD LISTS */
 $(document).ready(function() {
@@ -57,10 +57,12 @@ $(document).ready(function() {
 
   function cattabs(item, i) {
     equip = item.toLowerCase()
-    $("#cat-tabs-list").append("<li><a href=\"#tab-" + equip + "\">" + item + "</a></li>");
+    //$("#cat-tabs-list").append("<li><a href=\"#tab-" + equip + "\">" + item + "</a></li>");
     if (equip != "roaming" && equip != "jungling") {
+      $("#cat-tabs-list").append("<li><a class=\"menu-items\"  href=\"#tab-" + equip + "\">" + item + "</a></li>");
       $("#item-tabs").append("<div id=\"tab-" + equip + "\"><div class=\"item-tab\" id=\"item-selectable-" + equip + "\"></div></div>");
     } else {
+      $("#cat-tabs-list").append("<li><a class=\"menu-bless\" href=\"#tab-" + equip + "\">" + item + "</a></li>");
       $("#item-tabs").append("<div id=\"tab-" + equip + "\"><div class=\"bless-tab\" id=\"bless-selectable-" + equip + "\"></div></div>");
     }
   }
