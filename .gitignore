@@ -10,4 +10,4 @@
 *.htaccess
 /bin/*/perms.py
 *perms.py
-/http/db/*
+/http/db/*.json
