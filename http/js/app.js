@@ -22,10 +22,10 @@ var opt_slot = {
 };
 var blessingData = []
 var bless_slot = 0
-//var herojson = '../../MLBB-API/v1/hero-meta-final.json'
-//var itemjson = '../../MLBB-API/v1/item-meta-final.json'
-var herojson = 'db/hero-meta-final.json'
-var itemjson = 'db/item-meta-final.json'
+var herojson = '../../MLBB-API/v1/hero-meta-final.json'
+var itemjson = '../../MLBB-API/v1/item-meta-final.json'
+//var herojson = 'db/hero-meta-final.json'
+//var itemjson = 'db/item-meta-final.json'
 
 /*///BUILD LISTS */
 $(document).ready(function() {
