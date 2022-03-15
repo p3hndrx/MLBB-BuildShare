@@ -944,8 +944,21 @@ $(function() {
         //result.append(this.id);
       });
     },
-    autoRefresh: true
+    autoRefresh: true,
+    selected: function (event, ui) {
+                if ($(ui.selected).hasClass('click-selected')) {
+                    $(ui.selected).removeClass('ui-selected click-selected');
+                    dim()
 
+                } else {
+                    $(ui.selected).addClass('click-selected');
+
+                }
+            },
+            unselected: function (event, ui) {
+                $(ui.unselected).removeClass('click-selected');
+                dim()
+            }
   });
 
   // DEFINE ITEMLOADER SLOTS
