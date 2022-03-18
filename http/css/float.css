@@ -1,0 +1,146 @@
+.float {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  /* max-width: 1024;
+    height:100px;*/
+  top: 0px;
+}
+
+.herofloat {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  top: 50px;
+  max-width: 1024;
+  height: 120px;
+}
+
+.buildfloat {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+ top: 160;
+    max-width: 1024;
+}
+.itemfloat {
+margin-top:350px;}
+
+.itemlock {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  top: 330px;
+  max-width: 1024;
+
+}
+
+
+.hide-scroll {
+  display: none;
+}
+
+.hero-portrait-scroll {
+  height: 100px;
+  width: 100px;
+  border-radius: 100px;
+  border: solid 3px #ccc;
+  margin: 10px;
+
+  /* align items in the box */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  float: left;
+
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.herolabel-scroll {
+  font-size: 1em;
+  background-color: 000;
+  border-radius: 10px;
+  padding: 10 20 10 20;
+  margin-top: 0px;
+  margin-left: 275px;
+  margin-left: 300px;
+  width: 200px;
+}
+
+.box-float {
+  border-radius: 80px;
+  height: 80px;
+  width: 80px;
+  border: solid 3px #ccc;
+  margin: 7px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  float: left;
+  background-image: url("https://mlbb.site/MLBB-BuildShare/http/img/add-icon.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+.box-opt-float {
+  height: 50px;
+  width: 50px;
+  border-radius: 50px;
+  border: solid 3px #ccc;
+  margin: 10px;
+
+  /* align items in the box */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  float: left;
+  background-image: url("https://mlbb.site/MLBB-BuildShare/http/img/add-icon.png");
+  background-position: center;
+  /* Center the image */
+  background-repeat: no-repeat;
+  /* Do not repeat the image */
+  background-size: cover;
+  /* Resize the background image to cover the entire container */
+}
+
+@media all and (max-width: 750px) {
+  .herolabel-scroll {
+    font-size: .75em;
+    background-color: 000;
+    border-radius: 10px;
+    padding: 10 20 10 20;
+    margin-top: 0px;
+    margin-left: 140px;
+  }
+  .box-float {
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+  margin:5px;
+}
+.box-opt-float {
+  border-radius: 50px;
+  height: 50px;
+  width: 50px;
+  margin:5px;
+}
+.itemfloat {
+margin-top:200px;}
+}
+
+
+@media all and (max-width: 815px) {
+  .herolabel-scroll {
+    font-size: 1em;
+    background-color: 000;
+    border-radius: 10px;
+    padding: 10 20 10 20;
+    margin-top: 0px;
+    margin-left: 300px;
+    width: 200px;
+  }
+}

@@ -6,6 +6,10 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MLBB-BuildShare - "BERSI"</title>
+
+     <!-- ADD FLOAT-->
+    <link rel="stylesheet" href="css/float.css">
+    <script src="js/scrollable.js"></script>
     <link rel="shortcut icon" type="image/png" href="img/ico.png" />
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/mobile.css">
@@ -16,6 +20,8 @@
     <script src="js/app.js"></script>
     <script src="js/html2canvas.js"></script>
     <script src="js/md5.min.js"></script>
+
+
 
   </head>
 
@@ -52,13 +58,14 @@
 
     <!--start app -->
 <div id="wrapper">
-    <h1>MLBB-BuildShare</h1>
+    <div id="title">
+    <h1>MLBB-BuildShare</h1></div>
     <div class="container">
       <div id="hero-container">
 
         <div id="hero-portrait" class="hero-portrait">
           <div class="hero-info">
-            <p id="feedback">
+            <p id="feedback" class="herolabel">
               <span id="hero-result">No Hero Selected</span>
             </p>
           </div>
@@ -84,11 +91,12 @@
 
       </div>
 
-      <div class="drop-targets">
+      <div id="build" class="drop-targets" >
 
         <div class="build-container" id="slots">
-          Main Build:
+
           <div class="main-slots">
+            Main Build:<br>
             <div id="item-slot-0" class="box"></div>
             <div id="item-slot-1" class="box"></div>
             <div id="item-slot-2" class="box"></div>
@@ -109,9 +117,9 @@
           </div>
           <div class="spacer"></div>
         </div>
-
+        <div id="spacer"></div>
         <div id="dropslots" class="build-container">
-          <ul>
+          <ul id="menu">
             <li><a class="menu-items" href="#item-container">Item Selector</a></li>
             <li><a class="menu-items" href="#export-menu">Export Your Build</a></li>
           </ul>
