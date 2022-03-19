@@ -749,6 +749,17 @@ div[id^='bless-selectable'] div {
 
 
 /*HTML2CANVAS EXPORTABLE*/
+.exp-container {
+  display: flex;
+  flex-direction: column;*/
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  text-align: center;
+  /*min-width: 500px;*/
+  max-width: 1024px;
+  margin: auto;
+}
 #export {
   display: none;
 }
