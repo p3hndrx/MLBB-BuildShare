@@ -38,6 +38,7 @@ function scrollFunction() {
     document.getElementById("build").style.marginTop = "450px";
 
     if (document.body.scrollTop > 250 || document.documentElement.scrollTop > 250) {
+
       calculateHeight();
       document.getElementById("slots").classList.add("buildfloat");
       /*if (maxWidth < 750) {
