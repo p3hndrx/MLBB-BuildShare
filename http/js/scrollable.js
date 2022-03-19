@@ -60,7 +60,7 @@ function scrollFunction() {
       //bump selector down
       document.getElementById("dropslots").classList.add("itemfloat");
       //document.getElementById("spacer").style.height="330px";
-      if (document.body.scrollTop > 350 || document.documentElement.scrollTop > 350) {
+      if (document.body.scrollTop > 275 || document.documentElement.scrollTop > 275) {
         calculateHeight();
         document.getElementById("dropslots").classList.remove("itemfloat");
 
