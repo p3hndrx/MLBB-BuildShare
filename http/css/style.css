@@ -43,8 +43,8 @@ h2 {
 
 .container {
   height: 100vh;
-  display: flex;
-  flex-direction: column;
+  /*display: flex;
+  flex-direction: column;*/
   /*justify-content: center;
   align-items: center;
   margin: 20px;*/
@@ -229,9 +229,6 @@ div[id^='hero-selectable'] div {
   #background: linear-gradient(90deg, #1e406b, #346094 50%, #1e4474);
   color: #b2bdcc;
 }
-
-#dropslots{position: -webkit-sticky;
-  position: sticky;top:0;}
 
 #dropslots li {
   margin: 0 3px 3px 3px;
@@ -445,14 +442,14 @@ div[id^='bless-selectable'] div {
 }
 
 .build-container {
-  #display: flex;
+  /*display: flex;*/
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
   background: linear-gradient(90deg, #1e406b, #346094 50%, #1e4474);
   border-radius: 30px;
-  margin-bottom: 10px;
+  /*margin-bottom: 10px;*/
   padding: 10px 0 10px 0;
 }
 

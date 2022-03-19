@@ -30,9 +30,12 @@ margin-top:350px;}
   position: fixed;
   z-index: 1000;
   width: 100%;
-  top: 330px;
   max-width: 1024;
 
+
+}
+.float-margin {
+    /*margin-left:-50%;*/
 }
 
 
@@ -130,7 +133,17 @@ margin-top:350px;}
 }
 .itemfloat {
 margin-top:200px;}
+
+.itemlock {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+  max-width: 1024;
+  /*margin-left:-50%;*/
+
 }
+
+} /*end 750px */
 
 
 @media all and (max-width: 815px) {
@@ -143,4 +156,14 @@ margin-top:200px;}
     margin-left: 300px;
     width: 200px;
   }
+}
+
+.mini-scroll
+{
+height: 200px;
+    overflow-y: scroll;
+}
+.bigger-scroll
+{
+    overflow-y: scroll;
 }

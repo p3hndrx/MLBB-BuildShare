@@ -39,7 +39,7 @@
 
   .container {
     height: 100vh;
-    display: flex;
+    /*display: flex;*/
     flex-direction: column;
     align-items: center;
     /*width: 90% !important;*/
@@ -210,7 +210,7 @@ width:100%;
   }
 
   .drop-targets {
-    #display: flex;
+    /*display: flex;*/
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
@@ -219,14 +219,14 @@ width:100%;
   }
 
   .build-container {
-    #display: flex;
+    /*display: flex;*/
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     background: linear-gradient(90deg, #1e406b, #346094 50%, #1e4474);
     border-radius: 30px;
-    margin: 10px 0 10px 0;
+    /*margin: 10px 0 10px 0;*/
     padding: 10px 0 10px 0;
   }
 
@@ -236,6 +236,7 @@ width:100%;
     align-items: center;
     min-width: 350px;
     /*padding: 0 0 0 20;*/
+    margin:0px;
   }
 
   #hero-menu {
