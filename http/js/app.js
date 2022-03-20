@@ -391,6 +391,7 @@ function getItemData(code) {
           attribox.append(activebox);
           attribox.append(passivebox);
           attribox.append(upassivebox);
+          //itemattribheight();
         });
 
 
@@ -707,6 +708,7 @@ function getBlessData(code) {
           attribox.append(activebox);
           attribox.append(passivebox);
           attribox.append(upassivebox);
+          //itemattribheight();
         });
 
         return selected_items;

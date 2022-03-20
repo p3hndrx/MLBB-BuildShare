@@ -1,5 +1,6 @@
 var maxHeight = 0;
 var maxWidth = 0;
+var itemfeedbackheight = 600;
 calculateHeight();
 
 
@@ -18,6 +19,20 @@ window.onscroll = function() {
   console.log(y)
   scrollFunction(y);
   calculateHeight();
+
+};
+
+function itemattribheight(){
+    iteminfo = document.getElementById("item-info");
+    itemfeedbackheight = iteminfo.offsetHeight;
+    console.log("Item Height:"+itemfeedbackheight)
+    const bigger = document.querySelectorAll('.bigger-scroll');
+    for (let i = 0; i < bigger.length; i++) {
+	    bigger[i].style.height = itemfeedbackheight;
+        }
+    h = itemfeedbackheight;
+    //document.querySelector('.itemlock').style.height = h;
+
 
 };
 

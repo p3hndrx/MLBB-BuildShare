@@ -20,7 +20,7 @@
   position: fixed;
   z-index: 1000;
   width: 100%;
- top: 140;
+ top: 170;
     max-width: 1024;
 }
 .itemfloat {
@@ -31,6 +31,7 @@ margin-top:350px;}
   z-index: 1000;
   width: 100%;
   max-width: 1024;
+  /*overflow-y:scroll;*/
 
 
 }
@@ -144,6 +145,7 @@ margin-top:200px;}
   width: 100%;
   max-width: 1024;
   /*margin-left:-50%;*/
+  /*overflow-y:auto;*/
 
 }
 
@@ -164,13 +166,14 @@ margin-top:200px;}
 
 .mini-scroll
 {
-height: 350px;
-    overflow-y: scroll;
+    height:350px;
+    overflow-y: auto;
 }
 .bigger-scroll
 {
-height:600px;
-    overflow-y: scroll;
+    min-height:600px;
+    height:600px;
+    overflow-y: auto;
 }
 
 @media all and (max-width: 450px) {
@@ -190,6 +193,13 @@ height:600px;
 
   background-repeat: no-repeat;
   background-size: cover;
+}
+.buildfloat {
+  position: fixed;
+  z-index: 1000;
+  width: 100%;
+ top: 140;
+    max-width: 1024;
 }
 
 }
