@@ -652,6 +652,7 @@ div[id^='bless-selectable'] div {
   align-items: center;
   float: left;
   overflow-y:scroll;
+  overflow-x: hidden;
 }
 
 .itemicon {
