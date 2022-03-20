@@ -14,16 +14,21 @@ window.resize = function() {
   calculateHeight()
 };
 window.onscroll = function() {
-  scrollFunction();
-  calculateHeight();
-  y = 0
-  y = y += document.body.scrollTop;
+  y = document.body.scrollTop;
   console.log(y)
+  scrollFunction(y);
+  calculateHeight();
+
 };
 
-function scrollFunction() {
+function scrollFunction(y) {
   //console.log(document.body.scrollTop)
-  if (document.body.scrollTop > 175 || document.documentElement.scrollTop > 175) {
+  if (y < 100 || document.body.scrollTop < 100 || document.documentElement.scrollTop < 100) {
+        calculateHeight();
+        document.getElementById("dropslots").classList.remove("itemlock");
+
+  }
+  if (y > 175 || document.body.scrollTop > 175 || document.documentElement.scrollTop > 175) {
     document.getElementById("title").classList.add("float");
     document.getElementById("hero-container").classList.add("herofloat");
     document.getElementById("hero-menu").classList.add("hide-scroll");
@@ -37,7 +42,7 @@ function scrollFunction() {
 
     document.getElementById("build").style.marginTop = "450px";
 
-    if (document.body.scrollTop > 250 || document.documentElement.scrollTop > 250) {
+    if (y > 250 || document.body.scrollTop > 250 || document.documentElement.scrollTop > 250) {
 
       calculateHeight();
       document.getElementById("slots").classList.add("buildfloat");
@@ -61,7 +66,7 @@ function scrollFunction() {
       //bump selector down
       document.getElementById("dropslots").classList.add("itemfloat");
       //document.getElementById("spacer").style.height="330px";
-      if (document.body.scrollTop > 275 || document.documentElement.scrollTop > 275) {
+      if (y > 250 || document.body.scrollTop > 250 || document.documentElement.scrollTop > 250) {
         calculateHeight();
         document.getElementById("dropslots").classList.remove("itemfloat");
 
@@ -89,7 +94,7 @@ function scrollFunction() {
           }
         }
         if (maxWidth >= 750) {
-
+          document.getElementById("item-info").classList.add("bigger-scroll")
           const tabs = document.querySelectorAll(`[id^="item-selectable"]`);
           let box = document.querySelector('.item-info');
           let width = box.offsetWidth;
@@ -98,11 +103,13 @@ function scrollFunction() {
           for (var i = 0; i < tabs.length; i++) {
             tabs[i].classList.add("bigger-scroll")
             }
+
           } else {
           const tabs = document.querySelectorAll(`[id^="item-selectable"]`);
           for (var i = 0; i < tabs.length; i++) {
             tabs[i].classList.remove("bigger-scroll")
           }
+          document.getElementById("item-info").classList.add("bigger-scroll")
         }
 
         document.getElementById("dropslots").classList.add("itemlock");

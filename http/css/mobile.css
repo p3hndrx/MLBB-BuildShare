@@ -104,14 +104,16 @@ width:100%;
   }
 
   .footer {
-    position: relative;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    color: white;
-    text-align: center;
-    font-size: .5em;
-  }
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  font-size: .5em;
+  background-color:#000;
+  z-index:-10;
+}
 
   .box {
     border-radius: 90px;
