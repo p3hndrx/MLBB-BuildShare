@@ -39,10 +39,10 @@
 
   .container {
     height: 100vh;
-    display: flex;
+    /*display: flex;*/
     flex-direction: column;
     align-items: center;
-    width: 90% !important;
+    /*width: 90% !important;*/
     margin: 0 auto !important;
 
 
@@ -61,6 +61,9 @@
 
   /*END ITEM INFO*/
 
+#hero-container {
+width:100%;
+}
 
   .hero-portrait {
     height: 150px;
@@ -81,7 +84,7 @@
   }
 
 
-  #feedback {
+  .herolabel {
     font-size: .75em;
     background-color: 000;
     border-radius: 10px;
@@ -101,14 +104,16 @@
   }
 
   .footer {
-    position: relative;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    color: white;
-    text-align: center;
-    font-size: .5em;
-  }
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  text-align: center;
+  font-size: .5em;
+  background-color:#000;
+  z-index:-10;
+}
 
   .box {
     border-radius: 90px;
@@ -207,7 +212,7 @@
   }
 
   .drop-targets {
-    #display: flex;
+    /*display: flex;*/
     flex-direction: row;
     justify-content: space-around;
     align-items: center;
@@ -216,14 +221,14 @@
   }
 
   .build-container {
-    #display: flex;
+    /*display: flex;*/
     flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 100%;
     background: linear-gradient(90deg, #1e406b, #346094 50%, #1e4474);
     border-radius: 30px;
-    margin: 10px 0 10px 0;
+    /*margin: 10px 0 10px 0;*/
     padding: 10px 0 10px 0;
   }
 
@@ -232,11 +237,12 @@
     justify-content: center;
     align-items: center;
     min-width: 350px;
-    padding: 0 0 0 20;
+    /*padding: 0 0 0 20;*/
+    margin:0px;
   }
 
   #hero-menu {
-    display: flex;
+    /*display: flex;*/
     flex-direction: column;
     width: 100%;
     margin: 10px;

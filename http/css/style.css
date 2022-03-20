@@ -31,6 +31,8 @@ body {
   color: #fff;
 }
 
+#title {width:100%;background-color: #0f2b55;}
+
 h1 {
   padding: 10px
 }
@@ -41,8 +43,8 @@ h2 {
 
 .container {
   height: 100vh;
-  display: flex;
-  flex-direction: column;
+  /*display: flex;
+  flex-direction: column;*/
   /*justify-content: center;
   align-items: center;
   margin: 20px;*/
@@ -65,17 +67,20 @@ h2 {
 #hero-container {
   display: flex;
   flex-direction: row;
-  #align-items: center;
+  /*align-items: center;
   justify-content: center;
+  padding:0 0 0 50px;*/
   flex-wrap: wrap;
   background-color: #27426a;
-  border-radius: 30px;
+  /*border-radius: 30px;*/
+  border-bottom-left-radius: 30px;
+  border-bottom-right-radius: 30px;
 }
 
 #hero-menu {
-  display: flex;
+  /*display: flex;*/
   flex-direction: column;
-  width: 60%;
+  width: 65%;
   margin: 0 0 10px 50px;
 }
 
@@ -145,6 +150,8 @@ h2 {
 
 #heroes {
   background-color: #27426a;
+  max-height: 600px;
+    overflow-y: auto;
 }
 
 div[id^='hero-tabs'] ul {
@@ -331,7 +338,7 @@ div[id^='item-tabs'] li a:hover {
   visibility: visible;
 }
 
-#feedback {
+.herolabel {
   font-size: 1em;
   background-color: 000;
   border-radius: 10px;
@@ -435,21 +442,21 @@ div[id^='bless-selectable'] div {
 }
 
 .build-container {
-  #display: flex;
+  /*display: flex;*/
   flex-direction: column;
   justify-content: center;
   align-items: center;
   width: 100%;
   background: linear-gradient(90deg, #1e406b, #346094 50%, #1e4474);
   border-radius: 30px;
-  margin: 10px 0 10px 0;
+  /*margin-bottom: 10px;*/
   padding: 10px 0 10px 0;
 }
 
 .main-slots {
-  flex-direction: column;
-  justify-content: center;
   align-items: center;
+    margin: 20px;
+    float: left;
 }
 
 .optional-slots {
@@ -633,6 +640,7 @@ div[id^='bless-selectable'] div {
 /*ITEM INFO BOX*/
 .item-info {
   height: 100%;
+  max-height:600px;
   min-width: 250px;
   width: 250px;
   border: solid 3px #ccc;
@@ -643,11 +651,14 @@ div[id^='bless-selectable'] div {
   flex-direction: column;
   align-items: center;
   float: left;
+  overflow-y:auto;
+  overflow-x: hidden;
 }
 
 .itemicon {
   width: 100px;
   height: 100px;
+  min-height:100px;
   background-size: contain;
   background-repeat: no-repeat;
   margin: 10px;
@@ -689,20 +700,21 @@ div[id^='bless-selectable'] div {
 /*END ITEM INFO*/
 
 .footer {
-  #position: fixed;
+  position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   color: white;
   text-align: center;
   font-size: .5em;
+  background-color:#000;
+  z-index:-10;
 }
 
 /*MOBILE FRIENDLIER*/
 @media all and (max-width: 750px) {
 
   #hero-menu {
-    display: flex;
     flex-direction: column;
     width: 100%;
     margin: 10px;
@@ -730,8 +742,8 @@ div[id^='bless-selectable'] div {
 
 }
 
-@media all and (max-width: 815px) {
-  #feedback {
+@media all and (max-width: 930px) {
+  .herolabel {
     font-size: 1em;
     background-color: 000;
     border-radius: 10px;
@@ -743,6 +755,17 @@ div[id^='bless-selectable'] div {
 
 
 /*HTML2CANVAS EXPORTABLE*/
+.exp-container {
+  display: flex;
+  flex-direction: column;*/
+  justify-content: center;
+  align-items: center;
+  margin: 20px;
+  text-align: center;
+  /*min-width: 500px;*/
+  max-width: 1024px;
+  margin: auto;
+}
 #export {
   display: none;
 }
@@ -920,7 +943,7 @@ div[id^='bless-selectable'] div {
 }
 
 .ui-tabs-panel {
-  padding: 20px;
+/*  padding: 20px;*/
 }
 
 .ui-tabs-active a {
