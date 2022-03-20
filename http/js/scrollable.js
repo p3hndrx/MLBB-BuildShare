@@ -94,7 +94,7 @@ function scrollFunction(y) {
           }
         }
         if (maxWidth >= 750) {
-          document.getElementById("item-info").classList.add("bigger-scroll")
+          //document.getElementById("item-info").classList.add("bigger-scroll")
           const tabs = document.querySelectorAll(`[id^="item-selectable"]`);
           let box = document.querySelector('.item-info');
           let width = box.offsetWidth;
@@ -109,7 +109,7 @@ function scrollFunction(y) {
           for (var i = 0; i < tabs.length; i++) {
             tabs[i].classList.remove("bigger-scroll")
           }
-          document.getElementById("item-info").classList.add("bigger-scroll")
+          //document.getElementById("item-info").classList.add("bigger-scroll")
         }
 
         document.getElementById("dropslots").classList.add("itemlock");
