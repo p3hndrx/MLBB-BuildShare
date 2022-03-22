@@ -781,7 +781,7 @@ div[id^='bless-selectable'] div {
 
 .export {
   padding: 10 0 0 5;
-  width: 925px;
+  width: 950px;
   max-height: 200px;
   background: url(https://www.mobilelegends.com/img/bg.c9a48115.png);
   background: rgb(13, 30, 55);
@@ -874,7 +874,7 @@ div[id^='bless-selectable'] div {
   width: 60px;
   border-radius: 60px;
   border: solid 3px #ccc;
-  margin: 15px;
+  margin: 15 0 15 0;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -889,7 +889,7 @@ div[id^='bless-selectable'] div {
   width: 60px;
   border-radius: 60px;
   border: solid 3px #ccc;
-  margin: 60 0 0 20;
+  margin: 60 0 0 10;
   display: flex;
   flex-direction: column;
   align-items: center;
