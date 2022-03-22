@@ -821,6 +821,12 @@ div[id^='bless-selectable'] div {
   padding-top: 20px;
 }
 
+.exp_main-slots {
+  align-items: center;
+    margin: 20px;
+    float: left;
+}
+
 .exp_box {
   border-radius: 150px;
   height: 95px;
