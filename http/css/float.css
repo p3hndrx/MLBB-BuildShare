@@ -89,6 +89,19 @@ margin-top:350px;}
   background-repeat: no-repeat;
   background-size: cover;
 }
+
+.box-float .box_select .slottip {
+  font-size: .8em;
+  width: 150;
+  background-color: #000;
+  visibility: hidden;
+  color: #FFF;
+  border-radius: 10px;
+  padding: 7;
+  position: absolute;
+  margin: 75 -75 0;
+}
+
 .box-opt-float {
   height: 50px;
   width: 50px;
@@ -110,6 +123,19 @@ margin-top:350px;}
   background-size: cover;
   /* Resize the background image to cover the entire container */
 }
+
+.box-opt-float .box_select .optslottip {
+  font-size: .8em;
+  width: 80;
+  background-color: #000;
+  visibility: hidden;
+  color: #FFF;
+  border-radius: 10px;
+  padding: 7;
+  position: absolute;
+  margin: 40 -40 0;
+}
+
 
 @media all and (max-width: 450px) {
 .box-float {
