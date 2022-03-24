@@ -97,23 +97,6 @@ slash = SlashCommand(bot, sync_commands=True)
                      required=True
                  ),
                 create_option(
-                     name="do",
-                     description="Build actions",
-                     option_type=3,
-                     required=False,
-                     choices=[
-                         create_choice(
-                             name="Add",
-                             value="add"),
-                         create_choice(
-                             name="Remove",
-                             value="remove"),
-                         create_choice(
-                             name="Remove All",
-                             value="clear")
-                     ]
-                 ),
-                create_option(
                      name="about",
                      description="About BERSI",
                      option_type=3,
