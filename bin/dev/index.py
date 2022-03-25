@@ -65,7 +65,7 @@ else:
 # endregion
 
 # region VERSION
-version = "DEVELOPMENT Ver.1.11 (20220304)"
+version = "DEVELOPMENT Ver.1.12 (20220325)"
 print(f"***Starting BERSI-{version}")
 log.info(f"***Starting BERSI-{version}")
 # endregion
@@ -153,9 +153,7 @@ async def _overall(ctx, code="0",do="null",about="null"):
                 desc = "Command Options List:\
                            \n\n`/buildshare` - Show a build \
                            \n `code:(your code here)` - required, options: (`0`,`1`,`2`) \
-                           \n `about:(Show, Code, Do)` - Show the commands \
-                           \n COMING SOON!: \
-                           \n- `do:(Add,Remove,Clear,List)`, default: `nothing` - Look at your saved builds!"
+                           \n `about:(Show, Code, Do)` - Show the commands "
             elif about == "helper":
                 about_title = "Invalid Code"
                 desc = "Build Share codes will be *32-characters* long. \
